@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Divider, Heading } from "@chakra-ui/react";
 import React from "react"
 
 type HeaderType = {
@@ -11,6 +11,7 @@ export const HeaderMain: React.FC<HeaderType> = ({ name }) => {
             <Heading as='h1' textAlign="center">
                 {name}
             </Heading>
+            <Divider borderBottomWidth={3} borderColor={"green.600"} mt='4' mx='auto' w={[16, 16, 16, 16]} />
         </Box>
     );
 }

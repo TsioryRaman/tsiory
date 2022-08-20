@@ -12,19 +12,19 @@ export const Navbar: React.FC = () => {
                     <IconLink to='/' label={"home"} >
                         <Home size={20} />
                     </IconLink>
-                    <IconLink to='/' label={"home"} >
+                    <IconLink to='/contact' label={"home"} >
                         <User size={20} />
                     </IconLink>
-                    <IconLink to='/' label={"home"} >
+                    <IconLink to='#' label={"home"} >
                         <File size={20} />
                     </IconLink>
-                    <IconLink to='/' label={"home"} >
+                    <IconLink to='/article' label={"home"} >
                         <Book size={20} />
                     </IconLink>
-                    <IconLink to='/' label={"home"} >
+                    <IconLink to='#' label={"home"} >
                         <Server size={20} />
                     </IconLink>
-                    <IconLink to='/' label={"home"} >
+                    <IconLink to='#' label={"home"} >
                         <Mail size={20} />
                     </IconLink>
                 </Box>
