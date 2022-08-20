@@ -3,7 +3,6 @@ import React from 'react';
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Facebook, GitHub, Linkedin, Twitter } from 'react-feather';
-
 type HeaderType = {
   name: String,
   Sequence?: String[]
