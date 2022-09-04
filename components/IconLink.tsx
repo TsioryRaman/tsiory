@@ -22,7 +22,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to }) => {
                 _hover={{ bg: 'blue.500' }}
 
                 color='white'
-                bg={router.pathname.includes(to.toString()) ? 'blue.500' : 'gray.400'}
+                bg={router.pathname.includes(to.toString()) && router.pathname.length > 1 ? 'blue.500' : 'gray.400'}
                 w={['8', '10', '12', '14']} h={['8', '10', '12', '14']}
                 borderRadius='full'
                 justify='center'
@@ -30,7 +30,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to }) => {
                 my='1' >
 
 
-                <Box mx='auto' color='white' as='div'>
+                <Box mx='auto' as='div'>
                     {children}
                 </Box>
             </Flex >
