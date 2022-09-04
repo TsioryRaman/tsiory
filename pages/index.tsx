@@ -3,10 +3,12 @@ import { generateRSS } from '../rssUtil';
 import { PostData, loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import { Header } from '../components/Header';
-import { Box, Divider } from '@chakra-ui/react';
+import { Divider } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
+import { Article_1_Stack } from '../staticData/staticData';
+
 
 const Home = (props: {
   introduction: string;
@@ -22,7 +24,8 @@ const Home = (props: {
         <HeaderMain name="A propos" />
         <BlockMain />
         <HeaderMain name="Article" />
-        <Article />
+        <Article title={Article_1_Stack.title} description={Article_1_Stack.description}
+          stack={Article_1_Stack.stack} />
       </main>
     </React.Fragment>
   );
