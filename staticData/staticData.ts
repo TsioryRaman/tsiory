@@ -15,4 +15,10 @@ export const Article_1_Stack: Article = {
     { name: "React | Nest", colorScheme: "purple" }]
 };
 
-export const Article_2_Stack: Array<StackType> = []
+export const Article_2_Stack: Article = {
+    title: "2 - Choix de la technologie",
+    description: "Pour accéder à certains services, communiquer avec d’autres personnes, faire des achats, jouer ou visionner des vidéos, les applications mobiles sont partout ! Dans ce contexte, la création d’appli est devenue incontournable pour de nombreuses entreprises.",
+    stack: [{ name: "Technologie", colorScheme: "gray.200" },
+    { name: "Langage", colorScheme: "green.400" },
+    { name: "Framework", colorScheme: "pink" }]
+};

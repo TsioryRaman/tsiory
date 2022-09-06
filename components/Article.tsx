@@ -9,13 +9,14 @@ export type StackType = {
 
 type ArticleType = {
     title: String,
-    stack?: Array<Stack>,
-    description: String
+    stack?: Array<StackType>,
+    description: String,
+    id: Number
 }
 
-export const Article: React.FC<ArticleType> = ({ title, stack, description }) => {
+export const Article: React.FC<ArticleType> = ({ title, stack, description, id }) => {
     return (
-        <Link href='/article/1'>
+        <Link href={'/article/' + id}>
             <Box cursor="pointer" _hover={{ boxShadow: 'lg', }} transitionDuration='0.5s' borderColor={'gray.600'} borderRadius={6} my={3} p={4}>
                 <Flex direction='row' justifyContent='space-between'>
                     <Flex direction='column'>
