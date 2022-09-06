@@ -9,6 +9,8 @@ import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
 import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
 import Divertissement from '../components/Divertissement';
+import Competence from '../components/Competence';
+import Contact from '../components/Contact';
 
 
 const Home = () => {
@@ -27,6 +29,10 @@ const Home = () => {
 
         <HeaderMain name="Divertissement" />
         <Divertissement />
+        <HeaderMain name="Competence" />
+        <Competence />
+        <HeaderMain name="Me retrouver" />
+        <Contact />
       </main>
     </React.Fragment>
   );

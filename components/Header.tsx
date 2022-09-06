@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Image, Text } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Facebook, GitHub, Linkedin, Twitter } from 'react-feather';
 import Fade from "react-reveal"
@@ -31,7 +31,8 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
         cursor={true}
         repeat={Infinity}
         style={{ fontSize: '1em', color: 'green' }}
-      /></Text>
+      />
+        <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts)<Image src="/img/stack image/next.png" height="40px" width="40px" display="inline" /> | Typescript</span></Text>
 
       <Flex w='full' direction={'row'} mt='2' gap={'6'}>
         <a href='https://web.facebook.com/RamanantoaninaTsiory/'><Facebook /></a>
@@ -41,5 +42,5 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
       </Flex>
     </Flex >
 
-  </Fade>
+  </Fade >
 );
