@@ -34,9 +34,9 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
       /></Text>
 
       <Flex w='full' direction={'row'} mt='2' gap={'6'}>
-        <a href='#'><Facebook /></a>
-        <a href='#'><Linkedin /></a>
-        <a href='#'><GitHub /></a>
+        <a href='https://web.facebook.com/RamanantoaninaTsiory/'><Facebook /></a>
+        <a href='https://www.linkedin.com/in/tsiory-raman-ab309b1b2/'><Linkedin /></a>
+        <a href='https://github.com/TsioryRaman'><GitHub /></a>
         <a href='#'><Twitter /></a>
       </Flex>
     </Flex >
