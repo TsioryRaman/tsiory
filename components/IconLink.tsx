@@ -1,12 +1,11 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react"
-import { Url } from "url";
 import { useRouter } from "next/router"
 
 type IconLinkProps = {
     label: String,
-    to: Url
+    to: string
 }
 
 export const IconLink: React.FC<IconLinkProps> = ({ children, to }) => {

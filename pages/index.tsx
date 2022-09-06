@@ -1,6 +1,6 @@
 
 import { generateRSS } from '../rssUtil';
-import { PostData, loadBlogPosts, loadMarkdownFile } from '../loader';
+import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import { Header } from '../components/Header';
 import { Divider } from '@chakra-ui/react';
@@ -11,12 +11,7 @@ import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
 import Divertissement from '../components/Divertissement';
 
 
-const Home = (props: {
-  introduction: string;
-  features: string;
-  readme: string;
-  posts: PostData[];
-}) => {
+const Home = () => {
   return (
     <React.Fragment>
       <main>
