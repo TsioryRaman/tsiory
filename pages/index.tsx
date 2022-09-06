@@ -7,7 +7,8 @@ import { Divider } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
-import { Article_1_Stack } from '../staticData/staticData';
+import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
+import Divertissement from '../components/Divertissement';
 
 
 const Home = (props: {
@@ -24,8 +25,13 @@ const Home = (props: {
         <HeaderMain name="A propos" />
         <BlockMain />
         <HeaderMain name="Article" />
-        <Article title={Article_1_Stack.title} description={Article_1_Stack.description}
+        <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
           stack={Article_1_Stack.stack} />
+        <Article id={2} title={Article_2_Stack.title} description={Article_2_Stack.description}
+          stack={Article_2_Stack.stack} />
+
+        <HeaderMain name="Divertissement" />
+        <Divertissement />
       </main>
     </React.Fragment>
   );
