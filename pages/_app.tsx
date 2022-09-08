@@ -21,7 +21,7 @@ const App: React.FC = ({ Component, pageProps }: any) => {
           </Head>
           <Box>
             <Navbar />
-            <Box as='div' mx={['12', '28', '36', '64']}>
+            <Box as='div'>
               <Component {...pageProps} />
             </Box>
             <Footer />

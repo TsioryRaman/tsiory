@@ -3,7 +3,7 @@ import { generateRSS } from '../rssUtil';
 import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import { Header } from '../components/Header';
-import { Divider } from '@chakra-ui/react';
+import { Container, Divider } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -16,7 +16,7 @@ import Contact from '../components/Contact';
 const Home = () => {
   return (
     <React.Fragment>
-      <main>
+      <Container maxW={["sm", "md", "2xl", "5xl"]}>
         <Header name="Ramanantoanina Safidy Tsioriniaina" />
         <Divider orientation='horizontal' />
         <HeaderMain name="A propos" />
@@ -33,7 +33,7 @@ const Home = () => {
         <Competence />
         <HeaderMain name="Me retrouver" />
         <Contact />
-      </main>
+      </Container>
     </React.Fragment>
   );
 };
