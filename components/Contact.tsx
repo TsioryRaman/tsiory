@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
         </Flex>
     );
 }
-const CardContact: React.FC<CardCompetenceType> = ({ title, link, logo, imgPresentation }) => {
+const CardContact: React.FC<CardCompetenceType> = ({ title, link, logo }) => {
     return (
         <Flex boxShadow="xl" gap="4" borderRadius="md" p={4} border="2px" borderColor="whiteAlpha.300">
 
