@@ -22,7 +22,7 @@ const CardContact: React.FC<CardCompetenceType> = ({ title, link, logo }) => {
     const formatUrlToText = (url:string) => url.replace("https://www.","")
 
     return (
-        <Flex boxShadow="xl" flex="1" alignSelf="stretch" gap="4" borderRadius="sm" p={6} border="1px" borderColor="whiteAlpha.300">
+        <Flex _hover={{background:"purple.500"}} transitionDuration={".6s"} cursor="pointer" borderLeft="4px" borderRight="4px" borderRightColor="purple.500" borderLeftColor="purple.500" boxShadow="xl" flex="1" alignSelf="stretch" gap="4" borderRadius="sm" p={6}>
 
             <Box w="75%">
                 <Heading mt="3" fontSize={"xl"}>{title}</Heading>

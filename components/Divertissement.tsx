@@ -9,7 +9,7 @@ type Feature = {
 
 const Feature: React.FC<Feature> = ({ title, desc, img, ...rest }) => {
     return (
-        <Box p={5} shadow='md' borderWidth='1px' overflow={"hidden"} {...rest}>
+        <Box p={5} mt={8} shadow='md' borderWidth='1px' overflow={"hidden"} {...rest}>
             {img && <Box overflow="hidden">
                 <Image src={"/img/" + img} cursor="pointer" alt={img} height={["400px"]} width={["100%","100%","100%","100%"]} _hover={{ transform: "scale(1.2)" }} transitionDuration={".8s"} />
             </Box>}

@@ -2,12 +2,15 @@ import { Box, Divider, Heading } from "@chakra-ui/react";
 import React from "react"
 
 type HeaderType = {
-    name: String
+    name: string
 }
 
 export const HeaderMain: React.FC<HeaderType> = ({ name }) => {
+
+    const getNameId = (name:String) => name.split(' ').length >= 2 ? name.split(" ")[1] as string : name as string
+
     return (
-        <Box mt='6'>
+        <Box mt={"48"} id={getNameId(name)}>
             <Heading as='h1' textAlign="center">
                 {name}
             </Heading>

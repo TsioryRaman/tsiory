@@ -1,16 +1,14 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react"
-import { useRouter } from "next/router"
 
 type IconLinkProps = {
     label: String,
-    to: string
+    to: string,
+    href?:string
 }
 
-export const IconLink: React.FC<IconLinkProps> = ({ children, to }) => {
-
-    const router = useRouter();
+export const IconLink: React.FC<IconLinkProps> = ({ children,to }) => {
 
     return (
         <Link href={to}>
@@ -21,7 +19,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to }) => {
                 _hover={{ bg: 'blue.500' }}
 
                 color='white'
-                bg={router.pathname.includes(to.toString()) && router.pathname.length > 1 ? 'blue.500' : 'gray.400'}
+                bg={"gray.400"}
                 w={['8', '10', '12', '14']} h={['8', '10', '12', '14']}
                 borderRadius='full'
                 justify='center'
@@ -32,7 +30,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to }) => {
                 <Box mx='auto' as='div'>
                     {children}
                 </Box>
-            </Flex >
+            </Flex >           
         </Link>
 
     );
