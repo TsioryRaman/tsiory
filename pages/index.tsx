@@ -3,7 +3,7 @@ import { generateRSS } from '../rssUtil';
 import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import { Header } from '../components/Header';
-import { Container, Divider } from '@chakra-ui/react';
+import { Box, Container, Divider } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -16,7 +16,7 @@ import Contact from '../components/Contact';
 const Home = () => {
   return (
     <React.Fragment>
-      <Container maxW={["sm", "md", "2xl", "5xl"]}>
+      <Container maxW={["sm", "md", "2xl", "6xl"]}>
         <Header name="Ramanantoanina Safidy Tsioriniaina" />
         <Divider orientation='horizontal' />
         <HeaderMain name="A propos" />
@@ -32,8 +32,14 @@ const Home = () => {
         <HeaderMain name="Competence" />
         <Competence />
         <HeaderMain name="Me retrouver" />
-        <Contact />
       </Container>
+      <Box bgColor="blue.300">
+        <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
+
+        <Contact />
+        </Box>
+      </Box>
+      
     </React.Fragment>
   );
 };
