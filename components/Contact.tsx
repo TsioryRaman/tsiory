@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 type CardCompetenceType = {
     title: String,
