@@ -1,6 +1,6 @@
 import { Badge, Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react"
-import { Compass } from "react-feather";
+import { Clock, Compass } from "react-feather";
 
 type content = {
     header: String,
@@ -16,9 +16,9 @@ type ParcourInformationType = {
 export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, content }) => {
     return (
         <React.Fragment>
-            <Badge mt='4' variant='outline' colorScheme='green' fontSize='xl' fontWeight='bold' ml={['4', '6', '8', '12']} mb='4'>
+            <Badge display={"flex"} justifyContent="center" alignItems="center" gap="1" flexDirection="row" width="fit-content" mt='4' variant='outline' colorScheme='green' fontSize='xl' fontWeight='bold' ml={['4', '6', '8', '12']} mb='4'>
 
-                {year}
+            <Clock size="17px" /> - {year}
             </Badge>
 
 
