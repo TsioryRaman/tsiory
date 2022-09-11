@@ -12,7 +12,7 @@ const Competence: React.FC = () => {
     return (
         <Flex mt="8" gap="8" justifyContent={"space-between"} direction={["column", "column", "column", "row"]}>
             <CardCompetence type="Backend" description={" Je développe des applications PHP depuis plus de 2 ans et je maitrise les frameworks Symfony 4/5"} title="Symfony ou Laravel" logo="https://cdn.worldvectorlogo.com/logos/symfony.svg" />
-            <CardCompetence type="Environement" description="Je développe des applications sur Linux | Windows avec des outils comme Docker" title={"Linux|Windows"} logo={"https://gitlab.com/uploads/-/system/project/avatar/30216153/Docker.png"} />
+            <CardCompetence type="Environement" description="Je développe des applications sur Linux | Windows avec des outils comme Docker" title={"Linux|Windows"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
             <CardCompetence type="Frontend" description="Je développe des applications reactives avec React.js et Vue.js" title={"Reactjs/Vuejs"} logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} />
         </Flex>
     );
