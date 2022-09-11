@@ -39,7 +39,6 @@ const Home = () => {
         <Contact />
         </Box>
       </Box>
-      
     </React.Fragment>
   );
 };
