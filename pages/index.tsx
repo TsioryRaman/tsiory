@@ -33,7 +33,7 @@ const Home = () => {
         <Competence />
         <HeaderMain name="Me retrouver" />
       </Container>
-      <Box bgColor="blue.300">
+      <Box bgColor="blue.300" opacity=".8">
         <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
 
         <Contact />
