@@ -32,3 +32,4 @@ firebase.json
 .firebase/*
 .nvmrc
 .vscode
+.idea
