@@ -19,7 +19,7 @@ const Competence: React.FC = () => {
 }
 const CardCompetence: React.FC<CardCompetenceType> = ({ title, description, type, logo }) => {
     return (
-        <Flex _hover={{ transform: "scale(1.01)" }} cursor="default" transitionDuration=".1s" direction="column" w={["100%", "100%", "100%", "50%"]} position="relative" overflow="hidden" boxShadow="xl">
+        <Flex mx="auto" _hover={{ transform: "scale(1.01)" }} cursor="default" transitionDuration=".1s" direction="column" w={["100%", "100%", "50%", "1/3"]} position="relative" overflow="hidden" boxShadow="xl">
 
             <Image opacity=".7" zIndex="-1" height="100%" position="absolute" src="/img/stack image/background_card.jpg" />
             <Flex p={4} flexDirection="column">

@@ -17,7 +17,7 @@ type ArticleType = {
 export const Article: React.FC<ArticleType> = ({ title, stack, description, id }) => {
     return (
         <Link href={'/article/' + id}>
-            <Box cursor="pointer" _hover={{ boxShadow: 'lg', }} transitionDuration='0.5s' borderColor={'gray.600'} borderRadius={6} my={3} p={4}>
+            <Box borderLeft="4px" borderLeftColor="#53c9c6" cursor="pointer" _hover={{ boxShadow: 'lg', }} transitionDuration='0.5s' borderTopRightRadius={6} borderBottomRightRadius={6} my={3} p={4}>
                 <Flex direction='row' justifyContent='space-between'>
                     <Flex direction='column'>
                         <Heading fontSize='xl' as='h3'>
