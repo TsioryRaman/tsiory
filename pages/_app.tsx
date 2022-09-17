@@ -17,7 +17,7 @@ const App: React.FC = ({ Component, pageProps }: any) => {
         <Box>
           <Image position="fixed" opacity="0.3" zIndex="-9999" left="50%" top={0} bottom={0} src="/img/background/—Pngtree—vector polygon perspective grid irregular_3024826.png" />
           <Head>
-            <title>Tsiory Ramanantoanina | Portofolio</title>
+            <title>Tsiory Ramanantoanina | Portfolio</title>
           </Head>
           <Box>
             <Navbar />

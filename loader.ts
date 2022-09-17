@@ -60,13 +60,12 @@ export const mdToPost = (file: RawFile): PostData => {
 
 export const loadMarkdownFiles = async (path: string) => {
   const blogPaths = glob.sync(`./md/${path}`);
-  const postDataList = await Promise.all(
+  return await Promise.all(
     blogPaths.map((blogPath) => {
       const modPath = blogPath.slice(blogPath.indexOf(`md/`) + 3);
       return loadMarkdownFile(`${modPath}`);
     })
   );
-  return postDataList;
 };
 
 export const loadPost = async (path: string): Promise<PostData> => {
@@ -75,7 +74,7 @@ export const loadPost = async (path: string): Promise<PostData> => {
 };
 
 export const loadBlogPosts = async (): Promise<PostData[]> => {
-  return await (await loadMarkdownFiles(`blog/*.md`))
+  return (await loadMarkdownFiles(`blog/*.md`))
     .map(mdToPost)
     .filter((p) => p.published)
     .sort((a, b) => (b.datePublished || 0) - (a.datePublished || 0));
