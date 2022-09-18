@@ -1,36 +1,32 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Link from "next/link";
-import React from "react"
+import React, { useContext } from "react"
+import { SideBarContext } from "./Navbar";
 
 type IconLinkProps = {
     label: String,
     to: string,
-    href?:string
+    href?: string
 }
 
-export const IconLink: React.FC<IconLinkProps> = ({ children,to }) => {
+export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
+
+    const { setOpen } = useContext(SideBarContext);
 
     return (
         <Link href={to}>
             <Flex
-                as='a'
+                mr="auto"
                 cursor='pointer'
                 transitionDuration='0.5s'
-                _hover={{ bg: 'blue.500' }}
-
+                onClick={() => setOpen(false)}
                 color='white'
-                bg={"gray.400"}
-                w={['8', '10', '12', '14']} h={['8', '10', '12', '14']}
-                borderRadius='full'
                 justify='center'
-                alignItems='center'
-                my='1' >
-
-
-                <Box mx='auto' as='div'>
-                    {children}
+                alignItems='center'>
+                <Box display={"flex"} justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={32} as='div'>
+                    {children} {label}
                 </Box>
-            </Flex >           
+            </Flex >
         </Link>
 
     );
