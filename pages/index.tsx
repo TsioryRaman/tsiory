@@ -3,7 +3,7 @@ import { generateRSS } from '../rssUtil';
 import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import { Header } from '../components/Header';
-import { Box, Container, Divider } from '@chakra-ui/react';
+import { Box, Container, Divider, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -14,6 +14,8 @@ import Contact from '../components/Contact';
 
 
 const Home = () => {
+
+  const bg = useColorModeValue('blue.200', 'blue.900')
   return (
     <React.Fragment>
       <Container maxW={["sm", "md", "2xl", "6xl"]}>
@@ -33,10 +35,10 @@ const Home = () => {
         <Competence />
         <HeaderMain name="Me retrouver" />
       </Container>
-      <Box bgColor="blue.300" opacity=".8">
+      <Box bgColor={bg} opacity=".8">
         <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
 
-        <Contact />
+          <Contact />
         </Box>
       </Box>
     </React.Fragment>

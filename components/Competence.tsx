@@ -36,7 +36,7 @@ const Competence: React.FC = () => {
 }
 const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
 
-    const bg = useColorModeValue('white', 'blue.400')
+    const bg = useColorModeValue('white', 'blue.900')
     const ref = useRef<HTMLDivElement>(null)
     const imageRef = useRef<HTMLImageElement>(null)
 

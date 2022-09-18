@@ -9,6 +9,7 @@ import { ColorModeScript } from "@chakra-ui/color-mode"
 import theme from "../theme"
 import { Footer } from '../components/Footer';
 const App: React.FC = ({ Component, pageProps }: any) => {
+
   return (
     <React.Fragment>
       <ProgressBar />
