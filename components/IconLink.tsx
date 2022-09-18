@@ -20,10 +20,9 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
                 cursor='pointer'
                 transitionDuration='0.5s'
                 onClick={() => setOpen(false)}
-                color='white'
                 justify='center'
                 alignItems='center'>
-                <Box display={"flex"} justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={32} as='div'>
+                <Box display={"flex"} _before={{ _hover: { borderBottom: "4px solid white" } }} justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={32} as='div'>
                     {children} {label}
                 </Box>
             </Flex >

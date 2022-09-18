@@ -1,23 +1,13 @@
-import { Flex, Box, Switch, useColorMode } from "@chakra-ui/react";
+import { Flex, Box, useColorMode } from "@chakra-ui/react";
+import { Moon } from "react-feather";
 export const ToggleColorMode: React.FC = () => {
     const { colorMode, toggleColorMode } = useColorMode();
 
     return (
-        <Flex position='relative' mt="auto" mb='2.5'>
-            <Box
-                as='button'
-                position='absolute'
-                top='0'
-                bg='transparent'
-                left='0'
-                right='0'
-                bottom='0'
-                zIndex={2}
-                onClick={() => toggleColorMode()}>
+        <Flex position='relative'>
+            <Box cursor="pointer" p="3" onClick={() => toggleColorMode()}>
+                <Moon fill={colorMode === "light" ? "#2a4365" : "white"} color={colorMode === "light" ? "#2a4365" : "white"} />
             </Box>
-            <Switch
-                isChecked={colorMode === "dark" ? true : false}>
-            </Switch>
         </Flex>
     );
 }
