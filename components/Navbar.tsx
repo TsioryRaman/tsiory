@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { IconLink } from "./IconLink";
 import { AlignRight, ArrowLeft, Book, File, Home, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
@@ -68,7 +68,11 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
 
     return (
         <Box transitionTimingFunction={"ease-out"} zIndex="2" style={{ right: open ? "0" : "-100%", backdropFilter: "blur(8px)" }} minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" transitionDuration=".8s">
-            <Flex mx={["48", "32", "32", "48"]} mt="56" direction={"column"} justifyContent="space-around" gap={6} >
+            <Flex mx={["48", "32", "32", "48"]} mt="32" direction={"column"} justifyContent="space-around" gap={6} >
+                <Flex direction="row" alignItems="baseline" justifyContent="center" >
+                    <Heading as="h1" fontSize="6em" textAlign="center">T</Heading>
+                    <Text fontSize="3em" fontWeight="medium" fontFamily="Monaco">siory</Text>
+                </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
                     <IconLink to="#home" label={"Acceuil"} >
                         <Home size={32} />
