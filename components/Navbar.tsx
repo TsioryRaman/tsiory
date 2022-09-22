@@ -1,19 +1,41 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Heading, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, keyframes, Text } from '@chakra-ui/react'
 import { IconLink } from "./IconLink";
 import { AlignRight, ArrowLeft, Book, File, Home, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToggleColorMode } from "./ToggleColorMode";
+const morphing = keyframes`
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        box-shadow: 15px 15px 50px rgba(0,0,0,0.2);
+    }
+    25% { 
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+    }
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        box-shadow: -10px -5px 50px rgba(0,0,0,0.2);
+    }
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;		
+    }
+`
 export const Navbar: React.FC = () => {
 
     const router = useRouter()
     const [open, setOpen] = useState(false)
     return (
         <React.Fragment>
-            <Flex zIndex={"5"} justifyContent={"center"} flexDirection={"column"} position={"fixed"} top="4" right={"15"}>
-                {router.pathname !== "/" && <Box mt="3" cursor="pointer"><Link href="/"><ArrowLeft /></Link></Box>}
+            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" position={"fixed"} px="12" top="4">
+                <Box display="flex" justifyContent="center" alignItems="center" color="white" overflow="hidden" px="8" py="4"
+                 background="blue.900"
+                 borderRadius="30% 70% 70% 30% / 30% 30% 70% 70%"
+                 boxShadow="15px 15px 50px rgba(0,0,0,0.2)"
+                 animation={`${morphing} 10s infinite`}>
+                    <Heading fontSize={["2em","2em","3em","3.5em"]} fontFamily="Sans-serif">T</Heading>
+                </Box>
                 <Flex direction={"row"}>
 
                     <ToggleColorMode />
@@ -22,29 +44,9 @@ export const Navbar: React.FC = () => {
                             <AlignRight />
                         </Box>
                     </Box>
-                </Flex>
-                {/*<Box mt='auto'>
-                    <IconLink to="#home" label={"home"} >
-                        <Home size={20} />
-                    </IconLink>
-                    <IconLink to="#propos" label={"home"} >
-                        <User size={20} />
-                    </IconLink>
-                    <IconLink to='#Article' label={"home"} >
-                        <File size={20} />
-                    </IconLink>
-                    <IconLink to='#Divertissement' label={"home"} >
-                        <Book size={20} />
-                    </IconLink>
-                    <IconLink to='#Competence' label={"home"} >
-                        <Server size={20} />
-                    </IconLink>
-                    <IconLink to='#retrouver' label={"home"} >
-                        <Mail size={20} />
-                    </IconLink>
-    </Box>*/}
-                {/*<ToggleColorMode />*/}
 
+                {router.pathname !== "/" && <Box mt="3" cursor="pointer"><Link href="/"><ArrowLeft /></Link></Box>}
+                </Flex>
             </Flex>
 
             <NavigationLink open={open} setOpen={setOpen} />
