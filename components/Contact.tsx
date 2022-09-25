@@ -22,9 +22,9 @@ const CardContact: React.FC<CardCompetenceType> = ({ title, link, logo }) => {
 
     const formatUrlToText = (url: string) => url.replace("https://www.", "")
 
-    const bg = useColorModeValue('blue.400', 'blue.800')
+    const bg = useColorModeValue('blue.300', 'blue.800')
     return (
-        <Flex color="gray.100" _hover={{ background: bg }} transitionDuration={".6s"} cursor="pointer" borderLeft="4px" borderRight="4px" borderRightColor={bg} borderLeftColor={bg} boxShadow="xl" flex="1" alignSelf="stretch" gap="4" borderRadius="sm" p={6}>
+        <Flex color="gray.100" _hover={{ background: bg }} transitionDuration={".6s"} cursor="pointer" border="1px" borderColor={bg} boxShadow="xl" flex="1" alignSelf="stretch" gap="4" borderRadius="sm" p={6}>
 
             <Box w="75%">
                 <Heading mt="3" fontSize={"xl"}>{title}</Heading>
