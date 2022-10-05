@@ -35,10 +35,9 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
         <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts)<Image src="/img/stack image/next.png" height="40px" width="40px" display="inline" /> | Typescript</span></Text>
 
       <Flex w='full' direction={'row'} mt='2' gap={'6'}>
-        <a href='https://web.facebook.com/RamanantoaninaTsiory/'><Facebook /></a>
-        <a href='https://www.linkedin.com/in/tsiory-raman-ab309b1b2/'><Linkedin /></a>
-        <a href='https://github.com/TsioryRaman'><GitHub /></a>
-        <a href='#'><Twitter /></a>
+        <a href='https://web.facebook.com/RamanantoaninaTsiory/' target="_blank"><Facebook /></a>
+        <a href='https://www.linkedin.com/in/tsiory-ramanantoanina/' target="_blank"><Linkedin /></a>
+        <a href='https://github.com/TsioryRaman' target="_blank"><GitHub /></a>
       </Flex>
     </Flex >
 
