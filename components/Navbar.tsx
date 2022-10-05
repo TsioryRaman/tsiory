@@ -29,12 +29,12 @@ export const Navbar: React.FC = () => {
     const [open, setOpen] = useState(false)
     return (
         <React.Fragment>
-            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" position={"fixed"} px="12" top="4">
-                <Box display="flex" justifyContent="center" alignItems="center" color={color} overflow="hidden" px="8" py="4"
+            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={`blur(8px)`} position={"fixed"} px="8" py={2} top="0">
+                <Box display="flex" justifyContent="center" alignItems="center" color={color} overflow="hidden" px="5" py="2"
                  background={bg}
                  borderRadius="30% 70% 70% 30% / 30% 30% 70% 70%"
                  animation={`${morphing} 10s infinite`}>
-                    <Heading fontSize={["2em","2em","3em","3.5em"]} fontFamily="Sans-serif">T</Heading>
+                    <Heading fontSize={["1.5em","1.5em","2em","2.5em"]} fontFamily="Sans-serif">T</Heading>
                 </Box>
                 <Flex direction={"row"}>
 
@@ -72,27 +72,27 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
         <Box transitionTimingFunction={"ease-out"} zIndex="2" style={{ right: open ? "0" : "-100%", backdropFilter: "blur(8px)" }} minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" transitionDuration=".8s">
             <Flex mx={["48", "32", "32", "48"]} mt="32" direction={"column"} justifyContent="space-around" gap={6} >
                 <Flex direction="row" alignItems="baseline" justifyContent="center" >
-                    <Heading as="h1" fontSize="6em" textAlign="center">T</Heading>
-                    <Text fontSize="3em" fontWeight="medium" fontFamily="Monaco">siory</Text>
+                    <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
+                    <Text fontSize="3em" fontWeight="medium">siory</Text>
                 </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
                     <IconLink to="#home" label={"Acceuil"} >
-                        <Home size={32} />
+                        <Home size={24} />
                     </IconLink>
                     <IconLink to="#propos" label={"A propos"} >
-                        <User size={32} />
+                        <User size={24} />
                     </IconLink>
                     <IconLink to='#Article' label={"Article"} >
-                        <File size={32} />
+                        <File size={24} />
                     </IconLink>
                     <IconLink to='#Divertissement' label={"Divertissement"} >
-                        <Book size={32} />
+                        <Book size={24} />
                     </IconLink>
                     <IconLink to='#Competence' label={"Competence"} >
-                        <Server size={32} />
+                        <Server size={24} />
                     </IconLink>
                     <IconLink to='#retrouver' label={"Contact"} >
-                        <Mail size={32} />
+                        <Mail size={24} />
                     </IconLink>
                 </SideBarContext.Provider>
             </Flex>
