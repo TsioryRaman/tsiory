@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Flex, Heading, Image, Text } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
-import { Facebook, GitHub, Linkedin, Twitter } from 'react-feather';
+import { Facebook, GitHub, Linkedin } from 'react-feather';
 import Fade from "react-reveal"
 
 type HeaderType = {
