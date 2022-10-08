@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useContext } from "react"
 import { SideBarContext } from "./Navbar";
@@ -13,10 +13,13 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
 
     const { setOpen } = useContext(SideBarContext);
 
+    const color = useColorModeValue('blue.900','white')
+
     return (
         <Link href={to}>
             <Flex
                 mr="auto"
+                color={color}
                 cursor='pointer'
                 transitionDuration='0.5s'
                 onClick={() => setOpen(false)}

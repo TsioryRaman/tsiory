@@ -14,7 +14,7 @@ export const HeaderMain: React.FC<HeaderType> = ({ name }) => {
             <Heading as='h1' textAlign="center">
                 {name}
             </Heading>
-            <Divider borderBottomWidth={3} borderColor={"green.600"} mt='4' mx='auto' w={[16, 16, 16, 16]} />
+            <Divider borderBottomWidth={3} borderColor={"blue.400"} mt='4' mx='auto' w={[16, 16, 16, 16]} />
         </Box>
     );
 }

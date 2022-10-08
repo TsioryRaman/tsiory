@@ -20,6 +20,16 @@ const morphing = keyframes`
         border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;		
     }
 `
+
+const appear = keyframes `
+    0%{
+        opacity:0;
+    }
+    100%{
+        left:100;
+        opacity: 1;
+    }
+`
 export const Navbar: React.FC = () => {
 
     const router = useRouter()
@@ -29,12 +39,15 @@ export const Navbar: React.FC = () => {
     const [open, setOpen] = useState(false)
     return (
         <React.Fragment>
-            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={`blur(8px)`} position={"fixed"} px="8" py={2} top="0">
-                <Box display="flex" justifyContent="center" alignItems="center" color={color} overflow="hidden" px="5" py="2"
+            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={`blur(8px)`} position={"fixed"} px={["2","8","24","24"]} py={2} top="0">
+                <Box display="flex" justifyContent="center" position="relative" alignItems="center" color={color} overflow="hidden" px="5" py="2"
                  background={bg}
+                 cursor="default"
+                 role="group"
                  borderRadius="30% 70% 70% 30% / 30% 30% 70% 70%"
                  animation={`${morphing} 10s infinite`}>
                     <Heading fontSize={["1.5em","1.5em","2em","2.5em"]} fontFamily="Sans-serif">T</Heading>
+                    <Text p="0" position={"absolute"} opacity="0" _groupHover={{opacity:1,marginLeft:0,animation: `${appear}`}} transitionDuration={"1s"} >siory</Text>
                 </Box>
                 <Flex direction={"row"}>
 
@@ -68,13 +81,22 @@ export const SideBarContext = React.createContext<SideBarContexte>({ setOpen: ()
 const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
 
 
+    const bg = useColorModeValue('blue.900','white')
+    const color = useColorModeValue('white','blue.900')
+
     return (
-        <Box transitionTimingFunction={"ease-out"} zIndex="2" style={{ right: open ? "0" : "-100%", backdropFilter: "blur(8px)" }} minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" transitionDuration=".8s">
+        <Box color={bg} transitionTimingFunction={"ease-out"} zIndex="2" style={{ right: open ? "0" : "-100%", backdropFilter: "blur(8px)" }} minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" transitionDuration=".8s">
             <Flex mx={["48", "32", "32", "48"]} mt="32" direction={"column"} justifyContent="space-around" gap={6} >
-                <Flex direction="row" alignItems="baseline" justifyContent="center" >
-                    <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
-                    <Text fontSize="3em" fontWeight="medium">siory</Text>
-                </Flex>
+                <Flex direction="column" position="relative" alignItems="center" justifyContent="center" >
+                    <Box display="flex"  flexBasis="baseline" alignItems="baseline">
+                        <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
+                        <Text fontSize="3em" p="0" fontWeight="medium">siory</Text>
+                    </Box>
+                    <Box display="flex" clipPath="inset(-1% -1% 50% -1%)" px="24" color={color} background={bg} position="absolute" flexBasis="baseline" alignItems="baseline">
+                        <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
+                        <Text fontSize="3em" p="0" fontWeight="medium">siory</Text>
+                    </Box>
+                    </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
                     <IconLink to="#home" label={"Acceuil"} >
                         <Home size={24} />

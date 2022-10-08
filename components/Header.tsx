@@ -24,13 +24,13 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
           'Freelancer', // Deletes 'One' and types 'Two'
           2000, // Waits 2s
           () => {
-            console.log('Done typing!'); // Place optional callbacks anywhere in the array
+            // Place optional callbacks anywhere in the array
           }
         ]}
         wrapper="span"
         cursor={true}
         repeat={Infinity}
-        style={{ fontSize: '1em', color: 'green' }}
+        style={{ fontSize: '1em', color: '#1A365D' }}
       />
         <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts)<Image src="/img/stack image/next.png" height="40px" width="40px" display="inline" /> | Typescript</span></Text>
 
