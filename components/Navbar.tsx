@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, Flex, Heading, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
 import { IconLink } from "./IconLink";
-import { AlignRight, ArrowLeft, Book, File, Home, Mail, Server, User } from 'react-feather';
+import { AlignRight, ArrowLeft, Book, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToggleColorMode } from "./ToggleColorMode";
@@ -85,8 +85,8 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
     const color = useColorModeValue('white','blue.900')
 
     return (
-        <Box color={bg} transitionTimingFunction={"ease-out"} zIndex="2" style={{ right: open ? "0" : "-100%", backdropFilter: "blur(8px)" }} minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" transitionDuration=".8s">
-            <Flex mx={["48", "32", "32", "48"]} mt="32" direction={"column"} justifyContent="space-around" gap={6} >
+        <Flex direction="column" color={bg} transitionTimingFunction={"ease-out"} zIndex="2" style={{ right: open ? "0" : "-100%", backdropFilter: "blur(8px)" }} minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" py="4" transitionDuration=".8s">
+            <Flex mx={["auto", "auto", "32", "48"]} mt="32" direction={"column"} justifyContent="space-around" gap={6} >
                 <Flex direction="column" position="relative" alignItems="center" justifyContent="center" >
                     <Box display="flex"  flexBasis="baseline" alignItems="baseline">
                         <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
@@ -117,7 +117,13 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
                         <Mail size={24} />
                     </IconLink>
                 </SideBarContext.Provider>
+                
             </Flex>
-        </Box >
+            <Flex mt="auto" pr="8" justifyContent="end" w='full' direction={'row'} gap={'6'}>
+                    <a href='https://web.facebook.com/RamanantoaninaTsiory/' style={{color:`${bg}`}} target="_blank"><Facebook /></a>
+                    <a href='https://www.linkedin.com/in/tsiory-ramanantoanina/' target="_blank"><Linkedin /></a>
+                    <a href='https://github.com/TsioryRaman' target="_blank"><GitHub /></a>
+                </Flex>
+        </Flex >
     )
 }
