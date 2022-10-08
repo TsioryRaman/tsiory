@@ -17,19 +17,19 @@ const Competence: React.FC = () => {
             </Flex>
             <Flex gap="2" direction={["row", "row", "row", "column"]} w="1/4">
                 <CardCompetence type="Environement" title={"Reactjs"} logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} />
-                <CardCompetence type="Frontend" title={"Vuejs"} logo={"https://png2.cleanpng.com/sh/7e84e676c3a0e90fc05cc15297fd547c/L0KzQYm3V8E5N5pnR91yc4Pzfri0lwVmNZt4RdxqdnH2c8PwkQQudJpnitN7eT3kfrj8jPFzcqQyitdqY4SwhsbsTfp0NWZnTNdrZUHmQIq4Wck0NmkATaI7OEK8QYa6Ucg5P2I4SqI8N0OxgLBu/kisspng-vue-js-javascript-library-angularjs-react-vue-js-5b4ebe1c091993.8950282915318871320373.png"} />
+                <CardCompetence type="Frontend" title={"Vuejs"} logo={"https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"} />
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
                 <CardCompetence type="Environement" title={"Windows"} logo={"https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg"} />
-                <CardCompetence type="Frontend" title={"Docker"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
-                <CardCompetence type="Frontend" title={"Linux"} logo={"https://cdn4.iconfinder.com/data/icons/vector-brand-logos/40/Linux-512.png"} />
+                <CardCompetence type="Environement" title={"Docker"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
+                <CardCompetence type="Environement" title={"Linux"} logo={"https://cdn4.iconfinder.com/data/icons/vector-brand-logos/40/Linux-512.png"} />
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
                 <CardCompetence type="Environement" title={"Typescript"} logo={"https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"} />
                 <CardCompetence type="Frontend" title={"Javascript"} logo={"https://cdn.worldvectorlogo.com/logos/javascript-1.svg"} />
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
-                <CardCompetence type="Environement" title={"Php"} logo={"https://www.jasonallen.dev/fancy-index/icons/php.svg"} />
+                <CardCompetence type="Backend" title={"Php"} logo={"https://www.jasonallen.dev/fancy-index/icons/php.svg"} />
             </Flex>
         </Flex>
     );
