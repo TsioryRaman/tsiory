@@ -11,7 +11,7 @@ import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
 import Divertissement from '../components/Divertissement';
 import Competence from '../components/Competence';
 import Contact from '../components/Contact';
-
+import Fade from "react-reveal"
 
 const Home = () => {
 
@@ -24,10 +24,14 @@ const Home = () => {
         <HeaderMain name="A propos" />
         <BlockMain />
         <HeaderMain name="Article" />
-        <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
-          stack={Article_1_Stack.stack} />
-        <Article id={2} title={Article_2_Stack.title} description={Article_2_Stack.description}
-          stack={Article_2_Stack.stack} />
+        <Fade distance="100px" left duration={800}>
+          <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
+            stack={Article_1_Stack.stack} />
+        </Fade>
+        <Fade distance="100px" right duration={800}>
+          <Article id={2} title={Article_2_Stack.title} description={Article_2_Stack.description}
+            stack={Article_2_Stack.stack} />
+        </Fade>
 
         <HeaderMain name="Divertissement" />
         <Divertissement />

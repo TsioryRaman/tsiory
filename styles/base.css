@@ -15,6 +15,10 @@ body,
   
 }
 
+.boxFade div{
+  height: 100%;
+}
+
 /* font sizing */
 body {
   color: #333;
