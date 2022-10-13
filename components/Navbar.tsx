@@ -98,6 +98,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
                     </Box>
                     </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
+                    <Flex direction="column" gap="6" mx="auto">
                     <IconLink to="#home" label={"Acceuil"} >
                         <Home size={24} />
                     </IconLink>
@@ -116,6 +117,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
                     <IconLink to='#retrouver' label={"Contact"} >
                         <Mail size={24} />
                     </IconLink>
+                    </Flex>
                 </SideBarContext.Provider>
                 
             </Flex>

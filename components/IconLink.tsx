@@ -23,9 +23,10 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
                 cursor='pointer'
                 transitionDuration='0.5s'
                 onClick={() => setOpen(false)}
+                direction="row"
                 justify='center'
                 alignItems='center'>
-                <Box display={"flex"} _before={{ _hover: { borderBottom: "4px solid white" } }} justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={18} as='div'>
+                <Box borderBottom="2px solid transparent" display={"flex"} _hover={{ borderBottom: "2px solid #1A365D"}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={18} as='div'>
                     {children} {label}
                 </Box>
             </Flex >
