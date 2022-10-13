@@ -1,6 +1,6 @@
 import { Flex, Img, Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useRef } from "react"
-import Fade from "react-reveal"
+import Fade,{Zoom} from "react-reveal"
 type CardCompetenceType = {
     title: String,
     logo: string,
@@ -8,32 +8,57 @@ type CardCompetenceType = {
 }
 const Competence: React.FC = () => {
     return (
-        <Fade bottom duration={800}>
         <Flex mt="8" gap="8" alignItems={"center"} justifyContent={"center"} direction={["column", "column", "column", "row"]}>
             {/*<CardCompetence type="Backend" description={" Je développe des applications PHP depuis plus de 2 ans et je maitrise les frameworks Symfony 4/5"} title="Symfony ou Laravel" logo="https://cdn.worldvectorlogo.com/logos/symfony.svg" />
             <CardCompetence type="Environement" description="Je développe des applications sur Linux | Windows avec des outils comme Docker" title={"Linux|Windows"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
     <CardCompetence type="Frontend" description="Je développe des applications reactives avec React.js et Vue.js" title={"Reactjs/Vuejs"} logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} />*/}
             <Flex justifyContent={"center"} direction={["row", "row", "row", "column"]} w="1/4">
+
+        <Fade left duration={800}>
                 <CardCompetence type="Backend" title="Symfony" logo="https://cdn.worldvectorlogo.com/logos/symfony.svg" />
+                </Fade>
             </Flex>
             <Flex gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+
+        <Fade top duration={800}>
                 <CardCompetence type="Environement" title={"Reactjs"} logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} />
+                </Fade>
+                
+        <Fade bottom duration={800}>
                 <CardCompetence type="Frontend" title={"Vuejs"} logo={"https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"} />
+                </Fade>
             </Flex>
             <Flex wrap="nowrap" justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+                
+        <Fade top duration={800}>
                 <CardCompetence type="Environement" title={"Windows"} logo={"https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg"} />
+                </Fade>
+                <Zoom duration={800}>
+                    
                 <CardCompetence type="Environement" title={"Docker"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
+
+                </Zoom>
+                <Fade bottom duration={800}>
                 <CardCompetence type="Environement" title={"Linux"} logo={"https://cdn4.iconfinder.com/data/icons/vector-brand-logos/40/Linux-512.png"} />
+                </Fade>
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+        <Fade top duration={800}>
+                
                 <CardCompetence type="Environement" title={"Typescript"} logo={"https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"} />
+                </Fade>
+        <Fade bottom duration={800}>
+
                 <CardCompetence type="Frontend" title={"Javascript"} logo={"https://cdn.worldvectorlogo.com/logos/javascript-1.svg"} />
+                </Fade>
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+        <Fade right duration={800}>
+
                 <CardCompetence type="Backend" title={"Php"} logo={"https://www.jasonallen.dev/fancy-index/icons/php.svg"} />
+                </Fade>
             </Flex>
         </Flex>
-        </Fade>
     );
 }
 const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {

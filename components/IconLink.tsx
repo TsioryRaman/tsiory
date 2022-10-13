@@ -26,7 +26,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
                 direction="row"
                 justify='center'
                 alignItems='center'>
-                <Box borderBottom="2px solid transparent" display={"flex"} _hover={{ borderBottom: "2px solid #1A365D"}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={18} as='div'>
+                <Box borderBottom="2px solid transparent" display={"flex"} _hover={{ borderColor: `${color}`}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={18} as='div'>
                     {children} {label}
                 </Box>
             </Flex >
