@@ -3,7 +3,7 @@ import { generateRSS } from '../rssUtil';
 import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import { Header } from '../components/Header';
-import { Box, Container, Divider, Img, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Img, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -29,15 +29,15 @@ const Home = () => {
           <Header name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
       </Box>
-      <Container maxW={["sm", "md", "2xl", "6xl"]}>
-        <Divider orientation='horizontal' />
-        <Box mt={"16"} minH="100vh">
+      <Box mt={"16"} minH="100vh">
+
+        <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <HeaderMain name="A propos" />
           <BlockMain />
-        </Box>
-      </Container>
+        </Container>
+      </Box>
       <Box mt={"48"} py="16" minH="100vh" color="white" backgroundAttachment="fixed" bg={bg}>
-        <Container maxW={["sm", "md", "2xl", "6xl"]}>
+        <Container maxW={["sm", "md", "3xl", "6xl"]}>
 
           <HeaderMain textShadow={false} name="Article" />
           <Fade distance="100px" left duration={800}>
