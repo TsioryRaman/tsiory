@@ -21,26 +21,26 @@ const Home = () => {
   const bgHeader = useColorModeValue('blue.400', 'blue.900')
   return (
     <React.Fragment>
-          <Box position="relative" bg={bgHeader}>
-          <Box position="absolute" left="0" top="16" width="full">
-            <Img zIndex="19999" src="/img/background/waves.svg" width="full"/>
-          </Box>
-          <Container maxW={["sm", "md", "2xl", "6xl"]}>
-            <Header name="Ramanantoanina Safidy Tsioriniaina" />
-          </Container>
-          </Box>
-          <Container maxW={["sm", "md", "2xl", "6xl"]}>
-              <Divider orientation='horizontal' />
-              <Box mt={"16"} minH="100vh">
-                <HeaderMain name="A propos" />
-                <BlockMain />
-              </Box>
-          </Container>
-        <Box mt={"48"} py="16" minH="100vh" color="white" backgroundAttachment="fixed" bg={bg}>
-          <Container maxW={["sm", "md", "2xl", "6xl"]}>
+      <Box position="relative" bg={bgHeader}>
+        <Box position="absolute" left="0" top="16" width="full">
+          <Img zIndex="19999" src="/img/background/waves.svg" width="full" />
+        </Box>
+        <Container maxW={["sm", "md", "2xl", "6xl"]}>
+          <Header name="Ramanantoanina Safidy Tsioriniaina" />
+        </Container>
+      </Box>
+      <Container maxW={["sm", "md", "2xl", "6xl"]}>
+        <Divider orientation='horizontal' />
+        <Box mt={"16"} minH="100vh">
+          <HeaderMain name="A propos" />
+          <BlockMain />
+        </Box>
+      </Container>
+      <Box mt={"48"} py="16" minH="100vh" color="white" backgroundAttachment="fixed" bg={bg}>
+        <Container maxW={["sm", "md", "2xl", "6xl"]}>
 
-            <HeaderMain textShadow={false} name="Article" />
-            <Fade distance="100px" left duration={800}>
+          <HeaderMain textShadow={false} name="Article" />
+          <Fade distance="100px" left duration={800}>
             <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
               stack={Article_1_Stack.stack} />
           </Fade>
@@ -48,28 +48,28 @@ const Home = () => {
             <Article id={2} title={Article_2_Stack.title} description={Article_2_Stack.description}
               stack={Article_2_Stack.stack} />
           </Fade>
-          </Container>
-        </Box>
+        </Container>
+      </Box>
 
-        <Container maxW={["sm", "md", "2xl", "6xl"]}>
-          <Box mt="48">
-            <HeaderMain name="Divertissement" />
-            <Divertissement />
-            </Box>
-          <Box mt="48">
-            <HeaderMain name="Competence" />
-            <Competence />
-            </Box>
+      <Container maxW={["sm", "md", "4xl", "6xl"]}>
+        <Box mt="48">
+          <HeaderMain name="Divertissement" />
+          <Divertissement />
+        </Box>
+        <Box mt="48">
+          <HeaderMain name="Competence" />
+          <Competence />
+        </Box>
       </Container>
 
       <Box mt="48">
-      <HeaderMain name="Me retrouver" />
-      <Box bgColor={bg} opacity=".8">
-        <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
+        <HeaderMain name="Me retrouver" />
+        <Box bgColor={bg} opacity=".8">
+          <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
 
-          <Contact />
+            <Contact />
+          </Box>
         </Box>
-      </Box>
       </Box>
 
       <Mail />
