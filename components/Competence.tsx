@@ -1,6 +1,6 @@
 import { Flex, Img, Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useRef } from "react"
-
+import Fade,{Zoom} from "react-reveal"
 type CardCompetenceType = {
     title: String,
     logo: string,
@@ -13,23 +13,50 @@ const Competence: React.FC = () => {
             <CardCompetence type="Environement" description="Je développe des applications sur Linux | Windows avec des outils comme Docker" title={"Linux|Windows"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
     <CardCompetence type="Frontend" description="Je développe des applications reactives avec React.js et Vue.js" title={"Reactjs/Vuejs"} logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} />*/}
             <Flex justifyContent={"center"} direction={["row", "row", "row", "column"]} w="1/4">
+
+        <Fade left duration={800}>
                 <CardCompetence type="Backend" title="Symfony" logo="https://cdn.worldvectorlogo.com/logos/symfony.svg" />
+                </Fade>
             </Flex>
             <Flex gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+
+        <Fade top duration={800}>
                 <CardCompetence type="Environement" title={"Reactjs"} logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"} />
-                <CardCompetence type="Frontend" title={"Vuejs"} logo={"https://png2.cleanpng.com/sh/7e84e676c3a0e90fc05cc15297fd547c/L0KzQYm3V8E5N5pnR91yc4Pzfri0lwVmNZt4RdxqdnH2c8PwkQQudJpnitN7eT3kfrj8jPFzcqQyitdqY4SwhsbsTfp0NWZnTNdrZUHmQIq4Wck0NmkATaI7OEK8QYa6Ucg5P2I4SqI8N0OxgLBu/kisspng-vue-js-javascript-library-angularjs-react-vue-js-5b4ebe1c091993.8950282915318871320373.png"} />
+                </Fade>
+                
+        <Fade bottom duration={800}>
+                <CardCompetence type="Frontend" title={"Vuejs"} logo={"https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"} />
+                </Fade>
             </Flex>
-            <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+            <Flex wrap="nowrap" justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+                
+        <Fade top duration={800}>
                 <CardCompetence type="Environement" title={"Windows"} logo={"https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg"} />
-                <CardCompetence type="Frontend" title={"Docker"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
-                <CardCompetence type="Frontend" title={"Linux"} logo={"https://cdn4.iconfinder.com/data/icons/vector-brand-logos/40/Linux-512.png"} />
+                </Fade>
+                <Zoom duration={800}>
+                    
+                <CardCompetence type="Environement" title={"Docker"} logo={"https://training.galaxyproject.org/archive/2022-06-01/topics/admin/images/docker_whale.png"} />
+
+                </Zoom>
+                <Fade bottom duration={800}>
+                <CardCompetence type="Environement" title={"Linux"} logo={"https://cdn4.iconfinder.com/data/icons/vector-brand-logos/40/Linux-512.png"} />
+                </Fade>
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
+        <Fade top duration={800}>
+                
                 <CardCompetence type="Environement" title={"Typescript"} logo={"https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"} />
+                </Fade>
+        <Fade bottom duration={800}>
+
                 <CardCompetence type="Frontend" title={"Javascript"} logo={"https://cdn.worldvectorlogo.com/logos/javascript-1.svg"} />
+                </Fade>
             </Flex>
             <Flex justifyContent={"center"} gap="2" direction={["row", "row", "row", "column"]} w="1/4">
-                <CardCompetence type="Environement" title={"Php"} logo={"https://www.jasonallen.dev/fancy-index/icons/php.svg"} />
+        <Fade right duration={800}>
+
+                <CardCompetence type="Backend" title={"Php"} logo={"https://www.jasonallen.dev/fancy-index/icons/php.svg"} />
+                </Fade>
             </Flex>
         </Flex>
     );
@@ -37,6 +64,8 @@ const Competence: React.FC = () => {
 const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
 
     const bg = useColorModeValue('white', 'blue.900')
+
+    const bgBorder = useColorModeValue('gray.100', 'transparent')
     const ref = useRef<HTMLDivElement>(null)
     const imageRef = useRef<HTMLImageElement>(null)
 
@@ -70,36 +99,9 @@ const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
     }
 
     return (
-        <Flex style={{ transformStyle: "preserve-3d", perspective: "500px" }} transitionDuration={".6s"} as="div" ref={ref} onMouseLeave={mouseLeave} onMouseMove={mouseEnter} bg={bg} borderRadius={4} flexDirection="column" boxShadow="lg" py="5" px="12" alignItems="center" justifyContent="center" >
+        <Flex style={{ transformStyle: "preserve-3d", perspective: "500px" }} transitionDuration={".6s"} as="div" ref={ref} onMouseLeave={mouseLeave} onMouseMove={mouseEnter} bg={bg} borderRadius={4} flexDirection="column" boxShadow="lg" py={["3","5","5","5"]} px={["8","12","12","12"]} alignItems="center" borderColor={bgBorder} borderWidth="1px" justifyContent="center" >
             <Img ref={imageRef} height="50px" w="50px" transitionDuration={".6s"} src={logo} />
             <Text ref={textRef} fontWeight={"medium"} transitionDuration={".6s"} py="0">{title}</Text>
-            {/*<Flex mx="auto" _hover={{ transform: "scale(1.01)" }} cursor="default" transitionDuration=".1s" direction="column" w={["100%", "100%", "50%", "1/3"]} position="relative" overflow="hidden" boxShadow="xl">
-
-            <Image opacity=".7" zIndex="-1" height="100%" position="absolute" src="/img/stack image/background_card.jpg" />
-            <Flex p={4} flexDirection="column">
-                <Heading display="flex" justifyContent="center" gap="2" mt="3" textAlign={"center"} fontSize={"xl"}>{title}<Award /></Heading>
-                <Heading mt="3" textAlign={"center"} fontSize={"xl"}>{type}</Heading>
-                <Box mt="8" position="relative" borderRadius="full" overflow="hidden" height="150px" width="150px" display="flex" alignItems="center" justifyContent="center" p="4" mx="auto">
-                    <Box zIndex="-1" top="0" opacity=".7" bottom="0" left="0" right="0" position="absolute" bgColor="black"></Box>
-                    <Image mx="auto" alt={logo} src={logo} height="75px" width="75px" />
-                </Box>
-                <Text textAlign="center" fontWeight="bold" mt="8">
-                    {description}
-                </Text>
-
-            </Flex>
-            <Flex mt="auto" justifyContent="center" alignContent="center" flexDirection="row">
-                <Flex w={["50%"]} gap="3" justifyContent="center" alignItems="center">
-                    <Link2 />
-                    <Text fontWeight="bold">Site officiel</Text>
-                </Flex>
-                <Flex w={["50%"]} gap="2" justifyContent="center" alignItems="center">
-                    <Terminal />
-                    <Text fontWeight="bold">Profile</Text>
-                </Flex>
-            </Flex>
-        </Flex >*/}
-
         </Flex>
 
     );

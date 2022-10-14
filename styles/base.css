@@ -12,6 +12,11 @@ body,
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  
+}
+
+.boxFade div{
+  height: 100%;
 }
 
 /* font sizing */
@@ -23,6 +28,16 @@ body {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar{
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background: #d5e3ec;
 }
 
 h1,
@@ -154,9 +169,8 @@ a:visited {
 }
 
 .header p,
-.footer p {
+.footer p:first-child {
   margin: 0;
-  padding: 15px;
 }
 
 .section {

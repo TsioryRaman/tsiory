@@ -16,7 +16,7 @@ type ParcourInformationType = {
 export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, content }) => {
     return (
         <React.Fragment>
-            <Badge display={"flex"} justifyContent="center" alignItems="center" gap="1" flexDirection="row" width="fit-content" mt='4' variant='outline' colorScheme='green' fontSize='xl' fontWeight='bold' ml={['4', '6', '8', '12']} mb='4'>
+            <Badge display={"flex"} justifyContent="center" alignItems="center" gap="1" flexDirection="row" width="fit-content" mt='4' variant='outline' colorScheme='blue' fontSize='xl' fontWeight='bold' ml={['4', '6', '8', '12']} mb='4'>
 
             <Clock size="17px" /> - {year}
             </Badge>
@@ -24,7 +24,7 @@ export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, con
 
             {content.map((c, index) => <Flex key={index} ml={['6', '8', '12', '16']} mt='4' direction='row' gap='2'>
                 <Flex as='div' justify='center' alignItems='center'>
-                    <Compass color='#53c9c6' />
+                    <Compass color='#4299e1' />
                 </Flex>
                 <Box key={index}>
                     <Heading display={'flex'} flexDirection='row' fontWeight="bold" as='h2' fontSize='xl'>
