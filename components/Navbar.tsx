@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, Flex, Heading, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
 import { IconLink } from "./IconLink";
-import { AlignRight, ArrowLeft, Book, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
+import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToggleColorMode } from "./ToggleColorMode";
@@ -51,6 +51,7 @@ export const Navbar: React.FC = () => {
                 </Box>
                 <Flex direction={"row"}>
 
+                    {router.pathname !== "/" && <Box mt="3" mr="3" cursor="pointer"><Link href="/"><ChevronLeft /></Link></Box>}
                     <ToggleColorMode />
                     <Box onClick={() => setOpen(s => !s)} p="3" borderRadius={2} cursor="pointer">
                         <Box transitionDuration={".5s"} style={{ transform: !open ? 'rotate(0deg)' : 'rotate(-90deg)' }}>
@@ -58,7 +59,6 @@ export const Navbar: React.FC = () => {
                         </Box>
                     </Box>
 
-                {router.pathname !== "/" && <Box mt="3" cursor="pointer"><Link href="/"><ArrowLeft /></Link></Box>}
                 </Flex>
             </Flex>
 
