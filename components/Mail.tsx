@@ -102,7 +102,7 @@ const Mail:React.FC = () => {
                             <Textarea focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" paddingLeft="40px" resize="none" name="message"/>
                         </InputGroup>
                     </FormControl>
-                    <Button mt="4" variant='outline' type="submit" >Envoyer <span style={{marginLeft:"10px"}}>{loading ? <Loader /> : <Send />}</span></Button>
+                    <Button mt="4" variant='outline' type="submit" _hover={{backgroundColor: `${hoverInput}`}}>Envoyer <span style={{marginLeft:"10px"}}>{loading ? <Loader /> : <Send />}</span></Button>
                     </Fade>
                 </form>
             </Box>
