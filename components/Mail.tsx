@@ -67,8 +67,8 @@ const Mail:React.FC = () => {
             </Box>
             </Flex>
             <Box w={["100%","100%","50%","50%"]}>
-                <Fade>
                 <form ref={form} onSubmit={(e)=>sendEmail(e)}>
+                    <Fade>
                     <FormControl mt="4">
                         <FormLabel>
                             Nom:
@@ -100,8 +100,8 @@ const Mail:React.FC = () => {
                         </InputGroup>
                     </FormControl>
                     <Button mt="4" variant='outline' type="submit" >Envoyer <span style={{marginLeft:"10px"}}>{loading ? <Loader /> : <Send />}</span></Button>
+                    </Fade>
                 </form>
-                </Fade>
             </Box>
         </Flex>
     );
