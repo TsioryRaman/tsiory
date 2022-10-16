@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
+    "@emailjs/browser": "^3.7.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "11",
     "fecha": "^4.2.0",

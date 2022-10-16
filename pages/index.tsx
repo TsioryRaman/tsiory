@@ -12,6 +12,7 @@ import Divertissement from '../components/Divertissement';
 import Competence from '../components/Competence';
 import Contact from '../components/Contact';
 import Fade from "react-reveal"
+import Mail from '../components/Mail';
 
 const Home = () => {
 
@@ -45,6 +46,8 @@ const Home = () => {
           <Contact />
         </Box>
       </Box>
+
+      <Mail />
     </React.Fragment>
   );
 };
