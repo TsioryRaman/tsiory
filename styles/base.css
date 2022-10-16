@@ -169,9 +169,8 @@ a:visited {
 }
 
 .header p,
-.footer p {
+.footer p:first-child {
   margin: 0;
-  padding: 15px;
 }
 
 .section {

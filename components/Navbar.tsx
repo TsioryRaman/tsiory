@@ -81,7 +81,7 @@ export const SideBarContext = React.createContext<SideBarContexte>({ setOpen: ()
 const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
 
 
-    const bg = useColorModeValue('blue.900','white')
+    const bg = useColorModeValue('blue.500','white')
     const color = useColorModeValue('white','blue.900')
 
     return (
@@ -96,7 +96,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
                         <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
                         <Text fontSize="3em" p="0" fontWeight="medium">siory</Text>
                     </Box>
-                    </Flex>
+                </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
                     <Flex direction="column" gap="6" mx="auto">
                     <IconLink to="#home" label={"Acceuil"} >
