@@ -43,6 +43,9 @@ const Mail:React.FC = () => {
               setMessage(ERROR_MESSAGE);
               setSuccess(false);
               setLoading(false);
+              setTimeout(()=>{
+                setNotification(false)
+            },2500)
           });
         }
         
@@ -59,11 +62,11 @@ const Mail:React.FC = () => {
             </Fade>
             <Box bottom="4" right="2" position="absolute">
 
-                {notification && <Fade bottom>
+                <Fade when={notification} bottom>
                     <Alert mt="8" status={success ? "success" : "error"} variant='left-accent'>
                     <CheckCircle />
                      <span style={{marginLeft:"8px"}}>{message}</span>
-                </Alert></Fade>}
+                </Alert></Fade>
             </Box>
             </Flex>
             <Box w={["100%","100%","50%","50%"]}>
