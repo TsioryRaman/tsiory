@@ -1,4 +1,4 @@
-import { Badge, Flex, Heading, Progress, Text } from "@chakra-ui/react";
+import { Badge, Flex, Heading, Progress, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react"
 import Link from "next/link"
 import { ChevronRight } from "react-feather";
@@ -16,10 +16,14 @@ type ArticleType = {
 }
 
 export const Article: React.FC<ArticleType> = ({ title, stack, description, id }) => {
+
+
+    const bgTitle = useColorModeValue("blue.500","blue.800")
+
     return (
         <Link href={'/article/' + id}>
             <Flex _hover={{transform:"scaleX(1.005) translateZ(0)",backfaceVisibility:"hidden",filter:"blur(0)"}} filter="blur(0)" transitionDuration="0.5s" cursor="pointer" boxShadow={"lg"} my="8" borderRadius={["xl", "xl", "lg", "lg"]} overflow={"hidden"} direction={["column", "column", "row", "row"]} w="full">
-                <Flex color="gray.300" direction={"column"} p="8" pl={["8", "8", "8", "12"]} w={["100%", "100%", "35%", "35%"]} bg="blue.900">
+                <Flex color="gray.300" direction={"column"} p="8" pl={["8", "8", "8", "12"]} w={["100%", "100%", "35%", "35%"]} bg={bgTitle}>
                     <Text textTransform={"uppercase"} as="h4">COURS</Text>
                     <Heading mt="4" mb="4" fontWeight={"bold"} fontSize={["1em","1em","1em","1.5em"]} as="h1">{title}</Heading>
                     <Text display={"flex"} fontSize={["1em","1em","0.8em","1em"]} flexDirection="row" gap="2">Voir le chapitre<ChevronRight /></Text>

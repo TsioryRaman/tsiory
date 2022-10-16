@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
 
     const router = useRouter()
 
-    const bg = useColorModeValue('blue.900','white')
+    const bg = useColorModeValue('blue.300','white')
     const color = useColorModeValue('white','blue.900')
     const [open, setOpen] = useState(false)
     return (

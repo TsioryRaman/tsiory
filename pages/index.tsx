@@ -24,27 +24,41 @@ const Home = () => {
         <Divider orientation='horizontal' />
         <HeaderMain name="A propos" />
         <BlockMain />
-        <HeaderMain name="Article" />
-        <Fade distance="100px" left duration={800}>
-          <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
-            stack={Article_1_Stack.stack} />
-        </Fade>
-        <Fade distance="100px" right duration={800}>
-          <Article id={2} title={Article_2_Stack.title} description={Article_2_Stack.description}
-            stack={Article_2_Stack.stack} />
-        </Fade>
+        </Container>
+        <Box mt={"48"} py="16" minH="100vh" color="white" bg={bg}>
+          <Container maxW={["sm", "md", "2xl", "6xl"]}>
 
-        <HeaderMain name="Divertissement" />
-        <Divertissement />
-        <HeaderMain name="Competence" />
-        <Competence />
-        <HeaderMain name="Me retrouver" />
+            <HeaderMain name="Article" />
+            <Fade distance="100px" left duration={800}>
+            <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
+              stack={Article_1_Stack.stack} />
+          </Fade>
+          <Fade distance="100px" right duration={800}>
+            <Article id={2} title={Article_2_Stack.title} description={Article_2_Stack.description}
+              stack={Article_2_Stack.stack} />
+          </Fade>
+          </Container>
+        </Box>
+
+        <Container maxW={["sm", "md", "2xl", "6xl"]}>
+          <Box mt="48">
+            <HeaderMain name="Divertissement" />
+            <Divertissement />
+            </Box>
+          <Box mt="48">
+            <HeaderMain name="Competence" />
+            <Competence />
+            </Box>
       </Container>
+
+      <Box mt="48">
+      <HeaderMain name="Me retrouver" />
       <Box bgColor={bg} opacity=".8">
         <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
 
           <Contact />
         </Box>
+      </Box>
       </Box>
 
       <Mail />

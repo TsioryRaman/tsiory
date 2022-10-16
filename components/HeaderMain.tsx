@@ -10,7 +10,7 @@ export const HeaderMain: React.FC<HeaderType> = ({ name }) => {
     const getNameId = (name:String) => name.split(' ').length >= 2 ? name.split(" ")[1] as string : name as string
 
     return (
-        <Box mt={"48"} id={getNameId(name)}>
+        <Box id={getNameId(name)}>
             <Heading as='h1' textAlign="center">
                 {name}
             </Heading>
