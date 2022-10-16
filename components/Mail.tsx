@@ -1,7 +1,7 @@
-import { Alert, Box, Button, Flex, FormControl, FormLabel, Heading, Input, Textarea, useColorModeValue } from "@chakra-ui/react";
+import { Alert, Box, Button, Flex, FormControl, FormLabel, Heading, Input, InputGroup, InputLeftElement, Textarea, useColorModeValue } from "@chakra-ui/react";
 import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from "react";
-import { CheckCircle, Loader, Send } from "react-feather";
+import { AtSign, CheckCircle, Loader, MessageCircle, Send, User } from "react-feather";
 import Fade from "react-reveal"
 
 const SUCCESS_MESSAGE = "Votre message a bien ete envoye"
@@ -16,6 +16,8 @@ const Mail:React.FC = () => {
     const [notification,setNotification] = useState(false)
     const [message,setMessage] = useState(SUCCESS_MESSAGE)
     const bg = useColorModeValue("blue.500","blue.700")
+    const bgInput = useColorModeValue("blue.400","whiteAlpha.50")
+    const hoverInput = useColorModeValue("blue.300","whiteAlpha.100")
 
     const sendEmail = (e:any) => {
         e.preventDefault();
@@ -30,6 +32,7 @@ const Mail:React.FC = () => {
               setMessage(SUCCESS_MESSAGE);
               setSuccess(true);
               setLoading(false);
+              form.current?.reset();
               setTimeout(()=>{
                 setNotification(false)
             },2500)
@@ -49,10 +52,11 @@ const Mail:React.FC = () => {
         <Flex position="relative" color="white" bg={bg} p="4" px={["4","8","28","48"]} justifyContent="center" alignItems="center" direction={["column","column","row","row"]}>
             <Flex px="8" direction="column" justifyContent="center" alignItems="center" w={["100%","100%","50%","50%"]}>
                 
-            <Heading>
-                Me contacter
-                
-            </Heading>
+            <Fade>
+                <Heading>
+                    Me contacter
+                </Heading>
+            </Fade>
             <Box bottom="4" right="2" position="absolute">
 
                 {notification && <Fade bottom>
@@ -63,31 +67,41 @@ const Mail:React.FC = () => {
             </Box>
             </Flex>
             <Box w={["100%","100%","50%","50%"]}>
-                
+                <Fade>
                 <form ref={form} onSubmit={(e)=>sendEmail(e)}>
                     <FormControl mt="4">
                         <FormLabel>
                             Nom:
                         </FormLabel>
-                        <Input name="name" type="text" />
+                        <InputGroup>
+                            <InputLeftElement pointerEvents="none" children={<User size="20px"/>}/>
+                            <Input focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" name="name" type="text" />
+                        </InputGroup>
                     </FormControl>
 
                     <FormControl mt="4">
                         <FormLabel>
                             Email:
                         </FormLabel>
-                        <Input name="user_email" type="email" />
+                        <InputGroup>
+                            <InputLeftElement children={<AtSign size="20px"/>}/>
+                            <Input focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" name="user_email" type="email" />
+                        </InputGroup>
                     </FormControl>
 
                     <FormControl mt="4">
                         <FormLabel>
                             Message:
                         </FormLabel>
-                        <Textarea resize="none" name="message"/>
+                        <InputGroup>
+
+                            <InputLeftElement children={<MessageCircle size="20px"/>}/>
+                            <Textarea focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" paddingLeft="40px" resize="none" name="message"/>
+                        </InputGroup>
                     </FormControl>
                     <Button mt="4" variant='outline' type="submit" >Envoyer <span style={{marginLeft:"10px"}}>{loading ? <Loader /> : <Send />}</span></Button>
                 </form>
-
+                </Fade>
             </Box>
         </Flex>
     );
