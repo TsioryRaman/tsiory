@@ -14,9 +14,9 @@ const Contact: React.FC = () => {
             <Flex mb="8" gap="4" mt="4" flexBasis="0" alignItems="center" direction={["column", "column", "column", "row"]}>
                 <CardContact title="Github" logo="/img/stack image/Octocat.png" imgPresentation="/img/_contact/github.png" link="https://www.github.com/TsioryRaman" />
 
-                <CardContact title="Linkedin" logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/LinkedIn_icon_circle.svg/2048px-LinkedIn_icon_circle.svg.png" imgPresentation="/img/_contact/linkedin.png" link="https://www.linkedin.com/in/tsiory-ramanantoanina" />
+                <CardContact title="Linkedin" logo="/img/_contact/linkedin.png" imgPresentation="/img/_contact/linkedin.png" link="https://www.linkedin.com/in/tsiory-ramanantoanina" />
 
-                <CardContact title="Gmail" logo="https://cdn.icon-icons.com/icons2/2631/PNG/512/gmail_new_logo_icon_159149.png" link="rtsiory4@gmail.com" />
+                <CardContact title="Gmail" logo="/img/_contact/gmail.png" link="rtsiory4@gmail.com" />
             </Flex>
         </Zoom>
     );
