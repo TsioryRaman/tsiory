@@ -18,7 +18,7 @@ const Feature: React.FC<Feature> = ({ title, desc, img,children, ...rest }) => {
             <Flex height="100%" flexDirection="column" p={4}>
                 <Heading mb="4" display="flex" justifyContent="space-between" color='#53c9c6' mt='4' fontSize={['xs','sm','md','xl']}>{title}{children}</Heading>
                 <Divider />
-                <Text fontWeight={"medium"} fontSize={['xs','xs','xs','lg']} mt={4}>{desc}</Text>
+                <Text  textShadow="3px 1px 15px gray" fontWeight={"medium"} fontSize={['xs','xs','xs','lg']} mt={4}>{desc}</Text>
 
                 {img && <Box mt="auto" marginLeft={["-6","-8","-16","-16"]}>
                 

@@ -19,16 +19,21 @@ const Home = () => {
   const bg = useColorModeValue('blue.200', 'blue.900')
   return (
     <React.Fragment>
-      <Container maxW={["sm", "md", "2xl", "6xl"]}>
-        <Header name="Ramanantoanina Safidy Tsioriniaina" />
-        <Divider orientation='horizontal' />
-        <HeaderMain name="A propos" />
-        <BlockMain />
-        </Container>
+
+          <Container maxW={["sm", "md", "2xl", "6xl"]}>
+
+          <Header name="Ramanantoanina Safidy Tsioriniaina" />
+            <Divider orientation='horizontal' />
+        <Box mt={"16"} minH="100vh">
+            <HeaderMain name="A propos" />
+            <BlockMain />
+
+        </Box>
+          </Container>
         <Box mt={"48"} py="16" minH="100vh" color="white" bg={bg}>
           <Container maxW={["sm", "md", "2xl", "6xl"]}>
 
-            <HeaderMain name="Article" />
+            <HeaderMain textShadow={false} name="Article" />
             <Fade distance="100px" left duration={800}>
             <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
               stack={Article_1_Stack.stack} />
