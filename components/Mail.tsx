@@ -1,7 +1,7 @@
 import { Alert, Box, Button, Flex, FormControl, FormLabel, Heading, Input, InputGroup, InputLeftElement, Textarea, useColorModeValue } from "@chakra-ui/react";
 import emailjs from '@emailjs/browser';
 import React, { useRef, useState } from "react";
-import { AtSign, CheckCircle, Loader, MessageCircle, Send, User } from "react-feather";
+import { AtSign, CheckCircle, Loader, MessageCircle, Send, User, X } from "react-feather";
 import Fade from "react-reveal"
 
 const SUCCESS_MESSAGE = "Votre message a bien ete envoye"
@@ -64,7 +64,7 @@ const Mail:React.FC = () => {
 
                 <Fade when={notification} bottom>
                     <Alert mt="8" status={success ? "success" : "error"} variant='left-accent'>
-                    <CheckCircle />
+                    {success ? <CheckCircle /> : <X />}
                      <span style={{marginLeft:"8px"}}>{message}</span>
                 </Alert></Fade>
             </Box>
@@ -78,7 +78,7 @@ const Mail:React.FC = () => {
                         </FormLabel>
                         <InputGroup>
                             <InputLeftElement pointerEvents="none" children={<User size="20px"/>}/>
-                            <Input focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" name="name" type="text" />
+                            <Input isRequired focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" name="name" type="text" />
                         </InputGroup>
                     </FormControl>
 
@@ -88,7 +88,7 @@ const Mail:React.FC = () => {
                         </FormLabel>
                         <InputGroup>
                             <InputLeftElement children={<AtSign size="20px"/>}/>
-                            <Input focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" name="user_email" type="email" />
+                            <Input isRequired focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" name="user_email" type="email" />
                         </InputGroup>
                     </FormControl>
 
@@ -99,7 +99,7 @@ const Mail:React.FC = () => {
                         <InputGroup>
 
                             <InputLeftElement children={<MessageCircle size="20px"/>}/>
-                            <Textarea focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" paddingLeft="40px" resize="none" name="message"/>
+                            <Textarea isRequired focusBorderColor='blue.400' _focusVisible={{background:"transparent"}} _hover={{backgroundColor: `${hoverInput}`}} background={bgInput} variant="filled" paddingLeft="40px" resize="none" name="message"/>
                         </InputGroup>
                     </FormControl>
                     <Button mt="4" variant='outline' type="submit" _hover={{backgroundColor: `${hoverInput}`}}>Envoyer <span style={{marginLeft:"10px"}}>{loading ? <Loader /> : <Send />}</span></Button>
