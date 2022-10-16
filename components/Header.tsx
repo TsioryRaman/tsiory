@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Facebook, GitHub, Linkedin } from 'react-feather';
 import Fade from "react-reveal"
@@ -10,11 +10,16 @@ type HeaderType = {
   Sequence?: String[]
 }
 
-export const Header: React.FC<HeaderType> = ({ name }) => (
+export const Header: React.FC<HeaderType> = ({ name }) => {
+
+  const color = useColorModeValue("white","white");
+
+  return(
 
   <Fade>
-    <Flex id="home" alignItems='center' direction={'column'} minH='100vh' justify="center">
-      < Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"} color='#45505b' >
+    <Flex color="white" id="home" alignItems='center' direction={'column'} minH='100vh' justify="center">
+ 
+      < Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"} color={color} >
         {name}
       </Heading >
       <Text py='0.5' w='full' fontSize='3xl'>Je suis  <TypeAnimation
@@ -30,7 +35,7 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
         wrapper="span"
         cursor={true}
         repeat={Infinity}
-        style={{ fontSize: '1em', color: '#1A365D' }}
+        style={{ fontSize: '1em', color: 'white', textShadow:"3px 1px 15px" }}
       />
         <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts)<Image src="/img/stack image/next.png" height="40px" width="40px" display="inline" /> | Typescript</span></Text>
 
@@ -42,4 +47,4 @@ export const Header: React.FC<HeaderType> = ({ name }) => (
     </Flex >
 
   </Fade >
-);
+)};

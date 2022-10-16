@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
                     </Box>
                 </Flex>
           </Fade>
-      <Text>Build with ChakraUI - NestJs</Text>
+      <Text textShadow="3px 1px 15px">Build with ChakraUI - NestJs</Text>
         <Divider />
       <Flex direction="column" alignItems="center">
         <Text mx="auto" padding="15px" textAlign="center">{`© ${globals.yourName} ${new Date().getFullYear()}`}</Text>

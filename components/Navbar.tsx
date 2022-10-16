@@ -36,6 +36,7 @@ export const Navbar: React.FC = () => {
 
     const bg = useColorModeValue('blue.300','white')
     const color = useColorModeValue('white','blue.900')
+    const menuColor = useColorModeValue("#63b3ed","white")
     const [open, setOpen] = useState(false)
     return (
         <React.Fragment>
@@ -55,7 +56,7 @@ export const Navbar: React.FC = () => {
                     <ToggleColorMode />
                     <Box onClick={() => setOpen(s => !s)} p="3" borderRadius={2} cursor="pointer">
                         <Box transitionDuration={".5s"} style={{ transform: !open ? 'rotate(0deg)' : 'rotate(-90deg)' }}>
-                            <AlignRight />
+                            <AlignRight color={menuColor}/>
                         </Box>
                     </Box>
 
