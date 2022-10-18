@@ -13,7 +13,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
 
     const { setOpen } = useContext(SideBarContext);
 
-    const color = useColorModeValue('blue.900','white')
+    const color = useColorModeValue('blue.500','white')
 
     return (
         <Link href={to}>

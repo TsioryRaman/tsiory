@@ -16,7 +16,7 @@ const App: React.FC = ({ Component, pageProps }: any) => {
       <ChakraProvider theme={theme}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Box position="relative" overflowX={"hidden"}>
-          <Image position="fixed" opacity="0.3" zIndex="-9999" height="100%" left="50%" top={0} bottom={0} src="/img/background/—Pngtree—vector polygon perspective grid irregular_3024826.png" />
+          <Image position="fixed" opacity="0.3" zIndex="-9999" height="100%" backgroundRepeat="no-repeat" left={["0","0","50%","50%"]} top={0} bottom={0} src="/img/background/—Pngtree—vector polygon perspective grid irregular_3024826.png" />
           <Head>
             <title>Tsiory Ramanantoanina | Portfolio</title>
           </Head>
