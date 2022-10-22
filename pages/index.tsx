@@ -22,9 +22,11 @@ const Home = () => {
   return (
     <React.Fragment>
       <Box position="relative" bg={bgHeader}>
-        <Box position="absolute" left="0" top="16" width="full">
-          <Img zIndex="19999" src="/img/background/waves.svg" width="full" />
-        </Box>
+        <Fade top distance="100px">
+          <Box position="absolute" left="0" top="16" width="full">
+            <Img zIndex="19999" src="/img/background/waves.svg" width="full" />
+          </Box>
+        </Fade>
         <Container maxW={["sm", "md", "2xl", "6xl"]}>
           <Header name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>

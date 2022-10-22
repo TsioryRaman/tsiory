@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderType> = ({ name }) => {
 
   return(
 
-  <Fade>
+  <Fade bottom distance="100px">
     <Flex color="white" id="home" alignItems='center' direction={'column'} minH='100vh' justify="center">
  
       < Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"} color={color} >
