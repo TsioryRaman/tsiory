@@ -2,6 +2,7 @@
 import { generateRSS } from '../rssUtil';
 import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
+import ProgressBar from 'react-progressbar-on-scroll'
 import { Header } from '../components/Header';
 import { Box, Container, Img, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
@@ -19,8 +20,12 @@ const Home = () => {
   const bg = useColorModeValue('blue.200', 'blue.900')
 
   const bgHeader = useColorModeValue('blue.400', 'blue.900')
+
+  const colorBar:string = useColorModeValue("#3182ce", "white")
   return (
     <React.Fragment>
+
+      <ProgressBar color={colorBar}/>
       <Box position="relative" bg={bgHeader}>
         <Fade top distance="100px">
           <Box position="absolute" left="0" top="16" width="full">
