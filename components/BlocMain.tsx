@@ -1,12 +1,16 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react"
 import { Award } from "react-feather";
 import { ParcourInformation } from "./ParcoursInformation";
 import {Bounce} from "react-reveal"
 
 export const BlockMain: React.FC = () => {
+
+    const color = useColorModeValue("gray.600","gray.500")
+
     return (
-        <Box as='div'>
+        <Box position="relative" color={color} as='div'>
+
             <Text fontWeight='500'>
                 J'adore les defis proposer par mes employeurs. Optimiste et rigoureux, j'adore apprendre des nouvelles choses afin de renforcer mes competences que j'ai deja acquis.<span>&#128170;</span>
             </Text>

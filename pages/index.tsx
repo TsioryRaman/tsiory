@@ -4,7 +4,7 @@ import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import ProgressBar from 'react-progressbar-on-scroll'
 import { Header } from '../components/Header';
-import { Box, Container, Img, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Image, Img, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -36,8 +36,8 @@ const Home = () => {
           <Header name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
       </Box>
-      <Box mt={"16"} minH="100vh">
-
+      <Box position="relative" mt={"16"} minH="100vh">
+        {[0,1].map((_,k)=><Image  position="absolute" opacity="0.3" zIndex="-9999" height="350px" width={["100px","100px","150px","200px"]} backgroundRepeat="no-repeat" right={k === 1 ? 20 : "auto"} left={k === 0 ? 20 : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? -50 : 0} src="/img/background/dot.svg" />)}
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <HeaderMain name="A propos" />
           <BlockMain />

@@ -65,6 +65,8 @@ const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
 
     const bg = useColorModeValue('white', 'blue.900')
 
+    const color = useColorModeValue("gray.600","gray.200")
+
     const bgBorder = useColorModeValue('gray.100', 'transparent')
     const ref = useRef<HTMLDivElement>(null)
     const imageRef = useRef<HTMLImageElement>(null)
@@ -101,7 +103,7 @@ const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
     return (
         <Flex style={{ transformStyle: "preserve-3d", perspective: "500px" }} transitionDuration={".6s"} as="div" ref={ref} onMouseLeave={mouseLeave} onMouseMove={mouseEnter} bg={bg} borderRadius={4} flexDirection="column" boxShadow="lg" py={["3","5","5","5"]} px={["8","12","12","12"]} alignItems="center" borderColor={bgBorder} borderWidth="1px" justifyContent="center" >
             <Img ref={imageRef} height="50px" w="50px" transitionDuration={".6s"} src={logo} />
-            <Text ref={textRef} fontWeight={"medium"} transitionDuration={".6s"} py="0">{title}</Text>
+            <Text ref={textRef} color={color} fontWeight={"medium"} transitionDuration={".6s"} py="0">{title}</Text>
         </Flex>
 
     );
