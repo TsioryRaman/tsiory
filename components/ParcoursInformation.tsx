@@ -30,7 +30,7 @@ export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, con
                     <Heading display={'flex'} flexDirection='row' fontWeight="bold" as='h2' fontSize='xl'>
                         {c.header}{c.iconFinal && c?.iconFinal}
                     </Heading>
-                    <Text as='p' p='0' m='0'>
+                    <Text color="gray.600" as='p' p='0' m='0'>
                         {c.description}
                     </Text>
                 </Box>
