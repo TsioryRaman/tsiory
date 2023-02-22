@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Heading, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
 import { IconLink } from "./IconLink";
 import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
@@ -122,9 +122,17 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
                 </SideBarContext.Provider>
                 
             </Flex>
-            <Flex mt="auto" pr="8" justifyContent="end" w='full' direction={'row'} gap={'6'}>
-                    <a href='https://web.facebook.com/RamanantoaninaTsiory/' style={{color:`${bg}`}} target="_blank"><Facebook /></a>
-                    <a href='https://www.linkedin.com/in/tsiory-ramanantoanina/' target="_blank"><Linkedin /></a>
+            <Flex mt="auto" pr="8" justifyContent="end" w='full' direction={'row'} gap={'2'}>
+                    <a href='https://web.facebook.com/RamanantoaninaTsiory/' style={{color:`${bg}`}} target="_blank">
+                        <Badge colorScheme={"facebook"} display="flex" gap="2" alignItems={"center"}><span>Facebook</span><Facebook size="12px"/></Badge></a>
+
+                        
+                    <a href='https://www.linkedin.com/in/tsiory-ramanantoanina/' target="_blank">
+                        <Badge gap="2" colorScheme={"linkedin"} display="flex" alignItems={"center"}>
+                            <span>Linkedin</span>
+                            <Linkedin size="12px"/>
+                            </Badge>
+                    </a>
                     <a href='https://github.com/TsioryRaman' target="_blank"><GitHub /></a>
                 </Flex>
         </Flex >
