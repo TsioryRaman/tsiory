@@ -4,7 +4,7 @@ import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import ProgressBar from 'react-progressbar-on-scroll'
 import { Header } from '../components/Header';
-import { Box, Container, Image, Img, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Img, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -14,6 +14,7 @@ import Competence from '../components/Competence';
 import Contact from '../components/Contact';
 import Fade from "react-reveal"
 import Mail from '../components/Mail';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const Home = () => {
 
@@ -37,7 +38,20 @@ const Home = () => {
         </Container>
       </Box>
       <Box position="relative" mt={"16"} minH="100vh">
-        {[0,1].map((_,k)=><Image  position="absolute" opacity="0.3" zIndex="-9999" height="350px" width={["100px","100px","150px","200px"]} backgroundRepeat="no-repeat" right={k === 1 ? 20 : "auto"} left={k === 0 ? 20 : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? -50 : 0} src="/img/background/dot.svg" />)}
+        <Box mb="12">
+
+   
+        </Box>
+        {["https://assets3.lottiefiles.com/private_files/lf30_u4rzoljr.json","https://assets1.lottiefiles.com/packages/lf20_itlrgnef.json"].map((link,k)=><Box  position="absolute" zIndex="-9999" width={["100px","100px","200px","300px"]} right={k === 1 ? "15px" : "5px"} left={k === 0 ? "15px" : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? '1px' : 0} >
+        <Player // set the ref to your class instance
+        autoplay={true}
+        loop={true}
+        controls={true}
+        speed={0.7}
+        src={link}
+        /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
+      ></Player>
+        </Box>)}
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <HeaderMain name="A propos" />
           <BlockMain />

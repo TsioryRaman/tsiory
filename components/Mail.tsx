@@ -1,5 +1,6 @@
 import { Alert, Box, Button, Flex, FormControl, FormLabel, Heading, Input, InputGroup, InputLeftElement, Textarea, useColorModeValue } from "@chakra-ui/react";
 import emailjs from '@emailjs/browser';
+import { Player } from "@lottiefiles/react-lottie-player";
 import React, { useRef, useState } from "react";
 import { AtSign, CheckCircle, Loader, MessageCircle, Send, User, X } from "react-feather";
 import Fade from "react-reveal"
@@ -56,6 +57,16 @@ const Mail:React.FC = () => {
             <Flex px="8" direction="column" justifyContent="center" alignItems="center" w={["100%","100%","50%","50%"]}>
                 
             <Fade>
+            <Player // set the ref to your class instance
+          autoplay={true}
+          loop={true}
+          controls={true}
+          speed={0.7}
+          src="
+          https://assets1.lottiefiles.com/packages/lf20_mwawjro9.json"
+          /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
+          style={{height:"200px",width:"200px"}}
+        ></Player>
                 <Heading>
                     Me contacter
                 </Heading>
