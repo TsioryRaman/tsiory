@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Badge, Box, Flex, Heading, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, Hide, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
 import { IconLink } from "./IconLink";
 import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
@@ -33,14 +33,27 @@ const appear = keyframes `
 export const Navbar: React.FC = () => {
 
     const router = useRouter()
-
     const bg = useColorModeValue('blue.300','white')
     const color = useColorModeValue('white','blue.900')
     const menuColor = useColorModeValue("#63b3ed","white")
     const [open, setOpen] = useState(false)
+
+    const [scrollPosition, setScrollPosition] = useState(0);
+        const handleScroll = () => {
+            const position = window.pageYOffset;
+            setScrollPosition(position);
+        };
+
+        useEffect(() => {
+            window.addEventListener('scroll', handleScroll);
+            
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }, []);
     return (
-        <React.Fragment>
-            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={`blur(8px)`} position={"fixed"} px={["2","8","24","24"]} py={2} top="0">
+        <>
+            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} position={"fixed"} px={["2","8","24","24"]} py={2} top="0">
                 <Box display="flex" justifyContent="center" position="relative" alignItems="center" color={color} overflow="hidden" px="5" py="2"
                  background={bg}
                  cursor="default"
@@ -53,18 +66,23 @@ export const Navbar: React.FC = () => {
                 <Flex direction={"row"}>
 
                     {router.pathname !== "/" && <Box mt="3" mr="3" cursor="pointer"><Link href="/"><ChevronLeft /></Link></Box>}
+                    <Hide below="md">
+                    <NavigationDesktop />
+                    </Hide>
                     <ToggleColorMode />
+                    <Hide above="md">
                     <Box onClick={() => setOpen(s => !s)} p="3" borderRadius={2} cursor="pointer">
                         <Box transitionDuration={".5s"} style={{ transform: !open ? 'rotate(0deg)' : 'rotate(-90deg)' }}>
                             <AlignRight color={menuColor}/>
                         </Box>
                     </Box>
+                    </Hide>
 
                 </Flex>
             </Flex>
 
             <NavigationLink open={open} setOpen={setOpen} />
-        </React.Fragment>
+        </>
     );
 }
 
@@ -136,5 +154,26 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ open, setOpen }) => {
                     <a href='https://github.com/TsioryRaman' target="_blank"><GitHub /></a>
                 </Flex>
         </Flex >
+    )
+}
+
+const NavigationDesktop = () => {
+    return (
+        <Flex mr="6">
+            <Flex direction="row" gap="6">
+                    <IconLink to="#home" _fontSize="16" _colorBar label={"Acceuil"} >
+                    </IconLink>
+                    <IconLink to="#propos" _colorBar _fontSize="16" label={"A propos"} >
+                    </IconLink>
+                    <IconLink to='#Article' _colorBar _fontSize="16" label={"Article"} >
+                    </IconLink>
+                    <IconLink to='#Divertissement' _colorBar _fontSize="16" label={"Divertissement"} >
+                    </IconLink>
+                    <IconLink to='#Competence' _colorBar _fontSize="16" label={"Competence"} >
+                    </IconLink>
+                    <IconLink to='#retrouver' _colorBar _fontSize="16" label={"Contact"} >
+                    </IconLink>
+                    </Flex>
+        </Flex>
     )
 }

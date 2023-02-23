@@ -42,7 +42,7 @@ const Home = () => {
 
    
         </Box>
-        {["https://assets3.lottiefiles.com/private_files/lf30_u4rzoljr.json","https://assets1.lottiefiles.com/packages/lf20_itlrgnef.json"].map((link,k)=><Box  position="absolute" zIndex="-9999" width={["100px","100px","200px","300px"]} right={k === 1 ? "15px" : "5px"} left={k === 0 ? "15px" : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? '1px' : 0} >
+        {["https://assets3.lottiefiles.com/private_files/lf30_u4rzoljr.json","https://assets1.lottiefiles.com/packages/lf20_itlrgnef.json"].map((link,k)=><Box key={k} position="absolute" zIndex="-9999" width={["100px","100px","200px","300px"]} right={k === 1 ? "15px" : "5px"} left={k === 0 ? "15px" : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? '1px' : 0} >
         <Player // set the ref to your class instance
         autoplay={true}
         loop={true}

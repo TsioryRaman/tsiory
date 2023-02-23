@@ -6,10 +6,12 @@ import { SideBarContext } from "./Navbar";
 type IconLinkProps = {
     label: String,
     to: string,
-    href?: string
+    href?: string,
+    _colorBar?:boolean,
+    _fontSize?:string
 }
 
-export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
+export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_colorBar=false,_fontSize }) => {
 
     const { setOpen } = useContext(SideBarContext);
 
@@ -19,14 +21,14 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label }) => {
         <Link href={to}>
             <Flex
                 mr="auto"
-                color={color}
+                color={_colorBar && "white" || color}
                 cursor='pointer'
                 transitionDuration='0.5s'
                 onClick={() => setOpen(false)}
                 direction="row"
                 justify='center'
                 alignItems='center'>
-                <Box borderBottom="2px solid transparent" display={"flex"} _hover={{ borderColor: `${color}`}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={18} as='div'>
+                <Box _selected={{borderColor: `${color}`}} borderBottom="2px solid transparent" display={"flex"} _hover={{ borderColor: `${color}`}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={_fontSize || 18} as='div'>
                     {children} {label}
                 </Box>
             </Flex >
