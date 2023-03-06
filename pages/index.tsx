@@ -22,11 +22,11 @@ const Home = () => {
 
   const bgHeader = useColorModeValue('blue.400', 'blue.900')
 
-  const colorBar:string = useColorModeValue("#3182ce", "white")
+  const colorBar: string = useColorModeValue("#3182ce", "white")
   return (
     <React.Fragment>
 
-      <ProgressBar color={colorBar}/>
+      <ProgressBar color={colorBar} />
       <Box position="relative" bg={bgHeader}>
         <Fade top distance="100px">
           <Box position="absolute" left="0" top="16" width="full">
@@ -40,17 +40,17 @@ const Home = () => {
       <Box position="relative" mt={"16"} minH="100vh">
         <Box mb="12">
 
-   
+
         </Box>
-        {["https://assets3.lottiefiles.com/private_files/lf30_u4rzoljr.json","https://assets1.lottiefiles.com/packages/lf20_itlrgnef.json"].map((link,k)=><Box key={k} position="absolute" zIndex="-9999" width={["100px","100px","200px","300px"]} right={k === 1 ? "15px" : "5px"} left={k === 0 ? "15px" : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? '1px' : 0} >
-        <Player // set the ref to your class instance
-        autoplay={true}
-        loop={true}
-        controls={true}
-        speed={0.7}
-        src={link}
-        /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
-      ></Player>
+        {["https://assets3.lottiefiles.com/private_files/lf30_u4rzoljr.json", "https://assets1.lottiefiles.com/packages/lf20_itlrgnef.json"].map((link, k) => <Box key={k} position="absolute" zIndex="-9999" width={["100px", "100px", "200px", "300px"]} right={k === 1 ? "15px" : "5px"} left={k === 0 ? "15px" : "auto"} top={k === 0 ? 50 : "auto"} bottom={k === 1 ? '1px' : 0} >
+          <Player // set the ref to your class instance
+            autoplay={true}
+            loop={true}
+            controls={true}
+            speed={0.7}
+            src={link}
+          /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
+          />
         </Box>)}
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <HeaderMain name="A propos" />
