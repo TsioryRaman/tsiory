@@ -22,6 +22,8 @@ const Home = () => {
 
   const bgHeader = useColorModeValue('blue.400', 'blue.900')
 
+  const _before = {content:`""`,display:"block",position:"absolute",backgroundColor:bg, zIndex:"-1",right:"0" ,width:"100%",transform:"skewY(-1.5deg)"}
+
   const colorBar: string = useColorModeValue("#3182ce", "white")
   return (
     <React.Fragment>
@@ -57,7 +59,7 @@ const Home = () => {
           <BlockMain />
         </Container>
       </Box>
-      <Box mt={"48"} py="16" minH="100vh" color="white" backgroundAttachment="fixed" bg={bg}>
+      <Box mt={"48"} py="16" minH="100vh" color="white" position="relative" _before={{top:"-100px",bottom:"0",..._before}} _after={{..._before,bottom:"-100px",top:"0"}} backgroundAttachment="fixed" bg={bg}>
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
 
           <HeaderMain textShadow={false} name="Article" />
