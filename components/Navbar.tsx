@@ -9,11 +9,10 @@ import { useRouter } from "next/router";
 import { ToggleColorMode } from "./ToggleColorMode";
 
 const appear = keyframes`
-    0%{
+    from{
         opacity:0;
     }
-    100%{
-        left:100;
+    to{
         opacity: 1;
     }
 `
@@ -41,15 +40,18 @@ export const Navbar: React.FC = () => {
         <>
             <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} position={"fixed"} px={["2", "8", "24", "24"]} py={2} top="0">
                 <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} top="0" bottom="0" left="0" right="0"></Box>
+                <Flex alignItems="center" 
+                    role="group" gap="2">
+
                 <Box display="flex" justifyContent="center" position="relative" alignItems="center" color="white" overflow="hidden" px="5" py="2"
                     borderColor={bg}
                     borderWidth="4px"
                     cursor="default"
-                    borderRadius="4px"
-                    role="group">
+                    borderRadius="4px">
                     <Heading fontSize={["1.5em", "1.5em", "2em", "2.5em"]} textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Sans-serif">T</Heading>
-                    <Text p="0" position={"absolute"} opacity="0" _groupHover={{ opacity: 1, marginLeft: 0, animation: `${appear}` }} transitionDuration={"1s"} >siory</Text>
                 </Box>
+                <Text p="0" opacity="0" transform="translateX(-50%)" color="white" fontSize="2em" fontWeight={"medium"} cursor="default" _groupHover={{ opacity: 1, marginLeft: 0, animation: `${appear}`, transform:"translateX(0)" }} transitionDuration={".4s"} >siory</Text>
+                </Flex>
                 <Flex direction={"row"}>
 
                     {router.pathname !== "/" && <Box mt="3" mr="3" cursor="pointer"><Link href="/"><ChevronLeft /></Link></Box>}
