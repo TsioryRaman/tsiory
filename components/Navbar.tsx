@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Badge, Box, Flex, Heading, Hide, keyframes, Text, useColorModeValue } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, Hide, keyframes, Show, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
 import { IconLink } from "./IconLink";
 import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
@@ -57,18 +57,18 @@ export const Navbar: React.FC = () => {
                         <NavigationDesktop />
                     </Hide>
                     <ToggleColorMode />
-                    <Hide above="md">
+                    <Show below="md">
                         <Box onClick={() => setOpen(s => !s)} p="3" borderRadius={2} cursor="pointer">
                             <Box transitionDuration={".3s"} transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
                                 <AlignRight color={menuColor} />
                             </Box>
                         </Box>
-                    </Hide>
+                    </Show>
 
                 </Flex>
             </Flex>
             <Hide above="md">
-            {open && <NavigationLink open={open} setOpen={setOpen} />}
+                {open && <NavigationLink open={open} setOpen={setOpen} />}
             </Hide>
         </>
     );
