@@ -3,7 +3,6 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 import ProgressBar from 'react-progressbar-on-scroll'
 import Head from 'next/head';
 import '../styles/base.css';
-import { Navbar } from "../components/Navbar";
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import { ColorModeScript } from "@chakra-ui/color-mode"
 import theme from "../theme"
@@ -23,7 +22,6 @@ const App: React.FC = ({ Component, pageProps }: any) => {
             <title>Tsiory Ramanantoanina | Portfolio</title>
           </Head>
           <Box>
-            <Navbar />
             <Box as='div'>
               <Component {...pageProps} />
             </Box>

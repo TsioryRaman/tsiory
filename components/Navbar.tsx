@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Badge, Box, Flex, Heading, Hide, keyframes, Show, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
-import { IconLink } from "./IconLink";
+import { IconLink, TooltipIconLink } from "./IconLink";
 import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -20,6 +20,7 @@ export const Navbar: React.FC = () => {
 
     const router = useRouter()
     const bg = useColorModeValue('blue.300', 'white')
+    const navbarBg = useColorModeValue("rgba(66,153,255,.3)","rgba(26,54,93,.2)")
     const menuColor = useColorModeValue("#63b3ed", "white")
     const [open, setOpen] = useState(false)
 
@@ -38,19 +39,19 @@ export const Navbar: React.FC = () => {
     }, []);
     return (
         <>
-            <Flex zIndex={"5"} justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} position={"fixed"} px={["2", "8", "24", "24"]} py={2} top="0">
+            <Flex zIndex={"999999"} bg={scrollPosition !== 0 ? navbarBg:""} position="fixed" justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} px={["2", "8", "24", "24"]} py={2}>
                 <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} top="0" bottom="0" left="0" right="0"></Box>
-                <Flex alignItems="center" 
-                    role="group" gap="2">
+                <Flex  alignItems="center"
+                    role="group" gap="2" >
 
-                <Box display="flex" justifyContent="center" position="relative" alignItems="center" color="white" overflow="hidden" px="5" py="2"
-                    borderColor={bg}
-                    borderWidth="4px"
-                    cursor="default"
-                    borderRadius="4px">
-                    <Heading fontSize={["1.5em", "1.5em", "2em", "2.5em"]} textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Sans-serif">T</Heading>
-                </Box>
-                <Text p="0" opacity="0" transform="translateX(-50%)" color="white" fontSize="2em" fontWeight={"medium"} cursor="default" _groupHover={{ opacity: 1, marginLeft: 0, animation: `${appear}`, transform:"translateX(0)" }} transitionDuration={".4s"} >siory</Text>
+                    <Box display="flex" justifyContent="center" position="relative" alignItems="center" color="white" overflow="hidden" px="4" py="1.5"
+                        borderColor={bg}
+                        borderWidth="4px"
+                        cursor="default"
+                        borderRadius="4px">
+                        <Heading fontSize={["1.5em", "1.5em", "2em", "2.5em"]} textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Sans-serif">T</Heading>
+                    </Box>
+                    <Text p="0" opacity="0" transform="translateX(-50%)" color="white" fontSize="2em" fontWeight={"medium"} cursor="default" _groupHover={{ opacity: 1, marginLeft: 0, animation: `${appear}`, transform: "translateX(0)" }} transitionDuration={".4s"} >siory</Text>
                 </Flex>
                 <Flex direction={"row"}>
 
@@ -70,7 +71,7 @@ export const Navbar: React.FC = () => {
                 </Flex>
             </Flex>
             <Hide above="md">
-                {open && <NavigationLink open={open} setOpen={setOpen} />}
+                {open && <NavigationMobile open={open} setOpen={setOpen} />}
             </Hide>
         </>
     );
@@ -87,7 +88,7 @@ type SideBarContexte = {
 
 export const SideBarContext = React.createContext<SideBarContexte>({ setOpen: () => { } });
 
-const NavigationLink: React.FC<NavigationLinkProps> = ({ setOpen }) => {
+const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
 
 
     const bg = useColorModeValue('blue.500', 'white')
@@ -107,28 +108,28 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ setOpen }) => {
                     </Box>
                 </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
-                <Fade distance="20px" bottom duration={800}>
-                    <Flex direction="column" gap="6" mx="auto">
+                    <Fade distance="20px" bottom duration={800}>
+                        <Flex direction="column" gap="6" mx="auto">
                             <IconLink to="#home" label={"Acceuil"} >
                                 <Home size={24} />
                             </IconLink>
-                        <IconLink to="#propos" label={"A propos"} >
-                            <User size={24} />
-                        </IconLink>
-                        <IconLink to='#Article' label={"Article"} >
-                            <File size={24} />
-                        </IconLink>
-                        <IconLink to='#Divertissement' label={"Divertissement"} >
-                            <Book size={24} />
-                        </IconLink>
-                        <IconLink to='#Competence' label={"Competence"} >
-                            <Server size={24} />
-                        </IconLink>
-                        <IconLink to='#retrouver' label={"Contact"} >
-                            <Mail size={24} />
-                        </IconLink>
-                    </Flex>
-                </Fade>
+                            <IconLink to="#propos" label={"A propos"} >
+                                <User size={24} />
+                            </IconLink>
+                            <IconLink to='#Article' label={"Article"} >
+                                <File size={24} />
+                            </IconLink>
+                            <IconLink to='#Divertissement' label={"Divertissement"} >
+                                <Book size={24} />
+                            </IconLink>
+                            <IconLink to='#Competence' label={"Competence"} >
+                                <Server size={24} />
+                            </IconLink>
+                            <IconLink to='#retrouver' label={"Contact"} >
+                                <Mail size={24} />
+                            </IconLink>
+                        </Flex>
+                    </Fade>
                 </SideBarContext.Provider>
             </Flex>
             <Flex mt="auto" pr="8" justifyContent="end" w='full' direction={'row'} gap={'2'}>
@@ -149,20 +150,25 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ setOpen }) => {
 const NavigationDesktop = () => {
     return (
         <Flex mr="6">
-            <Flex direction="row" gap="6">
-                <IconLink to="#home" _fontSize="16" _colorBar label={"Acceuil"} >
-                    <Home />
-                </IconLink>
-                <IconLink to="#propos" _colorBar _fontSize="16" label={"A propos"} >
-                </IconLink>
-                <IconLink to='#Article' _colorBar _fontSize="16" label={"Article"} >
-                </IconLink>
-                <IconLink to='#Divertissement' _colorBar _fontSize="16" label={"Divertissement"} >
-                </IconLink>
-                <IconLink to='#Competence' _colorBar _fontSize="16" label={"Competence"} >
-                </IconLink>
-                <IconLink to='#retrouver' _colorBar _fontSize="16" label={"Contact"} >
-                </IconLink>
+            <Flex direction="row" gap="10">
+                <TooltipIconLink to="#home" _fontSize="16" label={"Acceuil"} _colorBar >
+                    <Home size={18}/>
+                </TooltipIconLink>
+                <TooltipIconLink to="#propos" label="A propos" _colorBar>
+                    <User size={18}/>
+                </TooltipIconLink>
+                <TooltipIconLink to='#Article' label="Article" _colorBar _fontSize="16" >
+                    <File size={18}/>
+                </TooltipIconLink>
+                <TooltipIconLink to='#Divertissement' label="Divertissement" _colorBar _fontSize="16" >
+                    <Book size={18}/>
+                </TooltipIconLink>
+                <TooltipIconLink to='#Competence' label="Competence" _colorBar _fontSize="16" >
+                    <Server size={18}/>
+                </TooltipIconLink>
+                <TooltipIconLink to='#retrouver' label="Contact" _colorBar _fontSize="16" >
+                    <Mail size={18}/>
+                </TooltipIconLink>
             </Flex>
         </Flex>
     )

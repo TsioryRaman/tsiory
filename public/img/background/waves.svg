@@ -1,5 +1,5 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="waves" viewBox="0 0 1440 250"  style="isolation:isolate" preserveAspectRatio="none">
             <path fill="#FFF" style="animation-delay: .2s"  fill-opacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72V80c-138 38-284 102-718 27C314 36 150 16 1 16l-1 8z"/>
             <path fill="#FFF" style="animation-delay: .4s" fill-opacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72v-51l-2 1c-122 29-294 69-680-34C357 38 204 21 0 21v3z"/>
-            <path style="fill: transparent" d="M1440 229v21H0V24c166 0 358 11 755 133 232 71 390 93 506 93 74 0 131-9 179-21 0-45 0-45 0 0z"/>
+            <path fill="#FFF" d="M1440 229v21H0V24c166 0 358 11 755 133 232 71 390 93 506 93 74 0 131-9 179-21 0-45 0-45 0 0z"/>
           </svg>

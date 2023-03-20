@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Box, Button, Flex, Heading, Image, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Hide, Image, Text, useColorModeValue } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Facebook, GitHub, Linkedin } from 'react-feather';
-import Fade from "react-reveal"
 import { Player } from '@lottiefiles/react-lottie-player';
 
 type HeaderType = {
@@ -11,22 +10,23 @@ type HeaderType = {
   Sequence?: String[]
 }
 
-export const Header: React.FC<HeaderType> = ({ name }) => {
+export const Presentation: React.FC<HeaderType> = ({ name }) => {
 
-  const color = useColorModeValue("white","white");
-
+  const bgText = useColorModeValue('white', 'rgb(172, 188, 249)')
   return(
 
-  <Fade bottom distance="100px">
     
-    <Flex direction={"row"}>
+    <Flex zIndex={1000} justifyContent="center" alignItems="center" direction={"row"}>
     
-        <Flex color="white" id="home" alignItems='center' direction={'column'} minH='100vh' justify="center">
+        <Flex color="white" id="home" alignItems='center' direction={'column'}  justify="center">
  
-          < Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"} color={color} >
+          < Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"}>
             {name}
           </Heading >
-          <Text py='0.5' w='full' fontSize='3xl'>Je suis  <TypeAnimation
+          <Text bgGradient={`linear(to-r, ${bgText}, white)`}
+            bgClip='text'
+            fontSize='3xl'
+            fontWeight='extrabold' py='0.5' w='full'>Je suis  <TypeAnimation
             sequence={[
               'Developpeur', // Types 'One'
               2000, // Waits 1s
@@ -63,19 +63,20 @@ export const Header: React.FC<HeaderType> = ({ name }) => {
             </Button>
           </a>
           </Flex>
-          </Flex >
-         <Box my="auto">
-         <Player // set the ref to your class instance
-        autoplay={true}
-        loop={true}
-        controls={true}
-        speed={0.7}
-        src="
-        https://assets1.lottiefiles.com/packages/lf20_V9t630.json"
-        /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
-      ></Player>
-         </Box>
-    </Flex>
+        </Flex >
+        <Hide below="md">
 
-  </Fade >
+         <Box my="auto" w="400px" position="relative">
+            <Box position="absolute" zIndex={10000} bottom="-400px">
+            <Player // set the ref to your class instance
+              autoplay={true}
+              loop={false}
+              speed={0.7}
+              src="https://assets1.lottiefiles.com/packages/lf20_V9t630.json"
+              /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
+            />
+            </Box>
+         </Box>
+        </Hide>
+    </Flex>
 )};
