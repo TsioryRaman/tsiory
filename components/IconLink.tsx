@@ -8,15 +8,16 @@ type IconLinkProps = {
     to: string,
     href?: string,
     _colorBar?:boolean,
-    _fontSize?:string
+    _fontSize?:string,
+    isDesktop?:boolean
 }
 
-export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_fontSize }) => {
+export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_fontSize,isDesktop }) => {
 
     const { setOpen } = useContext(SideBarContext);
 
     return (
-        <Link href={to}>
+        <Link href={`#nav-${to}`}>
             <Flex
                 mr="auto"
                 cursor='pointer'
@@ -26,7 +27,7 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_fontSiz
                 justify='center'
                 alignItems='center'>
                 <Box 
-                color={"#effbec"} _selected={{borderColor: `white`,boxShadow: '0 1px 1px gray'}} borderBottom="2px solid transparent" display={"flex"} _hover={{ borderColor: `white`,boxShadow: '0 1px 1px -1px gray'}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={_fontSize || 18} as='div'>
+                color={"inherit"} _selected={{borderColor: `white`,boxShadow: '0 1px 1px gray'}} borderBottom={!isDesktop ? "2px solid transparent" : ""} display={"flex"} _hover={{ borderColor: `${!isDesktop ? "white" : ""}`,boxShadow: '0 1px 1px -1px gray'}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={_fontSize || 18} as='div'>
                 {children} <Hide above="md">
                 {label}
                 </Hide>
@@ -38,11 +39,10 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_fontSiz
 }
 
 export const TooltipIconLink: React.FC<IconLinkProps> = (props) => {
-    console.log(props.label)
     return (
         <Tooltip hasArrow label={props.label}>
-            <Flex justify="center">
-            <IconLink {...props}/>
+            <Flex color="white" id={props.to} _hover={{borderColor: "white"}} borderBottom="2px solid transparent" transitionDuration=".4s" justify="center">
+                <IconLink isDesktop {...props}/>
             </Flex>
         </Tooltip>
     )

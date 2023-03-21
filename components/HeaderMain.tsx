@@ -9,7 +9,7 @@ type HeaderType = {
 export const HeaderMain: React.FC<HeaderType> = ({ name,textShadow = true }) => {
 
     const textShadowColor = useColorModeValue("#3182ce","white")
-    const getNameId = (name:String) => name.split(' ').length >= 2 ? name.split(" ")[1] as string : name as string
+    const getNameId = (name:String) => 'nav-' + (name.split(' ').length >= 2 ? name.split(" ")[1] as string : name as string)
 
     return (
         <Box id={getNameId(name)}>

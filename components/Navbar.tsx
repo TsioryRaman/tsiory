@@ -20,7 +20,6 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
 
         if((window.pageYOffset > 0) && nameRef.current){
-            console.log("posiition ",window.pageYOffset)
             nameRef.current.style.transform = `translateX(-${window.pageYOffset > 600 ? 100 : window.pageYOffset < 250 ? 0 : window.pageYOffset / 5}%)`
             nameRef.current.style.opacity = (window.pageYOffset > 700 ? 0 : window.pageYOffset < 250 ? 1 : .5).toString()
         }
@@ -30,6 +29,7 @@ export const Navbar: React.FC = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+        Intersection()
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -109,22 +109,22 @@ const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
                     <Fade distance="20px" bottom duration={800}>
                         <Flex direction="column" gap="6" mx="auto">
-                            <IconLink to="#home" label={"Acceuil"} >
+                            <IconLink to="home" label={"Acceuil"} >
                                 <Home size={24} />
                             </IconLink>
-                            <IconLink to="#propos" label={"A propos"} >
+                            <IconLink to="propos" label={"A propos"} >
                                 <User size={24} />
                             </IconLink>
-                            <IconLink to='#Article' label={"Article"} >
+                            <IconLink to='Article' label={"Article"} >
                                 <File size={24} />
                             </IconLink>
-                            <IconLink to='#Divertissement' label={"Divertissement"} >
+                            <IconLink to='Divertissement' label={"Divertissement"} >
                                 <Book size={24} />
                             </IconLink>
-                            <IconLink to='#Competence' label={"Competence"} >
+                            <IconLink to='Competence' label={"Competence"} >
                                 <Server size={24} />
                             </IconLink>
-                            <IconLink to='#retrouver' label={"Contact"} >
+                            <IconLink to='retrouver' label={"Contact"} >
                                 <Mail size={24} />
                             </IconLink>
                         </Flex>
@@ -148,27 +148,73 @@ const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
 
 const NavigationDesktop = () => {
     return (
-        <Flex mr="6">
+        <Flex mr="6" borderBottom="1px solid rgba(255,255,255,.1)" position="relative">
+            <Box position="absolute" id="bar_active" height="2px" width={18} bg="white" transitionDuration=".8s" bottom="0" left="0"></Box>
             <Flex direction="row" gap="10">
-                <TooltipIconLink to="#home" _fontSize="16" label={"Acceuil"} _colorBar >
+                <TooltipIconLink to="home" _fontSize="16" label={"Acceuil"} _colorBar >
                     <Home size={18}/>
                 </TooltipIconLink>
-                <TooltipIconLink to="#propos" label="A propos" _colorBar>
+                <TooltipIconLink to="propos" label="A propos" _colorBar>
                     <User size={18}/>
                 </TooltipIconLink>
-                <TooltipIconLink to='#Article' label="Article" _colorBar _fontSize="16" >
+                <TooltipIconLink to='Article' label="Article" _colorBar _fontSize="16" >
                     <File size={18}/>
                 </TooltipIconLink>
-                <TooltipIconLink to='#Divertissement' label="Divertissement" _colorBar _fontSize="16" >
+                <TooltipIconLink to='Divertissement' label="Divertissement" _colorBar _fontSize="16" >
                     <Book size={18}/>
                 </TooltipIconLink>
-                <TooltipIconLink to='#Competence' label="Competence" _colorBar _fontSize="16" >
+                <TooltipIconLink to='Competence' label="Competence" _colorBar _fontSize="16" >
                     <Server size={18}/>
                 </TooltipIconLink>
-                <TooltipIconLink to='#retrouver' label="Contact" _colorBar _fontSize="16" >
+                <TooltipIconLink to='retrouver' label="Contact" _colorBar _fontSize="16" >
                     <Mail size={18}/>
                 </TooltipIconLink>
             </Flex>
         </Flex>
     )
+}
+
+const Intersection = () => {
+    let options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0,
+      };
+
+      let propos = document.querySelectorAll('div[id^="nav-"]');
+      let callback = (entries:any) => {
+        entries.forEach((entry:any) => {
+            if (entry.intersectionRatio >= 0.5) {
+                let idNav = entry.target.id.split("-")[1]
+                let nav = document.querySelector(`#${idNav}`)
+                translateBar(nav)
+
+              }
+          // Each entry describes an intersection change for one observed
+          // target element:
+          //   entry.boundingClientRect
+          //   entry.intersectionRatio
+          //   entry.intersectionRect
+          //   entry.isIntersecting
+          //   entry.rootBounds
+          //   entry.target
+          //   entry.time
+        });
+      };
+      
+      let observer = new IntersectionObserver(callback, options);
+      propos.forEach(element => {
+        if(propos) observer.observe(element)
+      })
+
+}
+
+let translateBar = (e:any) => {
+
+    var active:any = document.querySelector("#bar_active")
+    if(e && active){
+        // e.style.borderBottom = "2px solid white"
+        // console.log(e.offsetLeft)
+        active.style.transform = `translateX(${e.offsetLeft}px)`
+    }
 }

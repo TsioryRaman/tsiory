@@ -155,8 +155,6 @@ const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
 
   const mouseLeave = () => {
     if (ref.current !== null) {
-      console.log("not null");
-      console.log(ref);
       ref.current.style.transform = `rotate(0deg)`;
     }
     if (imageRef.current !== null) {
