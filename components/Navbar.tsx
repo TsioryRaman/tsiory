@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { Badge, Box, Flex, Heading, Hide, keyframes, Show, Text, useColorModeValue } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, Hide, Show, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
 import { IconLink, TooltipIconLink } from "./IconLink";
 import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
@@ -8,24 +8,22 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToggleColorMode } from "./ToggleColorMode";
 
-const appear = keyframes`
-    from{
-        opacity:0;
-    }
-    to{
-        opacity: 1;
-    }
-`
 export const Navbar: React.FC = () => {
 
     const router = useRouter()
-    const bg = useColorModeValue('blue.300', 'white')
     const navbarBg = useColorModeValue("rgba(66,153,255,.3)","rgba(26,54,93,.2)")
     const menuColor = useColorModeValue("#63b3ed", "white")
     const [open, setOpen] = useState(false)
+    const nameRef = useRef<HTMLParagraphElement>(null)
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
+
+        if((window.pageYOffset > 0) && nameRef.current){
+            console.log("posiition ",window.pageYOffset)
+            nameRef.current.style.transform = `translateX(-${window.pageYOffset > 600 ? 100 : window.pageYOffset < 250 ? 0 : window.pageYOffset / 5}%)`
+            nameRef.current.style.opacity = (window.pageYOffset > 700 ? 0 : window.pageYOffset < 250 ? 1 : .5).toString()
+        }
         const position = window.pageYOffset;
         setScrollPosition(position);
     };
@@ -42,16 +40,17 @@ export const Navbar: React.FC = () => {
             <Flex zIndex={"999999"} bg={scrollPosition !== 0 ? navbarBg:""} position="fixed" justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} px={["2", "8", "24", "24"]} py={2}>
                 <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} top="0" bottom="0" left="0" right="0"></Box>
                 <Flex  alignItems="center"
-                    role="group" gap="2" >
+                    role="group" gap="4" >
 
                     <Box display="flex" justifyContent="center" position="relative" alignItems="center" color="white" overflow="hidden" px="4" py="1.5"
-                        borderColor={bg}
+                        borderColor={"white"}
+                        borderStyle="dashed"
                         borderWidth="4px"
                         cursor="default"
                         borderRadius="4px">
-                        <Heading fontSize={["1.5em", "1.5em", "2em", "2.5em"]} textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Sans-serif">T</Heading>
+                        <Heading fontSize={["1.5em", "1.5em", "2em", "2em"]} fontWeight="bold" textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Seven Segment">T</Heading>
                     </Box>
-                    <Text p="0" opacity="0" transform="translateX(-50%)" color="white" fontSize="2em" fontWeight={"medium"} cursor="default" _groupHover={{ opacity: 1, marginLeft: 0, animation: `${appear}`, transform: "translateX(0)" }} transitionDuration={".4s"} >siory</Text>
+                    <Text color="#FFF" ref={nameRef} p="0" alignSelf="flex-end" letterSpacing={4} className="seven" fontSize={["1em", "1em", "1.75em", "2em"]} fontWeight={"bold"} cursor="default" transitionDuration={".4s"} >s.i.o.r.y</Text>
                 </Flex>
                 <Flex direction={"row"}>
 
