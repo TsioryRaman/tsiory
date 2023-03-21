@@ -1,6 +1,3 @@
-
-import { generateRSS } from '../rssUtil';
-import { loadBlogPosts, loadMarkdownFile } from '../loader';
 import React from 'react';
 import ProgressBar from 'react-progressbar-on-scroll'
 import { Presentation } from '../components/Presentation';
@@ -29,20 +26,17 @@ const Home = () => {
   const colorBar: string = useColorModeValue("#3182ce", "white")
   return (
     <React.Fragment>
-
       <ProgressBar color={colorBar} />
       <Flex direction="column" minH='100vh' position="relative" bg={bgHeader}>
-
         <Navbar />
         <Container my="auto" maxW={["sm", "md", "2xl", "6xl"]}>
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
         <Fade bottom duration={800}>
-
           <Box position="absolute" left="0" height="15em" width="100%" bottom="0" transform="rotateY(180deg)">
             <svg xmlns="http://www.w3.org/2000/svg" className="waves" viewBox="0 0 1440 250" height="100%" width="100%" style={{ isolation: "isolate" }} preserveAspectRatio="none">
-              <path fill="#FFF" style={{ animationDelay: ".2s" }} fill-opacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72V80c-138 38-284 102-718 27C314 36 150 16 1 16l-1 8z" />
-              <path fill="#FFF" style={{ animationDelay: ".4s" }} fill-opacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72v-51l-2 1c-122 29-294 69-680-34C357 38 204 21 0 21v3z" />
+              <path fill="#FFF" style={{ animationDelay: ".2s" }} fillOpacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72V80c-138 38-284 102-718 27C314 36 150 16 1 16l-1 8z" />
+              <path fill="#FFF" style={{ animationDelay: ".4s" }} fillOpacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72v-51l-2 1c-122 29-294 69-680-34C357 38 204 21 0 21v3z" />
               <path fill={bgWave} d="M1440 229v21H0V24c166 0 358 11 755 133 232 71 390 93 506 93 74 0 131-9 179-21 0-45 0-45 0 0z" />
             </svg>
           </Box>
@@ -71,7 +65,6 @@ const Home = () => {
       </Box>
       <Box mt={"48"} py="16" minH="100vh" color="white" position="relative" _before={{ top: "-100px", bottom: "0", ..._before }} _after={{ ..._before, bottom: "-100px", top: "0" }} backgroundAttachment="fixed" bg={bg}>
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
-
           <HeaderMain textShadow={false} name="Article" />
           <Fade distance="100px" left duration={800}>
             <Article id={1} title={Article_1_Stack.title} description={Article_1_Stack.description}
@@ -99,7 +92,6 @@ const Home = () => {
         <HeaderMain name="Me retrouver" />
         <Box bgColor={bg} opacity=".8">
           <Box mx="auto" py={4} maxW={["sm", "md", "2xl", "6xl"]}>
-
             <Contact />
           </Box>
         </Box>
@@ -111,23 +103,3 @@ const Home = () => {
 };
 
 export default Home;
-
-export const getStaticProps = async () => {
-  const introduction = await loadMarkdownFile('introduction.md');
-  const features = await loadMarkdownFile('features.md');
-  const readmeFile = await import(`../${'README.md'}`);
-  const readme = readmeFile.default;
-  const posts = await loadBlogPosts();
-
-  // comment out to turn off RSS generation during build step.
-  await generateRSS(posts);
-
-  const props = {
-    introduction: introduction.contents,
-    features: features.contents,
-    readme: readme,
-    posts,
-  };
-
-  return { props };
-};
