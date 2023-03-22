@@ -33,7 +33,7 @@ const Home = () => {
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
         <Fade bottom duration={800}>
-          <Box position="absolute" left="0" height="15em" width="100%" bottom="0" transform="rotateY(180deg)">
+          <Box position="absolute" left="0" height={["5em","5em","12em","15em"]} width="100%" bottom="0" transform="rotateY(180deg)">
             <svg xmlns="http://www.w3.org/2000/svg" className="waves" viewBox="0 0 1440 250" height="100%" width="100%" style={{ isolation: "isolate" }} preserveAspectRatio="none">
               <path fill="#FFF" style={{ animationDelay: ".2s" }} fillOpacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72V80c-138 38-284 102-718 27C314 36 150 16 1 16l-1 8z" />
               <path fill="#FFF" style={{ animationDelay: ".4s" }} fillOpacity=".1" d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72v-51l-2 1c-122 29-294 69-680-34C357 38 204 21 0 21v3z" />

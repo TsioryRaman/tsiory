@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { Badge, Box, Flex, Heading, Hide, Show, Text, useColorModeValue } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
 import { IconLink, TooltipIconLink } from "./IconLink";
-import { AlignRight, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
+import { X,Menu, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToggleColorMode } from "./ToggleColorMode";
+import { Intersect } from "./IntersectionObserver";
 
 export const Navbar: React.FC = () => {
 
@@ -18,10 +19,9 @@ export const Navbar: React.FC = () => {
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
-
         if((window.pageYOffset > 0) && nameRef.current){
-            nameRef.current.style.transform = `translateX(-${window.pageYOffset > 600 ? 100 : window.pageYOffset < 250 ? 0 : window.pageYOffset / 5}%)`
-            nameRef.current.style.opacity = (window.pageYOffset > 700 ? 0 : window.pageYOffset < 250 ? 1 : .5).toString()
+            nameRef.current.style.transform = `translateY(-${window.scrollY <= 2000 ? window.scrollY / 10 : 100}%)`
+            nameRef.current.style.opacity = (window.scrollY > 700 ? 0 : window.scrollY < 250 ? 1 : .5).toString()
         }
         const position = window.pageYOffset;
         setScrollPosition(position);
@@ -29,18 +29,35 @@ export const Navbar: React.FC = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-        Intersection()
-
+        // Intersection()
+        Intersect('div[id^="nav-"]',(entry:any)=> {
+            if (entry.isIntersecting) {
+                let idNav = entry.target.id.split("-")[1]
+                let nav = document.querySelector(`#${idNav}`)
+                translateBar(nav)
+              }
+        })
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    useEffect(()=> {
+            document.body.style.overflowY = open ? "hidden" : "auto";
+            let username:any = document.querySelector("#username");
+            if(username && open){
+                username.style.opacity = 0
+            }else {
+                username.style.opacity = 1
+            }
+    },[open])
     return (
         <>
-            <Flex zIndex={"999999"} bg={scrollPosition !== 0 ? navbarBg:""} position="fixed" justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} px={["2", "8", "24", "24"]} py={2}>
+            <Flex zIndex={"999999"} bg={(scrollPosition !== 0) && !open ? navbarBg:""} position="fixed" justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} px={["2", "8", "24", "24"]} py={2}>
                 <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} top="0" bottom="0" left="0" right="0"></Box>
                 <Flex  alignItems="center"
-                    role="group" gap="4" >
+                    role="group" gap="4" 
+                    id="username"
+                    transitionDuration=".4s">
 
                     <Box display="flex" justifyContent="center" position="relative" alignItems="center" color="white" overflow="hidden" px="4" py="1.5"
                         borderColor={"white"}
@@ -48,9 +65,9 @@ export const Navbar: React.FC = () => {
                         borderWidth="4px"
                         cursor="default"
                         borderRadius="4px">
-                        <Heading fontSize={["1.5em", "1.5em", "2em", "2em"]} fontWeight="bold" textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Seven Segment">T</Heading>
+                        <Heading fontSize={["1.5em", "1.5em", "2em", "2em"]}  fontWeight="bold" textShadow={`1px 1px 8px ${menuColor}`} color="white" fontFamily="Seven Segment">T</Heading>
                     </Box>
-                    <Text color="#FFF" ref={nameRef} p="0" alignSelf="flex-end" letterSpacing={4} className="seven" fontSize={["1em", "1em", "1.75em", "2em"]} fontWeight={"bold"} cursor="default" transitionDuration={".4s"} >s.i.o.r.y</Text>
+                    <Text color="#FFF" ref={nameRef} p="0" alignSelf="flex-end" letterSpacing={4} className="seven" fontSize={["1.5em", "1.5em", "1.75em", "2em"]} _groupHover={{transform:"translateY(0%)",opacity:1}} fontWeight={"bold"} cursor="default" transitionDuration={".4s"} >s.i.o.r.y</Text>
                 </Flex>
                 <Flex direction={"row"}>
 
@@ -59,13 +76,13 @@ export const Navbar: React.FC = () => {
                         <NavigationDesktop />
                     </Hide>
                     <ToggleColorMode />
-                    <Show below="md">
+                    <Hide above="md">
                         <Box onClick={() => setOpen(s => !s)} p="3" borderRadius={2} cursor="pointer">
-                            <Box transitionDuration={".3s"} transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
-                                <AlignRight color={menuColor} />
+                            <Box transitionDuration={".3s"} display="flex" justifyContent="center" alignItems="center" transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
+                                {!open ? <Menu size={24} color={menuColor} /> : <X size="16" color={menuColor}/>}
                             </Box>
                         </Box>
-                    </Show>
+                    </Hide>
 
                 </Flex>
             </Flex>
@@ -94,9 +111,9 @@ const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
     const color = useColorModeValue('white', 'blue.900')
 
     return (
-        <Flex direction="column" color={bg} transitionTimingFunction={"ease-out"} zIndex="2" backdropFilter="blur(16px)" minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" py="4" transitionDuration=".8s">
-            <Flex mx={["auto", "auto", "32", "48"]} mt="32" direction={"column"} justifyContent="space-around" gap={6} >
-                <Flex direction="column" position="relative" alignItems="center" justifyContent="center" >
+        <Flex direction="column" color={bg} transitionTimingFunction={"ease-out"} zIndex="2" backdropFilter="blur(16px)" minH="100vh" width={["100%", "100%", "50%", "50%"]} top="0" bottom="0" position="fixed" transitionDuration=".8s">
+            <Flex mx={["auto", "auto", "32", "48"]} mt="24" direction={"column"} gap={6} justifyContent="space-between" >
+                <Flex direction="column" id="username_animation" position="relative" alignItems="center" justifyContent="center" >
                     <Box display="flex" flexBasis="baseline" alignItems="baseline">
                         <Heading as="h1" fontSize="6em" fontWeight={`bold`} textAlign="center">T</Heading>
                         <Text fontSize="3em" p="0" fontWeight="medium">siory</Text>
@@ -174,47 +191,10 @@ const NavigationDesktop = () => {
     )
 }
 
-const Intersection = () => {
-    let options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 1.0,
-      };
-
-      let propos = document.querySelectorAll('div[id^="nav-"]');
-      let callback = (entries:any) => {
-        entries.forEach((entry:any) => {
-            if (entry.intersectionRatio >= 0.5) {
-                let idNav = entry.target.id.split("-")[1]
-                let nav = document.querySelector(`#${idNav}`)
-                translateBar(nav)
-
-              }
-          // Each entry describes an intersection change for one observed
-          // target element:
-          //   entry.boundingClientRect
-          //   entry.intersectionRatio
-          //   entry.intersectionRect
-          //   entry.isIntersecting
-          //   entry.rootBounds
-          //   entry.target
-          //   entry.time
-        });
-      };
-      
-      let observer = new IntersectionObserver(callback, options);
-      propos.forEach(element => {
-        if(propos) observer.observe(element)
-      })
-
-}
-
 let translateBar = (e:any) => {
 
     var active:any = document.querySelector("#bar_active")
     if(e && active){
-        // e.style.borderBottom = "2px solid white"
-        // console.log(e.offsetLeft)
         active.style.transform = `translateX(${e.offsetLeft}px)`
     }
 }

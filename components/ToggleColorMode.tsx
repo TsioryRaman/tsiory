@@ -1,6 +1,6 @@
 import { Flex, Box, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { Moon, Sun } from "react-feather";
-export const ToggleColorMode: React.FC = () => {
+export const ToggleColorMode = () => {
     const { colorMode, toggleColorMode } = useColorMode();
 
     const color = useColorModeValue("#63b3ed","yellow")

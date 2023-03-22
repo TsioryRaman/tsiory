@@ -22,7 +22,7 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
           </Heading >
           <Text bgGradient={`linear(to-r, ${bgText}, white)`}
             bgClip='text'
-            fontSize='3xl'
+            fontSize={["2xl", "2.5xl", "3xl", "3xl"]}
             fontWeight='extrabold' py='0.5' w='full'>Je suis  <TypeAnimation
             sequence={[
               'Developpeur', // Types 'One'
@@ -36,7 +36,7 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
             wrapper="span"
             cursor={true}
             repeat={Infinity}
-            style={{ fontSize: '1em', color: 'white', textShadow:"3px 1px 15px" }}
+            style={{ color: 'white', textShadow:"3px 1px 15px" }}
           />
             <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts)<Image src="/img/stack image/next.png" height="40px" width="40px" display="inline" /> | Typescript</span></Text>
 
