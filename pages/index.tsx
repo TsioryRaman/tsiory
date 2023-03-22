@@ -12,6 +12,7 @@ import Contact from '../components/Contact';
 import Fade from "react-reveal"
 import Mail from '../components/Mail';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { Three } from '../components/Three';
 
 const Home = () => {
 
@@ -96,6 +97,7 @@ const Home = () => {
       </Box>
 
       <Mail />
+      <Three />
     </React.Fragment>
   );
 };
