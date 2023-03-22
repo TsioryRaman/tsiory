@@ -77,8 +77,8 @@ export const Navbar: React.FC = () => {
                     </Hide>
                     <ToggleColorMode />
                     <Hide above="md">
-                        <Box onClick={() => setOpen(s => !s)} p="3" borderRadius={2} cursor="pointer">
-                            <Box transitionDuration={".3s"} display="flex" justifyContent="center" alignItems="center" transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
+                        <Box onClick={() => setOpen(s => !s)} p="3" display="flex" justifyContent="center" alignItems="center" borderRadius={2} cursor="pointer">
+                            <Box transitionDuration={".3s"}  transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
                                 {!open ? <Menu size={24} color={menuColor} /> : <X size="16" color={menuColor}/>}
                             </Box>
                         </Box>
