@@ -12,7 +12,6 @@ import Contact from '../components/Contact';
 import Fade from "react-reveal"
 import Mail from '../components/Mail';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Navbar } from '../components/Navbar';
 
 const Home = () => {
 
@@ -28,8 +27,7 @@ const Home = () => {
     <React.Fragment>
       <ProgressBar color={colorBar} />
       <Flex  id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
-        <Navbar />
-        <Container my="auto" maxW={["sm", "md", "2xl", "6xl"]}>
+        <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
         <Fade bottom duration={800}>
@@ -58,7 +56,7 @@ const Home = () => {
           </Box>
         </Fade>
 
-        <Container maxW={["sm", "md", "3xl", "6xl"]}>
+        <Container maxW={["100%", "md", "3xl", "6xl"]}>
           <HeaderMain name="A propos" />
           <BlockMain />
         </Container>

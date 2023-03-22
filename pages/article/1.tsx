@@ -4,8 +4,8 @@ import { CopyBlock, dracula } from "react-code-blocks";
 
 const Article: React.FC = () => {
     return (
-        <Container maxW={["sm", "md", "2xl", "5xl"]}>
-            <Box mt='24'>
+        <Container position="relative" maxW={["sm", "md", "2xl", "5xl"]}>
+            <Box pt="24">
                 <Heading as='h2' fontWeight='bold' fontSize="3xl">
                     Coder mieux avec reactjs/ts | Nest.js
                 </Heading>

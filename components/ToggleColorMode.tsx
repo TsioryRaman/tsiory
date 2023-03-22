@@ -1,13 +1,11 @@
-import { Flex, Box, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Box, useColorMode } from "@chakra-ui/react";
 import { Moon, Sun } from "react-feather";
 export const ToggleColorMode = () => {
     const { colorMode, toggleColorMode } = useColorMode();
-
-    const color = useColorModeValue("#63b3ed","yellow")
     return (
-        <Flex position='relative'>
-            <Box cursor="pointer" p="3" onClick={() => toggleColorMode()} _hover={{borderColor:`${color}`}} transitionDuration="0.2s" borderWidth={`1.5px`} borderRadius="3">
-                {colorMode === "dark" ? <Sun color="yellow"/> : <Moon fill="#63b3ed" color="#63b3ed"/>}
+        <Flex transitionDuration="0.2s" cursor="pointer"  position='relative' p="2" h="10" w="10" display="flex" onClick={() => toggleColorMode()} alignItems="center" justifyContent="center" borderRadius="50%" bg={!(colorMode === "dark") ? "white" : "rgba(255,255,255,.6)"}>
+            <Box>
+                {colorMode === "dark" ? <Sun size="18" color="yellow"/> : <Moon size="18" color="gray"/>}
             </Box>
         </Flex>
     );

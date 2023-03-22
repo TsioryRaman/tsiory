@@ -40,9 +40,9 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_fontSiz
 
 export const TooltipIconLink: React.FC<IconLinkProps> = (props) => {
     return (
-        <Tooltip hasArrow label={props.label}>
-            <Flex color="white" id={props.to} _hover={{borderColor: "white"}} borderBottom="2px solid transparent" transitionDuration=".4s" justify="center">
-                <IconLink isDesktop {...props}/>
+        <Tooltip zIndex="99999999999" hasArrow label={props.label}>
+            <Flex color="white" id={props.to} borderBottom="2px solid transparent" transitionDuration=".4s" justify="center">
+                <IconLink isDesktop={true} {...props}/>
             </Flex>
         </Tooltip>
     )

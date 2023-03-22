@@ -7,6 +7,7 @@ import { Box, ChakraProvider } from '@chakra-ui/react';
 import { ColorModeScript } from "@chakra-ui/color-mode"
 import theme from "../theme"
 import { Footer } from '../components/Footer';
+import { Navbar } from '../components/Navbar';
 const App: React.FC = ({ Component, pageProps }: any) => {
 
 
@@ -23,6 +24,8 @@ const App: React.FC = ({ Component, pageProps }: any) => {
           </Head>
           <Box>
             <Box as='div'>
+
+        <Navbar />
               <Component {...pageProps} />
             </Box>
             <Footer />

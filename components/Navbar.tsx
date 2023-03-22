@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { Badge, Box, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react'
+import { Badge, Box, Container, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
 import { IconLink, TooltipIconLink } from "./IconLink";
 import { X,Menu, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
@@ -40,7 +40,7 @@ export const Navbar: React.FC = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [router.pathname]);
     useEffect(()=> {
             document.body.style.overflowY = open ? "hidden" : "auto";
             let username:any = document.querySelector("#username");
@@ -52,9 +52,11 @@ export const Navbar: React.FC = () => {
     },[open])
     return (
         <>
-            <Flex zIndex={"999999"} bg={(scrollPosition !== 0) && !open ? navbarBg:""} position="fixed" justifyContent={"space-between"} alignItems="center" w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} px={["2", "8", "24", "24"]} py={2}>
+            <Flex zIndex={10} bg={(scrollPosition !== 0) && !open || router.pathname !== "/" ? navbarBg:""} position="fixed"  w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} py={2}>
                 <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} top="0" bottom="0" left="0" right="0"></Box>
-                <Flex  alignItems="center"
+                <Container  my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
+                    <Flex justifyContent={"space-between"} alignItems="center">
+                    <Flex  alignItems="center"
                     role="group" gap="4" 
                     id="username"
                     transitionDuration=".4s">
@@ -69,11 +71,11 @@ export const Navbar: React.FC = () => {
                     </Box>
                     <Text color="#FFF" ref={nameRef} p="0" alignSelf="flex-end" letterSpacing={4} className="seven" fontSize={["1.5em", "1.5em", "1.75em", "2em"]} _groupHover={{transform:"translateY(0%)",opacity:1}} fontWeight={"bold"} cursor="default" transitionDuration={".4s"} >s.i.o.r.y</Text>
                 </Flex>
-                <Flex direction={"row"}>
+                <Flex alignItems="center" justifyContent="center" position="relative" direction={"row"}>
 
-                    {router.pathname !== "/" && <Box mt="3" mr="3" cursor="pointer"><Link href="/"><ChevronLeft /></Link></Box>}
+                    {router.pathname !== "/" && <Box mr="3" cursor="pointer"><Link href="/"><ChevronLeft color="white"/></Link></Box>}
                     <Hide below="md">
-                        <NavigationDesktop />
+                         {router.pathname === "/" && <NavigationDesktop />}
                     </Hide>
                     <ToggleColorMode />
                     <Hide above="md">
@@ -85,6 +87,9 @@ export const Navbar: React.FC = () => {
                     </Hide>
 
                 </Flex>
+                    </Flex>
+          
+                </Container>
             </Flex>
             <Hide above="md">
                 {open && <NavigationMobile open={open} setOpen={setOpen} />}
@@ -124,7 +129,7 @@ const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
                     </Box>
                 </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
-                    <Fade distance="20px" bottom duration={800}>
+                    <Fade distance="20px" top duration={400}>
                         <Flex direction="column" gap="6" mx="auto">
                             <IconLink to="home" label={"Acceuil"} >
                                 <Home size={24} />
@@ -165,7 +170,7 @@ const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
 
 const NavigationDesktop = () => {
     return (
-        <Flex mr="6" borderBottom="1px solid rgba(255,255,255,.1)" position="relative">
+        <Flex mr="6">
             <Box position="absolute" id="bar_active" height="2px" width={18} bg="white" transitionDuration=".8s" bottom="0" left="0"></Box>
             <Flex direction="row" gap="10">
                 <TooltipIconLink to="home" _fontSize="16" label={"Acceuil"} _colorBar >

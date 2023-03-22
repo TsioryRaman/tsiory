@@ -4,7 +4,7 @@ import React from "react";
 const BestTechnology: React.FC = () => {
     return (
         <Container maxW={["sm", "md", "2xl", "5xl"]}>
-            <Box mt='24'>
+            <Box py='24'>
                 <Heading as='h2' fontWeight='bold' fontSize="3xl">
                     Choix du meilleur technologie pour son application
                 </Heading>
