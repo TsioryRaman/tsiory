@@ -33,14 +33,19 @@ export const Navbar: React.FC = () => {
         Intersect('div[id^="nav-"]',(entry:any)=> {
             if (entry.isIntersecting) {
                 let idNav = entry.target.id.split("-")[1]
-                let nav = document.querySelector(`#${idNav}`)
-                translateBar(nav)
+                let nav_desktop = document.querySelector(`#${idNav}`)
+                translateBar(nav_desktop)
+
+
+                let nav_mobile = document.querySelector(`#nv-${idNav}`)
+                if(nav_mobile)  translateBarMobile(nav_mobile)
               }
         })
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [router.pathname]);
+    }, [router.pathname,open]);
     useEffect(()=> {
             document.body.style.overflowY = open ? "hidden" : "auto";
             let username:any = document.querySelector("#username");
@@ -50,10 +55,15 @@ export const Navbar: React.FC = () => {
                 username.style.opacity = 1
             }
     },[open])
+
+    const openMenu = () => {
+        setOpen(s => !s)
+    }
+
     return (
         <>
             <Flex zIndex={10} bg={(scrollPosition !== 0) && !open || router.pathname !== "/" ? navbarBg:""} position="fixed"  w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} py={2}>
-                <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} top="0" bottom="0" left="0" right="0"></Box>
+                <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} bottom="0" left="0" right="0"></Box>
                 <Container  my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
                     <Flex justifyContent={"space-between"} alignItems="center">
                     <Flex  alignItems="center"
@@ -79,7 +89,7 @@ export const Navbar: React.FC = () => {
                     </Hide>
                     <ToggleColorMode />
                     <Hide above="md">
-                        <Box onClick={() => setOpen(s => !s)} p="3" display="flex" justifyContent="center" alignItems="center" borderRadius={2} cursor="pointer">
+                        <Box onClick={openMenu} p="3" display="flex" justifyContent="center" alignItems="center" borderRadius={2} cursor="pointer">
                             <Box transitionDuration={".3s"}  transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
                                 {!open ? <Menu size={24} color={menuColor} /> : <X size="16" color={menuColor}/>}
                             </Box>
@@ -88,7 +98,6 @@ export const Navbar: React.FC = () => {
 
                 </Flex>
                     </Flex>
-          
                 </Container>
             </Flex>
             <Hide above="md">
@@ -130,7 +139,9 @@ const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {
                 </Flex>
                 <SideBarContext.Provider value={{ setOpen: setOpen }}>
                     <Fade distance="20px" top duration={400}>
-                        <Flex direction="column" gap="6" mx="auto">
+                        <Flex direction="column" position="relative" gap="6" mx="auto">
+
+                            <Box position="absolute" id="bar_active_mobile" height="30px" width="4px" bg="white" transitionDuration=".8s" left="-10px"></Box>
                             <IconLink to="home" label={"Acceuil"} >
                                 <Home size={24} />
                             </IconLink>
@@ -197,9 +208,14 @@ const NavigationDesktop = () => {
 }
 
 let translateBar = (e:any) => {
-
     var active:any = document.querySelector("#bar_active")
     if(e && active){
         active.style.transform = `translateX(${e.offsetLeft}px)`
+    }
+}
+let translateBarMobile = (e:any) => {
+    var active:any = document.querySelector("#bar_active_mobile")
+    if(e && active){
+        active.style.transform = `translateY(${e.offsetTop}px)`
     }
 }
