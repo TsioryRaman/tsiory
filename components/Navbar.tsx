@@ -63,9 +63,9 @@ export const Navbar: React.FC = () => {
     return (
         <>
             <Flex zIndex={10} bg={(scrollPosition !== 0) && !open || router.pathname !== "/" ? navbarBg:""} position="fixed"  w="100%" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} py={2}>
-                <Box position={"absolute"} zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} bottom="0" left="0" right="0"></Box>
+                <Box position="absolute" zIndex={-1} width="full" backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"} bottom="0" left="0" right="0"></Box>
                 <Container  my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
-                    <Flex justifyContent={"space-between"} alignItems="center">
+                    <Flex justifyContent="space-between" alignItems="center">
                     <Flex  alignItems="center"
                     role="group" gap="4" 
                     id="username"
