@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
                     </Box>
                     <Text color="#FFF" ref={nameRef} p="0" alignSelf="flex-end" letterSpacing={4} className="seven" fontSize={["1.5em", "1.5em", "1.75em", "2em"]} _groupHover={{transform:"translateY(0%)",opacity:1}} fontWeight={"bold"} cursor="default" transitionDuration={".4s"} >s.i.o.r.y</Text>
                 </Flex>
-                <Flex alignItems="center" justifyContent="center" position="relative" direction={"row"}>
+                <Flex alignItems="center" rowGap={3} justifyContent="center" position="relative" direction={"row"}>
 
                     {router.pathname !== "/" && <Box mr="3" cursor="pointer"><Link href="/"><ChevronLeft color="white"/></Link></Box>}
                     <Hide below="md">

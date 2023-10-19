@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <ProgressBar color={colorBar} />
-      <Flex  id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
+      <Flex id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
         <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
