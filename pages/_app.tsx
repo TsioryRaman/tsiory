@@ -24,7 +24,6 @@ const App: React.FC = ({ Component, pageProps }: any) => {
           </Head>
           <Box>
             <Box as='div'>
-
         <Navbar />
               <Component {...pageProps} />
             </Box>

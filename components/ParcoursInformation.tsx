@@ -22,7 +22,7 @@ export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, con
             </Badge>
 
 
-            {content.map((c, index) => <Flex key={index} ml={['6', '8', '12', '16']} mt='4' direction='row' gap='2'>
+            {content.map((c, index) => <Flex _hover={{transform:"translateX(10px)"}} transitionDuration="300ms" key={index} ml={['6', '8', '12', '16']} mt='4' direction='row' gap='2'>
                 <Flex as='div' justify='center' alignItems='center'>
                     <Compass color='#4299e1' />
                 </Flex>

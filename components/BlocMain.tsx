@@ -9,7 +9,7 @@ export const BlockMain: React.FC = () => {
     const color = useColorModeValue("gray.600","gray.500")
 
     return (
-        <Box position="relative" color={color} as='div'>
+        <Box cursor="pointer" position="relative" color={color} as='div'>
 
             <Text fontWeight='500'>
                 J'adore les defis proposer par mes employeurs. Optimiste et rigoureux, j'adore apprendre des nouvelles choses afin de renforcer mes competences que j'ai deja acquis.<span>&#128170;</span>
@@ -19,7 +19,10 @@ export const BlockMain: React.FC = () => {
                     Mes parcours
                 </Text>
                 <Bounce left duration={800}>
-                    <ParcourInformation year='2022' content={[{ header: "MasterI à l'ISPM", description: `Etude supérieur en 4ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></ParcourInformation>
+                    <ParcourInformation year='2023' content={[{ header: "Master II à l'ISPM", description: `Etude supérieur en 5ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></ParcourInformation>
+                </Bounce>
+                <Bounce left duration={800}>
+                    <ParcourInformation year='2022' content={[{ header: "Master I à l'ISPM", description: `Etude supérieur en 4ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></ParcourInformation>
                 </Bounce>
                 <Bounce left duration={800}>
                     <ParcourInformation year='2021'
