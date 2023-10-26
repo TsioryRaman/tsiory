@@ -20,9 +20,15 @@ export const Navbar: React.FC = () => {
 
     const [scrollPosition, setScrollPosition] = useState(0);
     const handleScroll = () => {
-        if((window.pageYOffset > 0) && nameRef.current){
-            nameRef.current.style.transform = `translateY(-${window.scrollY <= 2000 ? window.scrollY / 10 : 100}%)`
-            nameRef.current.style.opacity = (window.scrollY > 700 ? 0 : window.scrollY < 250 ? 1 : .5).toString()
+        if( nameRef.current && (window.pageYOffset > window.innerHeight) && (window.pageYOffset < window.innerHeight + 50)){
+            nameRef.current.style.transform = `translateY(-${window.pageYOffset - window.innerHeight}px)`
+            console.log(window.pageYOffset / window.innerHeight)
+            nameRef.current.style.opacity = ((window.pageYOffset / window.innerHeight) - 1.1).toString()
+        }
+        if(window.pageYOffset <= window.innerHeight && nameRef.current)
+        {
+            nameRef.current.style.transform = `translateY(0)`
+            nameRef.current.style.opacity = (1).toString()
         }
         const position = window.pageYOffset;
         setScrollPosition(position);
@@ -30,13 +36,12 @@ export const Navbar: React.FC = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-        // Intersection()
+        // Intersection
         Intersect('div[id^="nav-"]',(entry:any)=> {
             if (entry.isIntersecting) {
                 let idNav = entry.target.id.split("-")[1]
                 let nav_desktop = document.querySelector(`#${idNav}`)
                 translateBar(nav_desktop)
-
 
                 let nav_mobile = document.querySelector(`#nv-${idNav}`)
                 if(nav_mobile)  translateBarMobile(nav_mobile)

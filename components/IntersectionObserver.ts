@@ -9,16 +9,6 @@ export const Intersect = (element:string,cb:Function,root?:null) => {
       let callback = (entries:any) => {
         entries.forEach((entry:any) => {
             cb(entry)
-          
-          // Each entry describes an intersection change for one observed
-          // target element:
-          //   entry.boundingClientRect
-          //   entry.intersectionRatio
-          //   entry.intersectionRect
-          //   entry.isIntersecting
-          //   entry.rootBounds
-          //   entry.target
-          //   entry.time
         });
       };
       
