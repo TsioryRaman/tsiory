@@ -24,7 +24,6 @@ const App: React.FC = ({ Component, pageProps }: any) => {
         <Box position="relative" overflowX={"hidden"}>
           <Box>
             <Box as='div'>
-
         <Navbar />
               <Component {...pageProps} />
             </Box>

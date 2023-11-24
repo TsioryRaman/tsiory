@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Flex, Heading, Hide, Image, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Facebook, GitHub, Linkedin } from 'react-feather';
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -11,8 +11,8 @@ type HeaderType = {
 }
 
 export const Presentation: React.FC<HeaderType> = ({ name }) => {
-
   const bgText = useColorModeValue('white', 'rgb(172, 188, 249)')
+
   return(
     <Flex zIndex={1000} justifyContent="center" alignItems="center" direction={"row"}>
         <Flex color="white" id="home" alignItems='center' direction={'column'}  justify="center">
@@ -38,16 +38,13 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
             repeat={Infinity}
             style={{ color: 'white', textShadow:"3px 1px 15px" }}
           />
-            <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts)<Image src="/img/stack image/next.png" height="40px" width="40px" display="inline" /> | Typescript</span></Text>
-
+            <span style={{ display: "block" }}>Symfony/React.(js/ts)/Next.(js/ts) | Typescript</span></Text>
           <Flex w='full' direction={['row']} flexWrap="wrap" mt='16' gap={['2','2','4','6']}>
-
           <a href='https://web.facebook.com/RamanantoaninaTsiory/' target="_blank">
             <Button colorScheme={"facebook"}>
             Facebook<Facebook size="17px"/>
             </Button>
           </a>
-
           <a href='https://www.linkedin.com/in/tsiory-ramanantoanina/' target="_blank">
             <Button  colorScheme={"linkedin"}>
               <Text mr="2">Linkedin</Text><Linkedin size="17px"/>
