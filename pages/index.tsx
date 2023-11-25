@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ProgressBar from 'react-progressbar-on-scroll'
 import { Presentation } from '../components/Presentation';
-import { Box, Container, Flex, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Flex, Image, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/HeaderMain';
 import { BlockMain } from '../components/BlocMain';
 import { Article } from '../components/Article';
@@ -12,22 +12,35 @@ import Contact from '../components/Contact';
 import Fade from "react-reveal"
 import Mail from '../components/Mail';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { Certificate } from '../components/Certificate';
 
 const Home = () => {
 
   const bg = useColorModeValue('blue.200', 'blue.900')
-
+  const mask = useRef<any>()
   const bgHeader = useColorModeValue('blue.400', 'blue.900')
 
   const bgWave = useColorModeValue('white', '#1a202c')
   const _before = { content: `""`, display: "block", position: "absolute", backgroundColor: bg, zIndex: "-1", right: "0", width: "100%", transform: "skewY(-1.5deg)" }
 
+  const onMouseMove = (event:any) => {
+    event.preventDefault()
+    if(mask.current)
+    {
+      mask.current.style.maskPosition = `${event.clientX - 250}px ${event.clientY - 400}px`
+      mask.current.style.webkitMaskPosition = `${event.clientX - 250}px ${event.clientY - 400}px`
+    }
+  }
+
+
   const colorBar: string = useColorModeValue("#3182ce", "white")
   return (
     <React.Fragment>
       <ProgressBar color={colorBar} />
-      <Flex  id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
-        <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
+      <Flex  onMouseMove={onMouseMove} zIndex={1} transitionDuration="200ms" id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
+        <Image position="absolute" top="0" left="0" right="0" w="100%" h="100%" ref={mask} bottom={["5em","5em","12em","15em"]} className='header__main'  src='/img/background/coding.jpg'>
+        </Image>
+        <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]} position="relative">
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
         </Container>
         <Fade bottom duration={800}>
@@ -61,6 +74,10 @@ const Home = () => {
           <BlockMain />
         </Container>
       </Box>
+      <Container maxW={["100%", "md", "3xl", "6xl"]}>
+        <HeaderMain name="Certification" />
+        <Certificate />
+      </Container>
       <Box mt={"48"} py="16" minH="100vh" color="white" position="relative" _before={{ top: "-100px", bottom: "0", ..._before }} _after={{ ..._before, bottom: "-100px", top: "0" }} backgroundAttachment="fixed" bg={bg}>
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <HeaderMain textShadow={false} name="Article" />

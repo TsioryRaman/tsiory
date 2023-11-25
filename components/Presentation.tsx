@@ -16,10 +16,9 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
   return(
     <Flex zIndex={1000} justifyContent="center" alignItems="center" direction={"row"}>
         <Flex color="white" id="home" alignItems='center' direction={'column'}  justify="center">
- 
-          < Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"}>
+          <Heading as='h1' w='full' fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight={700} fontFamily={"Raleway, sans-serif"}>
             {name}
-          </Heading >
+          </Heading>
           <Text bgGradient={`linear(to-r, ${bgText}, white)`}
             bgClip='text'
             fontSize={["2xl", "2.5xl", "3xl", "3xl"]}

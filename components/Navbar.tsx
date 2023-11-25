@@ -22,7 +22,6 @@ export const Navbar: React.FC = () => {
     const handleScroll = () => {
         if( nameRef.current && (window.pageYOffset > window.innerHeight) && (window.pageYOffset < window.innerHeight + 50)){
             nameRef.current.style.transform = `translateY(-${window.pageYOffset - window.innerHeight}px)`
-            console.log(window.pageYOffset / window.innerHeight)
             nameRef.current.style.opacity = ((window.pageYOffset / window.innerHeight) - 1.1).toString()
         }
         if(window.pageYOffset <= window.innerHeight && nameRef.current)

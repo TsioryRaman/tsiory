@@ -54,6 +54,7 @@
     "react-markdown": "^4.3.1",
     "react-progressbar-on-scroll": "^2.0.0",
     "react-reveal": "^1.2.2",
+    "react-slick": "^0.29.0",
     "react-syntax-highlighter": "^12.2.1",
     "react-type-animation": "^2.0.9",
     "rss": "^1.2.2",
