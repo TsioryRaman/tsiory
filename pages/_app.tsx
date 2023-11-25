@@ -13,7 +13,7 @@ const App: React.FC = ({ Component, pageProps }: any) => {
   const colorBar:string = useColorModeValue("#3182ce", "#1A365D")
 
   useEffect(() => {
-    document.title = "Tsiory Ramanantoanina | Portfolio"
+    document.title = 'Tsiory Ramanantoanina | Portfolio'
   },[])
 
   return (
