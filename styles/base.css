@@ -2,6 +2,7 @@
 
 .header__main {
   mask-image: url("/img/background/masks.png");
+  mask-size: 0;
   mask-position: 0px 0px;
   mask-repeat: no-repeat;
 }

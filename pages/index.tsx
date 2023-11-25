@@ -25,10 +25,17 @@ const Home = () => {
 
   const onMouseMove = (event:any) => {
     event.preventDefault()
+    console.log(window.innerWidth / 2,event.pageX)
     if(mask.current)
     {
       mask.current.style.maskPosition = `${event.clientX - 250}px ${event.clientY - 400}px`
       mask.current.style.webkitMaskPosition = `${event.clientX - 250}px ${event.clientY - 400}px`
+      mask.current.style.webkitMaskSize = `800px`
+
+      if(event.clientX > (window.innerWidth / 2))
+      {
+        mask.current.style.webkitMaskSize = `1200px`
+      }
     }
   }
 
@@ -38,7 +45,7 @@ const Home = () => {
     <React.Fragment>
       <ProgressBar color={colorBar} />
       <Flex  onMouseMove={onMouseMove} zIndex={1} transitionDuration="200ms" id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
-        <Image position="absolute" top="0" left="0" right="0" w="100%" h="100%" ref={mask} bottom={["5em","5em","12em","15em"]} className='header__main'  src='/img/background/coding.jpg'>
+        <Image position="absolute" top="0" left="0" right="0" w="100%" h="100%" ref={mask} bottom={["5em","5em","12em","15em"]} transitionDuration="200ms" transitionProperty={["mask-size","-webkit-mask-size"]} transitionTimingFunction="linear" className='header__main'  src='/img/background/coding.jpg'>
         </Image>
         <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]} position="relative">
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
