@@ -45,7 +45,7 @@ const Home = () => {
     <React.Fragment>
       <ProgressBar color={colorBar} />
       <Flex  onMouseMove={onMouseMove} zIndex={1} transitionDuration="200ms" id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
-        <Image position="absolute" top="0" left="0" right="0" w="100%" h="100%" ref={mask} bottom={["5em","5em","12em","15em"]} transitionDuration="200ms" transitionProperty={["mask-size","-webkit-mask-size"]} transitionTimingFunction="linear" className='header__main'  src='/img/background/coding.jpg'>
+        <Image position="absolute" top="0" left="0" right="0" w="100%" h="100%" ref={mask} bottom={["5em","5em","12em","15em"]} transitionDuration="200ms" transitionProperty={["mask-size","-webkit-mask-size"]} transitionTimingFunction="linear" className='header__main'  src='/img/background/code.jpg'>
         </Image>
         <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]} position="relative">
           <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
