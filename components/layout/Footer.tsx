@@ -1,6 +1,6 @@
 import { Box, Divider, Flex, Heading, keyframes, Text, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
-import { globals } from '../globals';
+import { globals } from '../../globals';
 import Fade from "react-reveal"
 
 

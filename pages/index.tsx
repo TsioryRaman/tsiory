@@ -2,17 +2,18 @@ import React, { useRef } from 'react';
 import ProgressBar from 'react-progressbar-on-scroll'
 import { Presentation } from '../components/Presentation';
 import { Box, Container, Flex, Image, useColorModeValue } from '@chakra-ui/react';
-import { HeaderMain } from '../components/HeaderMain';
-import { BlockMain } from '../components/BlocMain';
-import { Article } from '../components/Article';
+import { HeaderMain } from '../components/Home/HeaderMain';
+import { BlockMain } from '../components/Home/BlocMain';
+import { Article } from '../components/Home/Article';
 import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
-import Divertissement from '../components/Divertissement';
-import Competence from '../components/Competence';
-import Contact from '../components/Contact';
+import Divertissement from '../components/Home/Divertissement';
+import Competence from '../components/Home/Competence';
+import Contact from '../components/Home/Contact';
 import Fade from "react-reveal"
-import Mail from '../components/Mail';
+import Mail from '../components/Home/Mail';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Certificate } from '../components/Certificate';
+import { Certificate } from '../components/Home/Certificate';
+import {ThreeCertificate} from "../components/Three/Certificate/ThreeCertificate";
 
 const Home = () => {
 
@@ -63,7 +64,6 @@ const Home = () => {
       <Box position="relative" mt={"16"} minH="100vh">
         <Box mb="12">
         </Box>
-
         <Fade>
           <Box position="absolute" zIndex="-9999" width={["100px", "100px", "200px", "300px"]} right="15px" bottom="1px" >
             <Player // set the ref to your class instance
@@ -71,20 +71,18 @@ const Home = () => {
               keepLastFrame
               speed={0.7}
               src="https://assets1.lottiefiles.com/private_files/lf30_CrFtpW.json"
-            /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
             />
           </Box>
         </Fade>
-
         <Container maxW={["100%", "md", "3xl", "6xl"]}>
           <HeaderMain name="A propos" />
           <BlockMain />
         </Container>
       </Box>
-      <Container maxW={["100%", "md", "3xl", "6xl"]}>
+      <Box minH="100vh" h="100vh" w="100%">
         <HeaderMain name="Certification" />
-        <Certificate />
-      </Container>
+        <ThreeCertificate />
+      </Box>
       <Box mt={"48"} py="16" minH="100vh" color="white" position="relative" _before={{ top: "-100px", bottom: "0", ..._before }} _after={{ ..._before, bottom: "-100px", top: "0" }} backgroundAttachment="fixed" bg={bg}>
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <HeaderMain textShadow={false} name="Article" />
@@ -109,7 +107,6 @@ const Home = () => {
           <Competence />
         </Box>
       </Container>
-
       <Box mt="48">
         <HeaderMain name="Me retrouver" />
         <Box bgColor={bg} opacity=".8">

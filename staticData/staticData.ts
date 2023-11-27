@@ -1,4 +1,4 @@
-import { StackType } from "../components/Article";
+import { StackType } from "../components/Home/Article";
 
 type Article = {
     id: number,

@@ -1,6 +1,6 @@
 import React from 'react';
 import glob from 'glob';
-import { BlogPost } from '../../components/BlogPost';
+import { BlogPost } from '../../components/Home/BlogPost';
 import { loadPost } from '../../loader';
 
 function Post(props: any) {

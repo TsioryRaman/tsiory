@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { Badge, Box, Container, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
-import { IconLink, TooltipIconLink } from "./IconLink";
+import { IconLink, TooltipIconLink } from "../IconLink";
 import { X,Menu, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ToggleColorMode } from "./ToggleColorMode";
-import { Intersect } from "./IntersectionObserver";
-import { PersonalFile } from "./personal";
+import { ToggleColorMode } from "../ui/ToggleColorMode";
+import { Intersect } from "../IntersectionObserver";
+import { PersonalFile } from "../ui/personal";
 
 export const Navbar: React.FC = () => {
 

@@ -5,8 +5,8 @@ import '../styles/base.css';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import { ColorModeScript } from "@chakra-ui/color-mode"
 import theme from "../theme"
-import { Footer } from '../components/Footer';
-import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/layout/Footer';
+import { Navbar } from '../components/layout/Navbar';
 const App: React.FC = ({ Component, pageProps }: any) => {
 
 
