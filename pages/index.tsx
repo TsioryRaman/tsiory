@@ -12,7 +12,6 @@ import Contact from '../components/Home/Contact';
 import Fade from "react-reveal"
 import Mail from '../components/Home/Mail';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Certificate } from '../components/Home/Certificate';
 import {ThreeCertificate} from "../components/Three/Certificate/ThreeCertificate";
 
 const Home = () => {
@@ -24,9 +23,8 @@ const Home = () => {
   const bgWave = useColorModeValue('white', '#1a202c')
   const _before = { content: `""`, display: "block", position: "absolute", backgroundColor: bg, zIndex: "-1", right: "0", width: "100%", transform: "skewY(-1.5deg)" }
 
-  const onMouseMove = (event:any) => {
+  const moveMask = (event:any) => {
     event.preventDefault()
-    console.log(window.innerWidth / 2,event.pageX)
     if(mask.current)
     {
       mask.current.style.maskPosition = `${event.clientX - 250}px ${event.clientY - 400}px`
@@ -39,13 +37,11 @@ const Home = () => {
       }
     }
   }
-
-
   const colorBar: string = useColorModeValue("#3182ce", "white")
   return (
     <React.Fragment>
       <ProgressBar color={colorBar} />
-      <Flex  onMouseMove={onMouseMove} zIndex={1} transitionDuration="200ms" id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
+      <Flex  onMouseMove={moveMask} zIndex={1} transitionDuration="200ms" id="nav-home" direction="column" minH='100vh' position="relative" bg={bgHeader}>
         <Image position="absolute" top="0" left="0" right="0" w="100%" h="100%" ref={mask} bottom={["5em","5em","12em","15em"]} transitionDuration="200ms" transitionProperty={["mask-size","-webkit-mask-size"]} transitionTimingFunction="linear" className='header__main'  src='/img/background/code.jpg'>
         </Image>
         <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]} position="relative">
@@ -79,7 +75,7 @@ const Home = () => {
           <BlockMain />
         </Container>
       </Box>
-      <Box minH="100vh" h="100vh" w="100%">
+      <Box minH="100vh" mt="16" h="100vh" w="100%">
         <HeaderMain name="Certification" />
         <ThreeCertificate />
       </Box>
