@@ -79,7 +79,7 @@ const Home = () => {
           <BlockMain />
         </Container>
       </Box>
-      <Box minH="100vh" h="100vh" w="100%">
+      <Box minH="100vh" mt="16" h="100vh" w="100%">
         <HeaderMain name="Certification" />
         <ThreeCertificate />
       </Box>
