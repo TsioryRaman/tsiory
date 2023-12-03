@@ -33,9 +33,8 @@ export const IconLink: React.FC<IconLinkProps> = ({ children, to, label,_fontSiz
                 alignItems='center'>
                 <Box 
                 color={"inherit"}  borderBottom={!isDesktop ? "2px solid transparent" : ""} display={"flex"} _hover={{...hoverMobile}} transitionDuration=".4s" justifyContent={"center"} alignItems="center" flexDirection="row" gap={4} fontSize={_fontSize || 18} as='div'>
-                {children} <Hide above="md">
-                {label}
-                </Hide>
+                {children}
+                {!isDesktop && label}
                 </Box>
             </Flex >
         </Link>

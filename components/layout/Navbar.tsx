@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import { Badge, Box, Container, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react'
 import Fade from "react-reveal";
 import { IconLink, TooltipIconLink } from "../IconLink";
@@ -75,7 +74,6 @@ export const Navbar: React.FC = () => {
                     role="group" gap="4" 
                     id="username"
                     transitionDuration=".4s">
-
                     <Box display="flex" justifyContent="center" position="relative" alignItems="center" color="white" overflow="hidden" px="4" py="1.5"
                         borderColor={"white"}
                         borderStyle="dashed"
@@ -94,7 +92,6 @@ export const Navbar: React.FC = () => {
                     </Hide>
                     <ToggleColorMode />
                     <PersonalFile />
-
                     <Hide above="md">
                         <Box onClick={openMenu} p="3" display="flex" justifyContent="center" alignItems="center" borderRadius={2} cursor="pointer">
                             <Box transitionDuration={".3s"}  transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>
