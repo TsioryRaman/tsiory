@@ -11,7 +11,6 @@ import { Intersect } from "../IntersectionObserver";
 import { PersonalFile } from "../ui/personal";
 
 export const Navbar: React.FC = () => {
-
     const router = useRouter()
     const navbarBg = useColorModeValue("rgba(66,153,255,.3)","rgba(26,54,93,.2)")
     const menuColor = useColorModeValue("#63b3ed", "white")
@@ -30,6 +29,7 @@ export const Navbar: React.FC = () => {
             nameRef.current.style.opacity = (1).toString()
         }
         const position = window.pageYOffset;
+        // console.log("render")
         setScrollPosition(position);
     };
 
