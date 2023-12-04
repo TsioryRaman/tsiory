@@ -7,12 +7,21 @@ import { BlockMain } from '../components/Home/BlocMain';
 import { Article } from '../components/Home/Article';
 import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
 import Divertissement from '../components/Home/Divertissement';
-import Competence from '../components/Home/Competence';
 import Contact from '../components/Home/Contact';
 import Fade from "react-reveal"
 import Mail from '../components/Home/Mail';
 import { Player } from '@lottiefiles/react-lottie-player';
-import {ThreeCertificate} from "../components/Three/Certificate/ThreeCertificate";
+import dynamic from 'next/dynamic';
+import { Loading } from '../components/layout/Loading';
+
+const ThreeCertificate = dynamic(() => import("../components/Three/Certificate/ThreeCertificate"),{
+  ssr:false,
+  loading: () => <Loading />
+})
+const Competence = dynamic(() => import("../components/Home/Competence"),{
+  ssr:false,
+  loading: () => <Loading />
+})
 
 const Home = () => {
 

@@ -18,7 +18,7 @@ type CertificateProps = {
 // UTILITAIRE
 const placeZpoint = (position:number): number => position === 0 ? 3 : position + 2
 
-export const ThreeCertificate = () => {
+const ThreeCertificate = () => {
     const [ratio,setRatio] = useState(0)
     const bgHeader = useColorModeValue('#a5f3fc', '#111827')
     useEffect(() => {
@@ -158,3 +158,5 @@ const BackgroundSceneLoader = React.memo(() => {
         <Environment files="/free_hdr/night.hdr"/>
 </>
 })
+
+export default ThreeCertificate
