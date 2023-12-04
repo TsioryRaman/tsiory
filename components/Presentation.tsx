@@ -3,12 +3,16 @@ import React from 'react';
 import { Box, Button, Flex, Heading, Hide, Text, useColorModeValue } from '@chakra-ui/react';
 import { TypeAnimation } from 'react-type-animation';
 import { Facebook, GitHub, Linkedin } from 'react-feather';
-import { Player } from '@lottiefiles/react-lottie-player';
+import dynamic from 'next/dynamic';
 
 type HeaderType = {
   name: String,
   Sequence?: String[]
 }
+
+const Player =dynamic(() => import("../components/ui/Player"),{
+  ssr:false
+})
 
 export const Presentation: React.FC<HeaderType> = ({ name }) => {
   const bgText = useColorModeValue('white', 'rgb(172, 188, 249)')

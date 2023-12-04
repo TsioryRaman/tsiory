@@ -3,16 +3,13 @@ import ProgressBar from 'react-progressbar-on-scroll'
 import { Presentation } from '../components/Presentation';
 import { Box, Container, Flex, Image, useColorModeValue } from '@chakra-ui/react';
 import { HeaderMain } from '../components/Home/HeaderMain';
-import { BlockMain } from '../components/Home/BlocMain';
 import { Article } from '../components/Home/Article';
 import { Article_1_Stack, Article_2_Stack } from '../staticData/staticData';
-import Divertissement from '../components/Home/Divertissement';
 import Contact from '../components/Home/Contact';
 import Fade from "react-reveal"
-import Mail from '../components/Home/Mail';
-import { Player } from '@lottiefiles/react-lottie-player';
 import dynamic from 'next/dynamic';
 import { Loading } from '../components/layout/Loading';
+import Mail from '../components/Home/Mail';
 
 const ThreeCertificate = dynamic(() => import("../components/Three/Certificate/ThreeCertificate"),{
   ssr:false,
@@ -21,6 +18,17 @@ const ThreeCertificate = dynamic(() => import("../components/Three/Certificate/T
 const Competence = dynamic(() => import("../components/Home/Competence"),{
   ssr:false,
   loading: () => <Loading />
+})
+const Divertissement = dynamic(() => import("../components/Home/Divertissement"),{
+  ssr:false,
+  loading: () => <Loading />
+})
+const BlockMain = dynamic(() => import("../components/Home/BlocMain"),{
+  ssr:false,
+  loading: () => <Loading />
+})
+const Player =dynamic(() => import("../components/ui/Player"),{
+  ssr:false
 })
 
 const Home = () => {

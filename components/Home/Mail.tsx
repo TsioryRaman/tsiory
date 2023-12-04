@@ -1,10 +1,14 @@
 import { Alert, Box, Button, Flex, FormControl, FormLabel, Heading, Input, InputGroup, InputLeftElement, Textarea, useColorModeValue } from "@chakra-ui/react";
 import emailjs from '@emailjs/browser';
-import { Player } from "@lottiefiles/react-lottie-player";
+import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
 import { AtSign, CheckCircle, Loader, MessageCircle, Send, User, X } from "react-feather";
 import Fade from "react-reveal"
 
+const Player =dynamic(() => import("../../components/ui/Player"),{
+    ssr:false
+  })
+  
 const SUCCESS_MESSAGE = "Votre message a bien ete envoye"
 const ERROR_MESSAGE = "Votre message n'a pas pu etre envoyee"
 

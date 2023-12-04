@@ -4,7 +4,7 @@ import { Award } from "react-feather";
 import { ParcourInformation } from "./ParcoursInformation";
 import {Bounce} from "react-reveal"
 
-export const BlockMain: React.FC = () => {
+const BlockMain: React.FC = () => {
 
     const color = useColorModeValue("gray.600","gray.500")
 
@@ -44,3 +44,5 @@ export const BlockMain: React.FC = () => {
         </Box >
     );
 }
+
+export default BlockMain
