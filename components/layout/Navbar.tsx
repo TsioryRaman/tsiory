@@ -223,3 +223,5 @@ let translateBarMobile = (e:any) => {
         active.style.transform = `translateY(${e.offsetTop}px)`
     }
 }
+
+export default Navbar
