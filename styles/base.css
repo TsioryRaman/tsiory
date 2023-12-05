@@ -413,3 +413,7 @@ hr {
   color: #888;
   padding-top: 0px;
 }
+
+.reveal__full .react-reveal {
+  height: 100%;
+}

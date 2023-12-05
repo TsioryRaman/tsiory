@@ -8,6 +8,7 @@ import { useColorModeValue } from "@chakra-ui/react";
 import { Loading } from "../../layout/Loading";
 import { Mesh } from "three";
 import { BackLight } from "./BackLight";
+import Flip from "react-reveal"
 // TYPE
 type CertificateProps = {
     name:string,
@@ -29,16 +30,18 @@ const ThreeCertificate = () => {
     },[])
     return (
     <Suspense fallback={<Loading />}>
-        <Scene>
-            <perspectiveCamera fov={45} position={[0,0,5]} rotation={[0,0,0]} aspect={ratio} near={0.1} far={1000}/>
-            <BackgroundSceneLoader />
-            <color attach="background" args={[bgHeader]} />
-            {/* <OrbitControls enableZoom={false} /> */}
-            <BackLight />
-            {/* <Plane position={[0,-1,0]} args={[100, 100]} rotation={[-Math.PI / 2, 0, 0]}>
-                <meshStandardMaterial color="#808080" roughness={0.1} metalness={0} />
-            </Plane> */}
-        </Scene>
+        <Flip style={{height:"100%"}} bottom>
+            <Scene>
+                <perspectiveCamera fov={45} position={[0,0,5]} rotation={[0,0,0]} aspect={ratio} near={0.1} far={1000}/>
+                <BackgroundSceneLoader />
+                <color attach="background" args={[bgHeader]} />
+                {/* <OrbitControls enableZoom={false} /> */}
+                <BackLight />
+                {/* <Plane position={[0,-1,0]} args={[100, 100]} rotation={[-Math.PI / 2, 0, 0]}>
+                    <meshStandardMaterial color="#808080" roughness={0.1} metalness={0} />
+                </Plane> */}
+            </Scene>
+        </Flip>
     </Suspense>
     )
 }
