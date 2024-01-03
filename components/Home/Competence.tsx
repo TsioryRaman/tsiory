@@ -10,7 +10,7 @@ type CardCompetenceType = {
 const Competence: React.FC = () => {
   return (
     <Flex direction={"row"} justifyContent="space-around" flexWrap={"wrap"}>
-      <Box w={["0","0","40%","40%"]} my="auto">
+      <Box w={["0", "0", "40%", "40%"]} my="auto">
         <Player // set the ref to your class instance
           autoplay={true}
           loop={true}
@@ -22,7 +22,7 @@ const Competence: React.FC = () => {
         ></Player>
       </Box>
       <Flex
-        w={["100%","100%","60%","60%"]}
+        w={["100%", "100%", "60%", "60%"]}
         overflow={"hidden"}
         mt="8"
         gap="8"
@@ -43,15 +43,15 @@ const Competence: React.FC = () => {
           <Fade left duration={800}>
             <CardCompetence
               type="Backend"
-              title="Symfony"
-              logo="https://cdn.worldvectorlogo.com/logos/symfony.svg"
+              title="Spring Boot"
+              logo="https://cdn.worldvectorlogo.com/logos/spring-3.svg"
             />
           </Fade>
           <Fade right duration={800}>
             <CardCompetence
               type="Backend"
-              title={"Php"}
-              logo={"https://www.jasonallen.dev/fancy-index/icons/php.svg"}
+              title={"Java"}
+              logo={"https://cdn.worldvectorlogo.com/logos/java-14.svg"}
             />
           </Fade>
           <Fade top duration={800}>
@@ -72,8 +72,15 @@ const Competence: React.FC = () => {
             />
           </Fade>
         </Flex>
-        <Flex gap="2" flexWrap={"wrap"} alignItems="center" justifyContent={"center"} direction={["row", "row", "row", "column"]} w="1/4">
-        <Fade top duration={800}>
+        <Flex
+          gap="2"
+          flexWrap={"wrap"}
+          alignItems="center"
+          justifyContent={"center"}
+          direction={["row", "row", "row", "column"]}
+          w="1/4"
+        >
+          <Fade top duration={800}>
             <CardCompetence
               type="Environement"
               title={"Windows"}
