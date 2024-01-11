@@ -17,6 +17,7 @@ const App: React.FC = ({children,Component,pageProps}:any) => {
   return <React.Fragment>
     <Head>
       <title>Tsiory Ramanantoanina</title>
+      <meta name="google-site-verification" content="2NKN6Z-FgmAYxrQDJyeTmL4yQXZuXXV73yM0kSDqly8" />
     </Head>
   <ChakraProvider theme={theme}>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
