@@ -8,7 +8,7 @@ import {
   Image
 } from "@chakra-ui/react";
 import Fade from "react-reveal"
-import { HashLoader } from "react-spinners";
+import { PacmanLoader } from "react-spinners";
 
 
 export interface ProjectCardProps {
@@ -38,7 +38,9 @@ export const ProjectCard:React.FC<ProjectCardProps> = ({
                 bg={`linear-gradient(to bottom, ${gradient} 0.3), ${gradient} 0.7))`}
                  roundedBottomRight="0" w="full" zIndex={2}>
             </Box>
-            <Image zIndex={1} _groupHover={{transform:"scale(1.1)"}} alt={img} transitionDuration="300ms" src={img} bgSize="cover" fallback={<HashLoader />}/>
+            <Image zIndex={1} _groupHover={{transform:"scale(1.1)"}} alt={img} transitionDuration="300ms" src={img} bgSize="cover" fallback={<Flex w="full" alignItems="center" justifyContent="center" height="full">
+            <PacmanLoader />
+            </Flex>}/>
         </Box>
       <Box mx="8" zIndex={3} transform="translateY(-50%)" position="relative">
         <Box bottom="0"  px="8" py="6" bg={bg} roundedTop="2xl" zIndex={10} >
