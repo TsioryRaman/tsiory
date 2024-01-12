@@ -1,4 +1,4 @@
-import { Box, Container, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Flex, useColorModeValue } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import Fade from "react-reveal"
 import React from 'react';
@@ -18,6 +18,10 @@ const Competence = dynamic(() => import("../Home/Competence"),{
   loading: () => <Loading />
 })
 const Divertissement = dynamic(() => import("../Home/Divertissement"),{
+  ssr:false,
+  loading: () => <Loading />
+})
+const ProjectCardList = dynamic(() => import("../Home/Project/ProjectCardList"),{
   ssr:false,
   loading: () => <Loading />
 })
@@ -57,6 +61,12 @@ const BaseComponent:React.FC = () => {
           <BlockMain />
         </Container>
       </Box>
+      <Container minH="100vh" maxW={["100%", "md", "3xl", "8xl"]} my="32" overflowX="visible">
+      <HeaderMain name="Projet" mt="8"/>
+        <Flex direction="column" alignItems="center" flexWrap="wrap" gap="32" my="8">
+          <ProjectCardList />
+        </Flex>
+      </Container>
       <Box minH="100vh" className="reveal__full" mt="16" h="100vh" w="100%">
         <HeaderMain name="Certification" />
         <ThreeCertificate />
