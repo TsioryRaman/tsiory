@@ -7,7 +7,7 @@ type CardCompetenceType = {
   logo: string;
   type: string;
 };
-const Competence: React.FC = () => {
+const Skills: React.FC = () => {
   return (
     <Flex direction={"row"} justifyContent="space-around" flexWrap={"wrap"}>
       <Box w={["0", "0", "40%", "40%"]} my="auto">
@@ -207,4 +207,4 @@ const CardCompetence: React.FC<CardCompetenceType> = ({ title, logo }) => {
     </Flex>
   );
 };
-export default Competence;
+export default Skills;

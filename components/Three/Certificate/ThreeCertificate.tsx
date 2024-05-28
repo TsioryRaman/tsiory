@@ -5,7 +5,7 @@ import {Suspense} from "react";
 import {Euler, ThreeEvent, Vector3, useThree} from "@react-three/fiber";
 import gsap from "gsap";
 import { useColorModeValue } from "@chakra-ui/react";
-import { Loading } from "../../layout/Loading";
+import { Loading } from "../../Loading/Loading";
 import { Mesh } from "three";
 import { BackLight } from "./BackLight";
 import Flip from "react-reveal"

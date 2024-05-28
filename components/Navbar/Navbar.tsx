@@ -6,8 +6,8 @@ import { X,Menu, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToggleColorMode } from "../ui/ToggleColorMode";
-import { Intersect } from "../IntersectionObserver";
-import { PersonalFile } from "../ui/personal";
+import { Intersect } from "../../common/IntersectionObserver";
+import Cv from "../CV";
 
 export const Navbar: React.FC = () => {
     const router = useRouter()
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
                          {router.pathname === "/" && <NavigationDesktop />}
                     </Hide>
                     <ToggleColorMode />
-                    <PersonalFile />
+                    <Cv />
                     <Hide above="md">
                         <Box onClick={openMenu} p="3" display="flex" justifyContent="center" alignItems="center" borderRadius={2} cursor="pointer">
                             <Box transitionDuration={".3s"}  transform={!open ? 'rotate(0deg)' : 'rotate(-180deg)'}>

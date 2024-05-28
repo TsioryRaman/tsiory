@@ -1,7 +1,7 @@
 import { Box, Flex,Hide,Tooltip } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useContext } from "react"
-import { SideBarContext } from "./layout/Navbar";
+import { SideBarContext } from "./Navbar/Navbar";
 
 type IconLinkProps = {
     label?: String,

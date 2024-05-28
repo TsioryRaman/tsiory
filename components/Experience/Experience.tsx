@@ -1,10 +1,10 @@
 import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react"
 import { Award } from "react-feather";
-import { ParcourInformation } from "./ParcoursInformation";
+import Cursus from "../Cursus/Cursus";
 import {Bounce} from "react-reveal"
 
-const BlockMain: React.FC = () => {
+const Experience:React.FC = () => {
 
     const color = useColorModeValue("gray.600","gray.500")
 
@@ -19,24 +19,24 @@ const BlockMain: React.FC = () => {
                     Mes parcours
                 </Text>
                 <Bounce left duration={800}>
-                    <ParcourInformation year='2023' content={[{ header: "Master II à l'ISPM", description: `Etude supérieur en 5ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></ParcourInformation>
+                    <Cursus year='2023' content={[{ header: "Master II à l'ISPM", description: `Etude supérieur en 5ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></Cursus>
                 </Bounce>
                 <Bounce left duration={800}>
-                    <ParcourInformation year='2022' content={[{ header: "Master I à l'ISPM", description: `Etude supérieur en 4ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></ParcourInformation>
+                    <Cursus year='2022' content={[{ header: "Master I à l'ISPM", description: `Etude supérieur en 4ème année à l'ISPM`, iconFinal: <span>&#129333;</span> }]} ></Cursus>
                 </Bounce>
                 <Bounce left duration={800}>
-                    <ParcourInformation year='2021'
+                    <Cursus year='2021'
                         content={[{ header: "MasterI à l'ISPM", description: `Etude supérieur en 4ème année à l'ISPM`, iconFinal: <span>&#129333;</span> },
                         { header: "Soutenance 3ème année en Informatique et Telecommuniaction", description: `Présentation de ma soutenance "Transfert de messagerie et de fichier en temps réel"`, iconFinal: <Award display="inline" /> },
                         { header: "Stage au sein de la société Esokia Madagascar", description: "Stage professionelle au sein de la société Esokia en tant que stagiaire Back-end (Symfony/Magento2)" }]} />
-                    <ParcourInformation year='2020' content={[{ header: "Fin d'etude universitaire en 3ème année", description: "Fin du parcous en L3 (licence) pour le parcours Informatique et Télécommunication à l'ISPM" }]} />
+                    <Cursus year='2020' content={[{ header: "Fin d'etude universitaire en 3ème année", description: "Fin du parcous en L3 (licence) pour le parcours Informatique et Télécommunication à l'ISPM" }]} />
                 </Bounce>
                 <Bounce duration={800} left>
-                    <ParcourInformation year='2017' content={[{ header: "Entrer à l'université", description: "Debut de formation en Informatique et Telecommunication.Sans oublier l'apprentissage autodidacte.", iconFinal: <span>&#128521;</span> }]} />
+                    <Cursus year='2017' content={[{ header: "Entrer à l'université", description: "Debut de formation en Informatique et Telecommunication.Sans oublier l'apprentissage autodidacte.", iconFinal: <span>&#128521;</span> }]} />
 
                 </Bounce>
                 <Bounce left duration={800}>
-                    <ParcourInformation year='2016' content={[{ header: "Entrer à l'université(CNTEMAD)", description: "Debut de formation en Telecommunication en licence 1 pour avoir de meilleurs base en Mathematique.", iconFinal: <span>&#128521;</span> },
+                    <Cursus year='2016' content={[{ header: "Entrer à l'université(CNTEMAD)", description: "Debut de formation en Telecommunication en licence 1 pour avoir de meilleurs base en Mathematique.", iconFinal: <span>&#128521;</span> },
                     { header: 'Obtention du baccalaureat', description: "Bachelier en serie scientifique" }]} />
                 </Bounce>
 
@@ -45,4 +45,4 @@ const BlockMain: React.FC = () => {
     );
 }
 
-export default BlockMain
+export default Experience;

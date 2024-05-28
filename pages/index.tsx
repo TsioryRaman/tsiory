@@ -10,10 +10,10 @@ import {
 } from "@chakra-ui/react";
 import Fade from "react-reveal";
 import dynamic from "next/dynamic";
-import { LoadingInitial } from "../components/layout/LoadingInitial";
+import { LoadingInitial } from "../components/Loading/LoadingInitial";
 
-const BaseComponent = dynamic(
-  () => import("../components/Base/BaseComponent"),
+const Main = dynamic(
+  () => import("../components/Home"),
   {
     ssr: false,
     loading: () => {
@@ -117,7 +117,7 @@ const Home = () => {
           </Box>
         </Fade>
       </Flex>
-      <BaseComponent />
+      <Main />
     </React.Fragment>
   );
 };

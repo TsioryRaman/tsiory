@@ -3,11 +3,11 @@ import '../styles/base.css';
 import { Box, ChakraProvider, ColorModeScript, useColorModeValue } from '@chakra-ui/react';
 import theme from '../theme';
 import ProgressBar from 'react-progressbar-on-scroll';
-import { Footer } from '../components/layout/Footer';
+import Footer from '../components/Footer';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-const Navbar = dynamic(() => import('../components/layout/Navbar'),{
+const Navbar = dynamic(() => import('../components/Navbar/Navbar'),{
   ssr: false
 })
 

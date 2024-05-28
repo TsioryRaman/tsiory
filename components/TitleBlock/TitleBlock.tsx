@@ -6,7 +6,7 @@ type HeaderType = {
     textShadow?:boolean
 }
 
-export const HeaderMain: React.FC<HeaderType> = ({ name,textShadow = true }) => {
+const TitleBlock: React.FC<HeaderType> = ({ name,textShadow = true }) => {
 
     const textShadowColor = useColorModeValue("#3182ce","white")
     const getNameId = (name:String) => 'nav-' + (name.split(' ').length >= 2 ? name.split(" ")[1] as string : name as string)
@@ -20,3 +20,5 @@ export const HeaderMain: React.FC<HeaderType> = ({ name,textShadow = true }) => 
         </Box>
     );
 }
+
+export default TitleBlock;

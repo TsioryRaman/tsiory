@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import { AtSign, CheckCircle, Loader, MessageCircle, Send, User, X } from "react-feather";
 import Fade from "react-reveal"
 
-const Player =dynamic(() => import("../../components/ui/Player"),{
+const Player =dynamic(() => import("../ui/Player"),{
     ssr:false
   })
   

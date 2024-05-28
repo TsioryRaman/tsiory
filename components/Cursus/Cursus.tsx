@@ -13,7 +13,7 @@ type ParcourInformationType = {
     content: Array<content>
 }
 
-export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, content }) => {
+const Cursus: React.FC<ParcourInformationType> = ({ year, content }) => {
     return (
         <React.Fragment>
             <Badge display={"flex"} justifyContent="center" alignItems="center" gap="1" flexDirection="row" width="fit-content" mt='4' variant='outline' colorScheme='blue' fontSize='xl' fontWeight='bold' ml={['4', '6', '8', '12']} mb='4'>
@@ -40,3 +40,5 @@ export const ParcourInformation: React.FC<ParcourInformationType> = ({ year, con
         </React.Fragment>
     );
 }
+
+export default Cursus;

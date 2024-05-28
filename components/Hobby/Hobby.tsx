@@ -35,7 +35,7 @@ const Feature: React.FC<Feature> = ({ title, desc, img, children, ...rest }) => 
     )
 }
 
-const Divertissement: React.FC = () => {
+const Hobby: React.FC = () => {
     return (
         <Box>
             <Flex mt={8} gap={[4, 4, 2, 8]} flexDirection={["column", "column", "row", "row"]} >
@@ -103,4 +103,4 @@ const Divertissement: React.FC = () => {
         </Box>
     );
 }
-export default Divertissement
+export default Hobby;
