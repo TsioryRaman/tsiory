@@ -4,8 +4,8 @@ import Fade from "react-reveal";
 import React from "react";
 import { Loading } from "../Loading/Loading";
 import TitleBlock from "../TitleBlock";
-import { Article } from "../Article/Article";
-import Mail from "../Mail/Mail";
+import { Article } from "./Article/Article";
+import Mail from "./Mail";
 import { Article_1_Stack, Article_2_Stack } from "../../staticData/staticData";
 
 const ThreeCertificate = dynamic(
@@ -15,26 +15,23 @@ const ThreeCertificate = dynamic(
     loading: () => <Loading />,
   }
 );
-const Competence = dynamic(() => import("../Skills/Skills"), {
+const Competence = dynamic(() => import("./Skills/Skills"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const Hobby = dynamic(() => import("../Hobby"), {
+const Hobby = dynamic(() => import("./Hobby"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const ProjectCardList = dynamic(
-  () => import("../Project/ProjectCardList"),
-  {
-    ssr: false,
-    loading: () => <Loading />,
-  }
-);
-const Experience = dynamic(() => import("../Experience"), {
+const ProjectCardList = dynamic(() => import("./Project"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const Contact = dynamic(() => import("../Contact/Contact"), {
+const Experience = dynamic(() => import("./Experience"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
+const Contact = dynamic(() => import("./Contact/Contact"), {
   ssr: false,
   loading: () => <Loading />,
 });
@@ -86,7 +83,7 @@ const Home: React.FC = () => {
         my="32"
         overflowX="visible"
       >
-        <TitleBlock name="Projet" mt="8" />
+        <TitleBlock name="Projet" />
         <Flex
           direction="column"
           alignItems="center"

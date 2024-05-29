@@ -56,7 +56,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             roundedBottomRight="0"
             w="full"
             zIndex={2}
-            grou
           ></Box>
           <Image
             zIndex={1}

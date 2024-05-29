@@ -1,6 +1,6 @@
 import { Flex, useColorMode } from "@chakra-ui/react";
 import { Moon, Sun } from "react-feather";
-export const ToggleColorMode = () => {
+const ButtonToggleColorMode = () => {
     const { colorMode, toggleColorMode } = useColorMode();
     const checkBg = !(colorMode === "dark") ? "white" : "rgba(255,255,255,.6)"
     
@@ -10,3 +10,5 @@ export const ToggleColorMode = () => {
         </Flex>
     );
 }
+
+export default ButtonToggleColorMode;

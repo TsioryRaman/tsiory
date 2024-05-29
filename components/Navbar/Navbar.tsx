@@ -5,7 +5,7 @@ import { IconLink, TooltipIconLink } from "../IconLink";
 import { X,Menu, Book, ChevronLeft, Facebook, File, GitHub, Home, Linkedin, Mail, Server, User } from 'react-feather';
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ToggleColorMode } from "../ui/ToggleColorMode";
+import ButtonToggleColorMode from "./ButtonToggleColorMode";
 import { Intersect } from "../../common/IntersectionObserver";
 import Cv from "../CV";
 
@@ -90,7 +90,7 @@ export const Navbar: React.FC = () => {
                     <Hide below="md">
                          {router.pathname === "/" && <NavigationDesktop />}
                     </Hide>
-                    <ToggleColorMode />
+                    <ButtonToggleColorMode />
                     <Cv />
                     <Hide above="md">
                         <Box onClick={openMenu} p="3" display="flex" justifyContent="center" alignItems="center" borderRadius={2} cursor="pointer">
