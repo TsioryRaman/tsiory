@@ -1,3 +1,5 @@
+import { ArticleType, ExperienceType } from "../types";
+
 export const certificates = [
   "/certificate/css certificate.jpg",
   "/certificate/javascript_basic certificate.jpg",
@@ -5,15 +7,6 @@ export const certificates = [
   "/certificate/react_basic certificate.jpg",
   "/certificate/rest_api_intermediate certificate.jpg",
 ];
-
-type ExperienceType = {
-  year: string;
-  content: {
-    header: string;
-    description: string;
-    iconFinal?: string;
-  }[];
-};
 
 export const experience: ExperienceType[] = [
   {
@@ -69,6 +62,32 @@ export const experience: ExperienceType[] = [
         header: "Obtention du baccalaureat",
         description: "Bachelier en serie scientifique",
       },
+    ],
+  },
+];
+
+export const articles: ArticleType[] = [
+  {
+    id: 1,
+    title: "1 - Meilleurs pratique en react",
+    description:
+      "L'écriture de code propre implique d'écrire des codes avec des modèles de conception clairs et simples qui facilitent la lecture, le test et la maintenance pour les humains. Par conséquent, un code propre peut réduire le coût du développement logiciel. Et c'est parce que les principes impliqués dans l'écriture de code propre éliminent les dettes techniques.",
+    stack: [
+      { name: "Main", colorScheme: "gray.200" },
+      { name: "Javascript", colorScheme: "green.400" },
+      { name: "Typescript", colorScheme: "pink" },
+      { name: "React | Nest", colorScheme: "purple" },
+    ],
+  },
+  {
+    id: 2,
+    title: "2 - Choix de la technologie de base",
+    description:
+      "Pour accéder à certains services, communiquer avec d’autres personnes, faire des achats, jouer ou visionner des vidéos, les applications mobiles sont partout ! Dans ce contexte, la création d’appli est devenue incontournable pour de nombreuses entreprises.",
+    stack: [
+      { name: "Technologie", colorScheme: "gray.200" },
+      { name: "Langage", colorScheme: "green.400" },
+      { name: "Framework", colorScheme: "pink" },
     ],
   },
 ];

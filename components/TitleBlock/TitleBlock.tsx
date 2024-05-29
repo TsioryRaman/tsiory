@@ -1,18 +1,14 @@
 import { Box, Divider, Heading, useColorModeValue } from "@chakra-ui/react";
-import React from "react";
+import React, { FC } from "react";
+import { getNameId } from "../../utils";
 
-type HeaderType = {
+type TitleBlockProps = {
   name: string;
   textShadow?: boolean;
 };
 
-const TitleBlock: React.FC<HeaderType> = ({ name, textShadow = true }) => {
+const TitleBlock: FC<TitleBlockProps> = ({ name, textShadow = true }) => {
   const textShadowColor = useColorModeValue("#3182ce", "white");
-  const getNameId = (name: String) =>
-    "nav-" +
-    (name.split(" ").length >= 2
-      ? (name.split(" ")[1] as string)
-      : (name as string));
 
   return (
     <Box id={getNameId(name)}>

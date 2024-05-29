@@ -11,21 +11,19 @@ import {
 import Fade from "react-reveal";
 import dynamic from "next/dynamic";
 import { LoadingInitial } from "../components/Loading/LoadingInitial";
+import { useColorTheme } from "../hooks";
 
-const Main = dynamic(
-  () => import("../components/Home"),
-  {
-    ssr: false,
-    loading: () => {
-      return <LoadingInitial />;
-    },
-  }
-);
+const Main = dynamic(() => import("../components/Home"), {
+  ssr: false,
+  loading: () => {
+    return <LoadingInitial />;
+  },
+});
 
 const Home = () => {
   const mask = useRef<any>();
-  const bgHeader = useColorModeValue("blue.400", "blue.900");
-  const bgWave = useColorModeValue("white", "#1a202c");
+  const bgHeaderColor = useColorTheme();
+  const bgWaveColor = useColorModeValue("white", "#1a202c");
 
   const moveMask = (event: any) => {
     event.preventDefault();
@@ -55,7 +53,7 @@ const Home = () => {
         direction="column"
         minH="100vh"
         position="relative"
-        bg={bgHeader}
+        bg={bgHeaderColor}
       >
         <Image
           position="absolute"
@@ -71,7 +69,7 @@ const Home = () => {
           transitionTimingFunction="linear"
           className="header__main"
           src="/img/background/code.jpg"
-        ></Image>
+        />
         <Container
           my="auto"
           maxW={["100%", "md", "2xl", "6xl"]}
@@ -110,7 +108,7 @@ const Home = () => {
                 d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72v-51l-2 1c-122 29-294 69-680-34C357 38 204 21 0 21v3z"
               />
               <path
-                fill={bgWave}
+                fill={bgWaveColor}
                 d="M1440 229v21H0V24c166 0 358 11 755 133 232 71 390 93 506 93 74 0 131-9 179-21 0-45 0-45 0 0z"
               />
             </svg>

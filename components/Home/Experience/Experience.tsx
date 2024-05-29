@@ -2,7 +2,7 @@ import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 import { Bounce } from "react-reveal";
 import Cursus from "../Cursus";
-import { experience } from "../../../utils/constants";
+import { experience } from "../../../utils/data";
 
 const Experience: React.FC = () => {
   const color = useColorModeValue("gray.600", "gray.500");

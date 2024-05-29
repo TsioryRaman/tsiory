@@ -1,6 +1,6 @@
 import { Flex, Image, Skeleton } from "@chakra-ui/react";
 import React, { useState, useCallback, FC } from "react";
-import { certificates } from "../../../utils/constants";
+import { certificates } from "../../../utils/data";
 
 export const Certificate: FC = () => {
   return (

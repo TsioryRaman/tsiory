@@ -6,7 +6,8 @@ import { Loading } from "../Loading/Loading";
 import TitleBlock from "../TitleBlock";
 import { Article } from "./Article/Article";
 import Mail from "./Mail";
-import { Article_1_Stack, Article_2_Stack } from "../../staticData/staticData";
+import { _before } from "./style";
+import { articles } from "../../utils/data";
 
 const ThreeCertificate = dynamic(
   () => import("../Three/Certificate/ThreeCertificate"),
@@ -40,17 +41,6 @@ const Player = dynamic(() => import("../ui/Player"), {
 });
 const Home: React.FC = () => {
   const bg = useColorModeValue("blue.200", "blue.900");
-
-  const _before = {
-    content: `""`,
-    display: "block",
-    position: "absolute",
-    backgroundColor: bg,
-    zIndex: "-1",
-    right: "0",
-    width: "100%",
-    transform: "skewY(-1.5deg)",
-  };
 
   return (
     <React.Fragment>
@@ -104,29 +94,34 @@ const Home: React.FC = () => {
         minH="100vh"
         color="white"
         position="relative"
-        _before={{ top: "-100px", bottom: "0", ..._before }}
-        _after={{ ..._before, bottom: "-100px", top: "0" }}
+        _before={{
+          top: "-100px",
+          bottom: "0",
+          ..._before,
+          backgroundColor: bg,
+        }}
+        _after={{ ..._before, bottom: "-100px", top: "0", backgroundColor: bg }}
         backgroundAttachment="fixed"
         bg={bg}
       >
         <Container maxW={["sm", "md", "3xl", "6xl"]}>
           <TitleBlock textShadow={false} name="Article" />
-          <Fade distance="100px" left duration={800}>
-            <Article
-              id={1}
-              title={Article_1_Stack.title}
-              description={Article_1_Stack.description}
-              stack={Article_1_Stack.stack}
-            />
-          </Fade>
-          <Fade distance="100px" right duration={800}>
-            <Article
-              id={2}
-              title={Article_2_Stack.title}
-              description={Article_2_Stack.description}
-              stack={Article_2_Stack.stack}
-            />
-          </Fade>
+          {articles.map((article, index) => (
+            <Fade
+              distance="100px"
+              right={index % 2}
+              left={!(index % 2)}
+              key={article.id}
+              duration={800}
+            >
+              <Article
+                id={article.id}
+                title={article.title}
+                description={article.description}
+                stack={article.stack}
+              />
+            </Fade>
+          ))}
         </Container>
       </Box>
 
