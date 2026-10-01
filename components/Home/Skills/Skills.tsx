@@ -43,22 +43,22 @@ const Skills: React.FC = () => {
           <Fade left duration={800}>
             <CardCompetence
               type="Backend"
-              title="Spring Boot"
-              logo="https://cdn.worldvectorlogo.com/logos/spring-3.svg"
+              title=".Net / .Net Core"
+              logo="/img/net-core.svg"
             />
           </Fade>
           <Fade right duration={800}>
             <CardCompetence
               type="Backend"
-              title={"Java"}
-              logo={"https://cdn.worldvectorlogo.com/logos/java-14.svg"}
+              title={".Net"}
+              logo="/img/netframework-1.svg"
             />
           </Fade>
           <Fade top duration={800}>
             <CardCompetence
               type="Environement"
               title={"Reactjs"}
-              logo={"https://cdn.worldvectorlogo.com/logos/react-2.svg"}
+              logo={"/img/react-academy.svg"}
             />
           </Fade>
 
