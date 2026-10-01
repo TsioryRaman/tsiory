@@ -14,8 +14,8 @@ import { Facebook, GitHub, Linkedin } from "react-feather";
 import dynamic from "next/dynamic";
 
 type HeaderType = {
-  name: String;
-  Sequence?: String[];
+  name: string;
+  Sequence?: string[];
 };
 
 const Player = dynamic(() => import("../components/ui/Player"), {
@@ -30,7 +30,7 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
       zIndex={1000}
       justifyContent="center"
       alignItems="center"
-      direction={"row"}
+      direction="row"
     >
       <Flex
         color="white"
@@ -42,16 +42,16 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
         <Heading
           as="h1"
           w="full"
-          fontSize={["2xl", "3xl", "6xl", "6xl"]}
+          fontSize={["2xl", "3xl", "6xl", "6xl"] as any}
           fontWeight={700}
-          fontFamily={"Raleway, sans-serif"}
+          fontFamily="Raleway, sans-serif"
         >
           {name}
         </Heading>
         <Text
           bgGradient={`linear(to-r, ${bgText}, white)`}
           bgClip="text"
-          fontSize={["2xl", "2.5xl", "3xl", "3xl"]}
+          fontSize={["2xl", "2.5xl", "3xl", "3xl"] as any}
           fontWeight="extrabold"
           py="0.5"
           w="full"
@@ -73,15 +73,15 @@ export const Presentation: React.FC<HeaderType> = ({ name }) => {
             style={{ color: "white", textShadow: "3px 1px 15px" }}
           />
           <span style={{ display: "block" }}>
-            Spring Boot/React.(js/ts)/Next.(js/ts) | Typescript
+            .Net / .Net Core/React.(js/ts)/Next.(js/ts) | Typescript
           </span>
         </Text>
         <Flex
           w="full"
-          direction={["row"]}
+          direction="row"
           flexWrap="wrap"
           mt="16"
-          gap={["2", "2", "4", "6"]}
+          gap={["2", "2", "4", "6"] as any}
         >
           <a
             href="https://web.facebook.com/RamanantoaninaTsiory/"
