@@ -1,5 +1,3 @@
-@import url("https://fonts.cdnfonts.com/css/seven-segment");
-
 .header__main {
   mask-image: url("/img/background/masks.png");
   mask-size: 0;
@@ -7,8 +5,24 @@
   mask-repeat: no-repeat;
 }
 
-.seven {
-  font-family: "Seven Segment";
+:root {
+  --page: #faf9f6;
+  --surface: #f3f1ea;
+  --ink: #141413;
+  --muted: #6b6862;
+  --rule: #e2dfd8;
+  --accent: #1d4ed8;
+}
+
+html[data-theme="dark"],
+html.chakra-ui-dark,
+body.chakra-ui-dark {
+  --page: #121211;
+  --surface: #1a1a18;
+  --ink: #edeae3;
+  --muted: #9a968c;
+  --rule: #2c2b27;
+  --accent: #8aa6ff;
 }
 
 /* reset */
@@ -31,11 +45,10 @@ body,
   height: 100%;
 }
 
-/* font sizing */
 body {
-  color: #333;
+  color: var(--ink);
+  background-color: var(--page);
   font-size: 100%;
-  font-family: Helvetica, sans-serif;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -43,13 +56,20 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--page);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: #d5e3ec;
+  background: var(--rule);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
 h1,
@@ -58,8 +78,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  line-height: 1.6;
+  font-weight: 500;
+  line-height: 1.15;
   margin-bottom: 0.5em;
   margin-top: 1em;
   text-align: left;
@@ -93,27 +113,28 @@ li {
 
 p {
   margin: 0;
-  padding: 1em 0px;
+  padding: 0.6em 0;
 }
 
 blockquote {
-  border-left: 5px solid turquoise;
-  padding: 15px 0px 15px 15px;
-  background-color: #f4f4f4;
-  border-radius: 4px;
+  border-left: 2px solid var(--accent);
+  padding: 12px 0 12px 18px;
+  background-color: var(--surface);
   width: 100%;
-  max-width: 550px;
-  margin: 0.4em 0px;
+  max-width: 620px;
+  margin: 1em 0;
 }
 
 blockquote p {
-  padding: 0px;
+  padding: 0;
 }
 
 code {
-  background-color: #00000010;
-  padding: 3px 3px;
+  background-color: var(--surface);
+  padding: 2px 5px;
   border-radius: 2px;
+  font-family: "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
 }
 
 code ~ code {
@@ -121,27 +142,35 @@ code ~ code {
 }
 
 pre {
-  margin: 20px 0px !important;
+  margin: 20px 0 !important;
 }
 
 ol pre,
 ol p {
-  margin: 0px 0px !important;
+  margin: 0 !important;
 }
 
 a {
-  color: turquoise;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 a:hover {
-  color: #c00;
+  text-decoration-thickness: 2px;
 }
 
 a:visited {
-  color: purple;
+  color: var(--accent);
 }
 
-/* page sections */
+::selection {
+  background: var(--accent);
+  color: #faf9f6;
+}
+
+/* page sections (blog routes) */
 .container {
   display: flex;
   flex-direction: column;
@@ -155,7 +184,7 @@ a:visited {
 }
 
 .content > * {
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 
 .content img {
@@ -169,13 +198,13 @@ a:visited {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: turquoise;
-  color: white;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
 }
 
 .header a,
 .footer a {
-  color: #fff;
+  color: var(--ink);
   padding: 15px;
   text-decoration: none;
 }
@@ -194,7 +223,7 @@ a:visited {
 }
 
 .section .narrow {
-  max-width: 550px;
+  max-width: 620px;
 }
 
 .section h1,
@@ -205,18 +234,20 @@ a:visited {
 .section h6,
 .section p {
   width: 100%;
-  max-width: 550px;
+  max-width: 620px;
 }
 
 .medium-wide {
-  max-width: 550px;
+  max-width: 620px;
 }
 
 hr {
   height: 1px;
-  color: #eee;
-  opacity: 0.2;
-  margin: 15px 0px;
+  color: var(--rule);
+  opacity: 1;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 15px 0;
 }
 
 /* utilities */
@@ -225,7 +256,7 @@ hr {
 }
 
 .alternate {
-  background-color: #eee;
+  background-color: var(--surface);
 }
 
 .flex-spacer {
@@ -234,29 +265,29 @@ hr {
 
 /* page areas */
 .introduction {
-  max-width: 550px;
+  max-width: 620px;
   margin: auto;
 }
 
 .fork-button {
-  background-color: turquoise;
-  border-radius: 10px;
+  background-color: var(--ink);
+  border-radius: 2px;
   border: none;
-  color: white;
+  color: var(--page);
   font-size: 14pt;
   padding: 10px 30px;
   cursor: pointer;
 }
 
 .fork-button:hover {
-  background-color: mediumturquoise;
+  background-color: var(--accent);
 }
 
 .author-container {
   width: 100%;
-  max-width: 550px;
-  margin: 0px;
-  padding: 0px;
+  max-width: 620px;
+  margin: 0;
+  padding: 0;
 }
 
 .author {
@@ -267,9 +298,9 @@ hr {
 }
 
 .author-image {
-  border-radius: 35px;
+  border-radius: 2px;
   height: 70px;
-  margin: 0px 10px 0px 0px;
+  margin: 0 10px 0 0;
   width: 70px;
 }
 
@@ -303,22 +334,22 @@ hr {
 
 .blog-post-title {
   width: 100%;
-  max-width: 550px;
+  max-width: 620px;
   margin-bottom: 15px;
   padding: 40px 10px;
 }
 
 .blog-post-title h1 {
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin: 3px 0px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 3px 0;
 }
 
 .blog-post-title h2 {
-  margin: 0px;
-  padding: 3px 0px;
-  color: #808080;
-  letter-spacing: 0px;
+  margin: 0;
+  padding: 3px 0;
+  color: var(--muted);
+  letter-spacing: 0;
   line-height: 1.2;
   font-size: 13pt;
   font-weight: normal;
@@ -326,16 +357,16 @@ hr {
 
 .blog-post-content {
   width: 100%;
-  max-width: 550px;
-  padding: 0px 10px;
+  max-width: 620px;
+  padding: 0 10px;
 }
 
 .follow-button {
   display: inline-block;
-  border: 1px solid turquoise;
-  border-radius: 4px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
   padding: 2px 10px;
-  color: turquoise;
+  color: var(--accent);
   font-size: 10pt;
   margin-bottom: 2px;
   margin-left: 4px;
@@ -344,11 +375,12 @@ hr {
 .tag {
   display: inline-block;
   padding: 3px 12px;
-  border-radius: 20px;
-  background-color: #dddddd;
-  color: #333333;
+  border-radius: 2px;
+  background-color: var(--surface);
+  color: var(--muted);
   margin-right: 7px;
-  box-shadow: 0px 1px 1px #00000030;
+  font-family: "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.8em;
 }
 
 .post-card-container {
@@ -363,7 +395,7 @@ hr {
 .post-card {
   text-decoration: inherit;
   color: inherit;
-  margin: 0px;
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -371,12 +403,11 @@ hr {
 }
 
 .post-card-inner {
-  opacity: 0.92;
-  box-shadow: 0px 2px 10px #00000040;
+  border: 1px solid var(--rule);
   width: 100%;
   max-width: 500px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -393,26 +424,71 @@ hr {
   padding: 15px 10px;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #00000020;
+  border-top: 1px solid var(--rule);
 }
 
 .post-card-title h2 {
-  margin: 0px;
+  margin: 0;
   font-size: 1.4em;
   line-height: 1.2;
-  letter-spacing: -1px;
+  letter-spacing: -0.01em;
   text-align: center;
 }
 
 .post-card-title p {
   text-align: center;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-size: 12pt;
-  color: #888;
-  padding-top: 0px;
+  color: var(--muted);
 }
 
-.reveal__full .react-reveal {
-  height: 100%;
+/* navbar CV link */
+.cv-link {
+  display: inline-block;
+  font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 5px 8px;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.cv-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* project thumbnails */
+.project-thumb {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 400ms ease;
+}
+
+.project-thumb:hover {
+  filter: grayscale(0%);
+}
+
+@media (min-width: 30em) {
+  .project-thumb {
+    height: 200px;
+  }
+}
+
+@media (min-width: 48em) {
+  .project-thumb {
+    height: 180px;
+  }
+}
+
+@media (min-width: 62em) {
+  .project-thumb {
+    height: 190px;
+  }
 }

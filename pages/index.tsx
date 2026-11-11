@@ -1,29 +1,10 @@
 import React, { useRef } from "react";
-import ProgressBar from "react-progressbar-on-scroll";
+import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
 import { Presentation } from "../components/Presentation";
-import {
-  Box,
-  Container,
-  Flex,
-  Image,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import Fade from "react-reveal";
-import dynamic from "next/dynamic";
-import { LoadingInitial } from "../components/Loading/LoadingInitial";
-import { useColorTheme } from "../hooks";
-
-const Main = dynamic(() => import("../components/Home"), {
-  ssr: false,
-  loading: () => {
-    return <LoadingInitial />;
-  },
-});
+import Main from "../components/Home";
 
 const Home = () => {
   const mask = useRef<any>();
-  const bgHeaderColor = useColorTheme();
-  const bgWaveColor = useColorModeValue("white", "#1a202c");
 
   const moveMask = (event: any) => {
     event.preventDefault();
@@ -41,10 +22,9 @@ const Home = () => {
       }
     }
   };
-  const colorBar: string = useColorModeValue("#3182ce", "white");
+
   return (
     <React.Fragment>
-      <ProgressBar color={colorBar} />
       <Flex
         onMouseMove={moveMask}
         zIndex={1}
@@ -53,7 +33,8 @@ const Home = () => {
         direction="column"
         minH="100vh"
         position="relative"
-        bg={bgHeaderColor}
+        bg="#1D4ED8"
+        color="#FAF9F6"
       >
         <Image
           position="absolute"
@@ -74,46 +55,55 @@ const Home = () => {
           my="auto"
           maxW={["100%", "md", "2xl", "6xl"]}
           position="relative"
+          pt={["28", "28", "24", "24"]}
         >
-          <Presentation name="Ramanantoanina Safidy Tsioriniaina" />
+          <Presentation name="Safidy Tsioriniaina Ramanantoanina" />
         </Container>
-        <Fade bottom duration={800}>
-          <Box
-            position="absolute"
-            left="0"
-            height={["5em", "5em", "12em", "15em"]}
-            width="100%"
-            bottom="0"
-            transform="rotateY(180deg)"
+        <Box
+          position="relative"
+          zIndex={1}
+          borderTopWidth="1px"
+          borderColor="rgba(250, 249, 246, 0.3)"
+        >
+          <Flex
+            maxW={["100%", "md", "2xl", "6xl"]}
+            mx="auto"
+            px={["6", "6", "8", "8"]}
+            py="5"
+            gap={["4", "6", "8", "10"]}
+            alignItems="center"
+            flexWrap="wrap"
+            fontFamily="mono"
+            fontSize="10px"
+            letterSpacing="0.12em"
+            textTransform="uppercase"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="waves"
-              viewBox="0 0 1440 250"
-              height="100%"
-              width="100%"
-              style={{ isolation: "isolate" }}
-              preserveAspectRatio="none"
-            >
-              <path
-                fill="#FFF"
-                style={{ animationDelay: ".2s" }}
-                fillOpacity=".1"
-                d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72V80c-138 38-284 102-718 27C314 36 150 16 1 16l-1 8z"
-              />
-              <path
-                fill="#FFF"
-                style={{ animationDelay: ".4s" }}
-                fillOpacity=".1"
-                d="M0 24c166 0 358 11 755 133 382 116 563 101 685 72v-51l-2 1c-122 29-294 69-680-34C357 38 204 21 0 21v3z"
-              />
-              <path
-                fill={bgWaveColor}
-                d="M1440 229v21H0V24c166 0 358 11 755 133 232 71 390 93 506 93 74 0 131-9 179-21 0-45 0-45 0 0z"
-              />
-            </svg>
-          </Box>
-        </Fade>
+            <Text color="rgba(250, 249, 246, 0.75)">
+              Disponible pour de nouveaux projets
+            </Text>
+            <Text color="rgba(250, 249, 246, 0.55)" display={["none", "block", "block", "block"]}>
+              Antananarivo, Madagascar
+            </Text>
+            <Flex ml={["0", "auto", "auto", "auto"]} gap="5">
+              <a
+                href="https://github.com/TsioryRaman"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#FAF9F6", textDecoration: "none" }}
+              >
+                Github
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tsiory-ramanantoanina/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#FAF9F6", textDecoration: "none" }}
+              >
+                Linkedin
+              </a>
+            </Flex>
+          </Flex>
+        </Box>
       </Flex>
       <Main />
     </React.Fragment>

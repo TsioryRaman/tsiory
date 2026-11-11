@@ -11,15 +11,15 @@ import Link from "next/link";
 import { ChevronRight } from "react-feather";
 
 export type StackType = {
-  name: String;
+  name: string;
   colorScheme: string;
 };
 
 type ArticleType = {
-  title: String;
+  title: string;
   stack?: Array<StackType>;
-  description: String;
-  id: Number;
+  description: string;
+  id: number;
 };
 
 export const Article: React.FC<ArticleType> = ({

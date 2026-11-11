@@ -33,3 +33,5 @@ firebase.json
 .nvmrc
 .vscode
 .idea
+# typescript
+*.tsbuildinfo

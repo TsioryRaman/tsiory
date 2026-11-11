@@ -1,105 +1,131 @@
-import {
-  Box,
-  Text,
-  Heading,
-  useColorModeValue,
-  Badge,
-  Flex,
-  Image,
-} from "@chakra-ui/react";
-import Fade from "react-reveal";
-import { PacmanLoader } from "react-spinners";
+import React from "react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 export interface ProjectCardProps {
-  img: string;
-  stack: Array<string>;
   title: string;
   description: string;
+  stack: Array<string>;
+  details?: Array<string>;
+  context?: string;
+  img?: string;
+  index?: number;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
-  img,
-  stack,
   title,
   description,
+  stack,
+  details,
+  context,
+  img,
+  index = 0,
 }: ProjectCardProps) => {
-  const bg = useColorModeValue("blue.400", "blue.900");
-  const cardBgFooter = useColorModeValue("gray.100", "gray.900");
-  const gradient = useColorModeValue("rgba(0, 0, 0,", "rgba(26, 54, 93,");
-  const text = useColorModeValue("gray.100", "white");
-
   return (
-    <Fade distance="100px" bottom duration={800}>
-      <Box
-        shadow="2xl"
-        position="relative"
-        rounded="2xl"
-        role="group"
-        transitionDuration="300"
-        _hover={{ overflow: "visible" }}
-        w={["full", "full", "700px", "700px"]}
-        height="400px"
+    <Box
+      as="article"
+      display="flex"
+      flexDirection={{ base: "column", md: "row" }}
+      gap={{ base: "5", sm: "6", md: "10", lg: "12" }}
+      alignItems="flex-start"
+      borderTopWidth="1px"
+      borderColor="rule"
+      py={{ base: "6", sm: "6", md: "8", lg: "10" }}
+    >
+      <Text
+        fontFamily="mono"
+        fontSize="11px"
+        color="accent"
+        minW="40px"
+        pt="1"
       >
-        <Box overflow="hidden" position="relative" h="full" rounded="2xl">
-          <Box
-            h="full"
-            position="absolute"
-            height="full"
-            width="full"
-            top="0"
-            left="0"
-            transitionDuration="300ms"
-            bg={`linear-gradient(to bottom, ${gradient} 0.3), ${gradient} 0.7))`}
-            _groupHover={{
-              bg: `linear-gradient(to bottom, ${gradient} 0.1), ${gradient} 0.4))`,
-            }}
-            roundedBottomRight="0"
-            w="full"
-            zIndex={2}
-          ></Box>
-          <Image
-            zIndex={1}
-            _groupHover={{ transform: "scale(1.1)" }}
-            alt={img}
-            transitionDuration="300ms"
-            src={img}
-            bgSize="cover"
-            fallback={
-              <Flex
-                w="full"
-                alignItems="center"
-                justifyContent="center"
-                height="full"
-              >
-                <PacmanLoader />
-              </Flex>
-            }
-          />
-        </Box>
-        <Box mx="8" zIndex={3} transform="translateY(-50%)" position="relative">
-          <Box bottom="0" px="8" py="6" bg={bg} roundedTop="2xl" zIndex={10}>
-            <Heading color={text} as="h2" size="lg">
-              {title}
-            </Heading>
-            <Flex wrap="wrap" mt="4" gap="2">
-              {stack.map((s) => (
-                <Badge key={s}>{s}</Badge>
-              ))}
-            </Flex>
-          </Box>
-          <Box
-            roundedBottom="2xl"
-            px="8"
-            bg={cardBgFooter}
-            zIndex={10}
-            transitionDuration="300"
-            transitionDelay="300"
-            _groupHover={{ opacity: "1" }}
+        {String(index + 1).padStart(2, "0")}
+      </Text>
+
+      <Box flex="1">
+        {context && (
+          <Text
+            fontFamily="mono"
+            fontSize="10px"
+            letterSpacing="0.12em"
+            textTransform="uppercase"
+            color="accent"
+            mb="3"
           >
-            <Text>{description}</Text>
+            {context}
+          </Text>
+        )}
+
+        <Heading
+          as="h3"
+          fontFamily="heading"
+          fontWeight="500"
+          fontSize={{ base: "2xl", md: "3xl" }}
+          lineHeight="1.1"
+          color="ink"
+          m="0"
+          letterSpacing="-0.01em"
+        >
+          {title}
+        </Heading>
+
+        <Text mt="3" fontSize="sm" lineHeight="1.7" color="muted" maxW="xl">
+          {description}
+        </Text>
+
+        {details && details.length > 0 && (
+          <Box as="ul" mt="4" pl="0" listStyleType="none">
+            {details.map((detail) => (
+              <Text
+                as="li"
+                key={detail}
+                display="flex"
+                gap="3"
+                fontSize="sm"
+                lineHeight="1.7"
+                color="muted"
+                mb="2"
+              >
+                <Box as="span" color="accent" aria-hidden="true">
+                  —
+                </Box>
+                <Box as="span">{detail}</Box>
+              </Text>
+            ))}
           </Box>
+        )}
+
+        <Box display="flex" mt="5" gap="2" flexWrap="wrap">
+          {stack.map((s) => (
+            <Text
+              key={s}
+              fontFamily="mono"
+              fontSize="10px"
+              letterSpacing="0.06em"
+              textTransform="uppercase"
+              color="muted"
+              borderWidth="1px"
+              borderColor="rule"
+              px="2"
+              py="1"
+            >
+              {s}
+            </Text>
+          ))}
         </Box>
       </Box>
-    </Fade>
+
+      {img && (
+        <Box
+          w={{ base: "100%", md: "260px", lg: "300px" }}
+          flexShrink={0}
+          overflow="hidden"
+          borderWidth="1px"
+          borderColor="rule"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="project-thumb" src={img} alt={title} loading="lazy" />
+        </Box>
+      )}
+    </Box>
   );
 };

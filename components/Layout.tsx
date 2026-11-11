@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-export const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <React.Fragment>
             <Navbar />

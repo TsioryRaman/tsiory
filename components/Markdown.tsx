@@ -1,18 +1,10 @@
-import React from 'react';
-import Code from './Code';
-import ReactMarkdown from 'react-markdown/with-html';
+import React from "react";
+import ReactMarkdown from "react-markdown";
 
-export const Markdown: React.FC<{ source: string }> = (props) => {
+export const Markdown: React.FC<{ source: string }> = ({ source }) => {
   return (
-    <div style={{ width: '100%' }} className="devii-markdown">
-      <ReactMarkdown
-        key="content"
-        source={props.source}
-        renderers={{
-          code: Code,
-        }}
-        escapeHtml={false}
-      />
+    <div style={{ width: "100%" }} className="devii-markdown">
+      <ReactMarkdown>{source}</ReactMarkdown>
     </div>
   );
 };

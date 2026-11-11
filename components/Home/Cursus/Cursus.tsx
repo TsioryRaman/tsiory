@@ -1,71 +1,56 @@
-import { Badge, Box, Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { Clock, Compass } from "react-feather";
 
 type content = {
-  header: String;
-  description: String;
+  header: string;
+  description: string;
   iconFinal?: string;
 };
 
 type ParcourInformationType = {
-  year: String;
+  year: string;
   content: Array<content>;
 };
 
 const Cursus: React.FC<ParcourInformationType> = ({ year, content }) => {
   return (
-    <React.Fragment>
-      <Badge
-        display={"flex"}
-        justifyContent="center"
-        alignItems="center"
-        gap="1"
-        flexDirection="row"
-        width="fit-content"
-        mt="4"
-        variant="outline"
-        colorScheme="blue"
-        fontSize="xl"
-        fontWeight="bold"
-        ml={["4", "6", "8", "12"]}
-        mb="4"
+    <Flex
+      as="section"
+      direction={["column", "column", "row", "row"]}
+      borderTopWidth="1px"
+      borderColor="rule"
+      py={["5", "6", "7", "8"]}
+      gap={["3", "3", "8", "12"]}
+    >
+      <Text
+        fontFamily="mono"
+        fontSize="11px"
+        letterSpacing="0.1em"
+        color="accent"
+        minW="72px"
+        pt="1"
       >
-        <Clock size="17px" /> - {year}
-      </Badge>
+        {year}
+      </Text>
 
-      {content.map((c, index) => (
-        <Flex
-          _hover={{ transform: "translateX(10px)" }}
-          transitionDuration="300ms"
-          key={index}
-          ml={["6", "8", "12", "16"]}
-          mt="4"
-          direction="row"
-          gap="2"
-        >
-          <Flex as="div" justify="center" alignItems="center">
-            <Compass color="#4299e1" />
-          </Flex>
+      <Flex direction="column" gap="6" flex="1">
+        {content.map((c, index) => (
           <Box key={index}>
-            <Heading
-              display={"flex"}
-              flexDirection="row"
-              fontWeight="bold"
-              as="h2"
-              fontSize="xl"
+            <Text
+              fontFamily="heading"
+              fontSize={["lg", "xl", "xl", "xl"]}
+              lineHeight="1.3"
+              color="ink"
             >
               {c.header}
-            </Heading>
-            <Text color="gray.600" as="p" p="0" m="0">
+            </Text>
+            <Text mt="1" fontSize="sm" lineHeight="1.7" color="muted">
               {c.description}
             </Text>
           </Box>
-        </Flex>
-      ))}
-
-      <Divider mb="4" mt="2" />
-    </React.Fragment>
+        ))}
+      </Flex>
+    </Flex>
   );
 };
 

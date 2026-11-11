@@ -1,131 +1,93 @@
 import React from "react";
-
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Hide,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { TypeAnimation } from "react-type-animation";
-import { Facebook, GitHub, Linkedin } from "react-feather";
-import dynamic from "next/dynamic";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
 type HeaderType = {
   name: string;
-  Sequence?: string[];
 };
 
-const Player = dynamic(() => import("../components/ui/Player"), {
-  ssr: false,
-});
+const CREAM = "#FAF9F6";
+const SOFT = "rgba(250, 249, 246, 0.78)";
+const FAINT = "rgba(250, 249, 246, 0.5)";
+
+const linkStyle: React.CSSProperties = {
+  color: CREAM,
+  textDecoration: "underline",
+  textUnderlineOffset: "5px",
+};
 
 export const Presentation: React.FC<HeaderType> = ({ name }) => {
-  const bgText = useColorModeValue("white", "rgb(172, 188, 249)");
+  const words = name.split(" ");
+  const last = words.pop();
+  const first = words.join(" ");
 
   return (
-    <Flex
-      zIndex={1000}
-      justifyContent="center"
-      alignItems="center"
-      direction="row"
-    >
-      <Flex
-        color="white"
-        id="home"
-        alignItems="center"
-        direction={"column"}
-        justify="center"
+    <Flex direction="column" color={CREAM}>
+      <Text
+        fontFamily="mono"
+        fontSize="10px"
+        letterSpacing="0.2em"
+        textTransform="uppercase"
+        color={FAINT}
+        mb="8"
       >
-        <Heading
-          as="h1"
-          w="full"
-          fontSize={["2xl", "3xl", "6xl", "6xl"] as any}
-          fontWeight={700}
-          fontFamily="Raleway, sans-serif"
-        >
-          {name}
-        </Heading>
-        <Text
-          bgGradient={`linear(to-r, ${bgText}, white)`}
-          bgClip="text"
-          fontSize={["2xl", "2.5xl", "3xl", "3xl"] as any}
-          fontWeight="extrabold"
-          py="0.5"
-          w="full"
-        >
-          Je suis{" "}
-          <TypeAnimation
-            sequence={[
-              "Developpeur", // Types 'One'
-              2000, // Waits 1s
-              "Freelancer", // Deletes 'One' and types 'Two'
-              2000, // Waits 2s
-              () => {
-                // Place optional callbacks anywhere in the array
-              },
-            ]}
-            wrapper="span"
-            cursor={true}
-            repeat={Infinity}
-            style={{ color: "white", textShadow: "3px 1px 15px" }}
-          />
-          <span style={{ display: "block" }}>
-            .Net / .Net Core/React.(js/ts)/Next.(js/ts) | Typescript
-          </span>
-        </Text>
-        <Flex
-          w="full"
-          direction="row"
-          flexWrap="wrap"
-          mt="16"
-          gap={["2", "2", "4", "6"] as any}
-        >
-          <a
-            href="https://web.facebook.com/RamanantoaninaTsiory/"
-            target="_blank"
-          >
-            <Button colorScheme={"facebook"}>
-              Facebook
-              <Facebook size="17px" />
-            </Button>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/tsiory-ramanantoanina/"
-            target="_blank"
-          >
-            <Button colorScheme={"linkedin"}>
-              <Text mr="2">Linkedin</Text>
-              <Linkedin size="17px" />
-            </Button>
-          </a>
-          <a href="https://github.com/TsioryRaman" target="_blank">
-            <Button
-              variant="outline"
-              colorScheme={"blackAlpha"}
-              color="whiteAlpha.900"
-            >
-              <Text mr="2">Github</Text>
-              <GitHub size="17px" />
-            </Button>
-          </a>
-        </Flex>
-      </Flex>
-      <Hide below="md">
-        <Box my="auto" w="400px" position="relative">
-          <Box position="absolute" zIndex={10000} bottom="-400px">
-            <Player // set the ref to your class instance
-              autoplay={true}
-              loop={false}
-              speed={0.7}
-              src="https://assets1.lottiefiles.com/packages/lf20_V9t630.json"
-              /* src="https://assets8.lottiefiles.com/packages/lf20_mbrocy0r.json" */
-            />
-          </Box>
+        01 — Développeur fullstack
+      </Text>
+
+      <Heading
+        as="h1"
+        fontFamily="heading"
+        fontWeight="500"
+        fontSize={["3xl", "4xl", "6xl", "7xl"]}
+        lineHeight="0.98"
+        letterSpacing="-0.03em"
+        color={CREAM}
+        m="0"
+      >
+        {first}
+        <Box as="span" display="block">
+          {last}
         </Box>
-      </Hide>
+      </Heading>
+
+      <Text
+        mt="8"
+        fontFamily="mono"
+        fontSize={["xs", "sm", "sm", "md"]}
+        letterSpacing="0.02em"
+        color={CREAM}
+      >
+        .NET Framework <Box as="span" color={FAINT}>·</Box> Java Spring Boot{" "}
+        <Box as="span" color={FAINT}>·</Box> React / Next.js
+      </Text>
+
+      <Text
+        mt="6"
+        maxW="lg"
+        fontSize={["sm", "md", "md", "lg"]}
+        lineHeight="1.6"
+        color={SOFT}
+      >
+        Je conçois et je maintiens des applications de bout en bout : API et
+        logique métier côté back-end, interfaces React côté front-end.
+      </Text>
+
+      <Flex
+        mt="10"
+        gap="8"
+        alignItems="center"
+        flexWrap="wrap"
+        fontFamily="mono"
+        fontSize="11px"
+        letterSpacing="0.12em"
+        textTransform="uppercase"
+      >
+        <a href="/CV%20Tsiory.pdf" download style={linkStyle}>
+          CV ↓
+        </a>
+        <a href="mailto:rtsiory4@gmail.com" style={linkStyle}>
+          Email →
+        </a>
+      </Flex>
     </Flex>
   );
 };
