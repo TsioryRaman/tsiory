@@ -1,12 +1,36 @@
-import { ArticleType, ExperienceType } from "../types";
+import { ArticleType, CertificationType, ExperienceType } from "../types";
 
-export const certificates = [
-  "/certificate/css certificate.jpg",
-  "/certificate/javascript_basic certificate.jpg",
-  "/certificate/problem_solving_basic certificate.jpg",
-  "/certificate/react_basic certificate.jpg",
-  "/certificate/rest_api_intermediate certificate.jpg",
+export const certifications: CertificationType[] = [
+  {
+    title: "Rest API (Intermediate)",
+    issuer: "HackerRank",
+    file: "/certificate/api.jpg",
+  },
+  {
+    title: "React (Basic)",
+    issuer: "HackerRank",
+    file: "/certificate/react_basic certificate.jpg",
+  },
+  {
+    title: "Problem Solving (Basic)",
+    issuer: "HackerRank",
+    file: "/certificate/problem_solving_basic certificate.jpg",
+  },
+  {
+    title: "JavaScript (Basic)",
+    issuer: "HackerRank",
+    file: "/certificate/javascript_basic certificate.jpg",
+  },
+  {
+    title: "CSS (Basic)",
+    issuer: "HackerRank",
+    file: "/certificate/css certificate.jpg",
+  },
 ];
+
+export const certificates = certifications.map(
+  (certification) => certification.file
+);
 
 export const experience: ExperienceType[] = [
   {

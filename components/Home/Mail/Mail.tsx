@@ -81,7 +81,7 @@ const Mail: React.FC = () => {
             color="accent"
             mb="4"
           >
-            05 — Contact
+            06 — Contact
           </Text>
           <Heading
             as="h2"

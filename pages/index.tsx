@@ -1,7 +1,12 @@
 import React, { useRef } from "react";
+import dynamic from "next/dynamic";
 import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
 import { Presentation } from "../components/Presentation";
 import Main from "../components/Home";
+
+const ScrollEffects = dynamic(() => import("../components/ScrollEffects"), {
+  ssr: false,
+});
 
 const Home = () => {
   const mask = useRef<any>();
@@ -25,6 +30,7 @@ const Home = () => {
 
   return (
     <React.Fragment>
+      <ScrollEffects />
       <Flex
         onMouseMove={moveMask}
         zIndex={1}
@@ -49,6 +55,7 @@ const Home = () => {
           transitionProperty={["mask-size", "-webkit-mask-size"]}
           transitionTimingFunction="linear"
           className="header__main"
+          data-parallax="hero-image"
           src="/img/background/code.jpg"
         />
         <Container
@@ -56,6 +63,7 @@ const Home = () => {
           maxW={["100%", "md", "2xl", "6xl"]}
           position="relative"
           pt={["28", "28", "24", "24"]}
+          data-parallax="hero-content"
         >
           <Presentation name="Safidy Tsioriniaina Ramanantoanina" />
         </Container>
