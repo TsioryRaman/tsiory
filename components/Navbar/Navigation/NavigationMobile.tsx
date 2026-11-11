@@ -9,8 +9,9 @@ type NavigationLinkProps = {
 const links = [
   { to: "propos", label: "À propos", index: "01" },
   { to: "Projets", label: "Projets", index: "02" },
-  { to: "Competences", label: "Compétences", index: "03" },
-  { to: "retrouver", label: "Contact", index: "04" },
+  { to: "certifications", label: "Certifications", index: "03" },
+  { to: "Competences", label: "Compétences", index: "04" },
+  { to: "retrouver", label: "Contact", index: "05" },
 ];
 
 const NavigationMobile: React.FC<NavigationLinkProps> = ({ setOpen }) => {

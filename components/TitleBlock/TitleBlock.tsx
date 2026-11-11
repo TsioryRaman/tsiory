@@ -28,6 +28,7 @@ const TitleBlock: FC<TitleBlockProps> = ({ name, index, anchor }) => {
           lineHeight="1"
           color="accent"
           letterSpacing="0.08em"
+          data-parallax="section-index"
         >
           {index}
         </Text>
@@ -41,6 +42,7 @@ const TitleBlock: FC<TitleBlockProps> = ({ name, index, anchor }) => {
         color="ink"
         m="0"
         letterSpacing="-0.01em"
+        data-parallax="section-title"
       >
         {name}
       </Heading>

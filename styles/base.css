@@ -5,6 +5,19 @@
   mask-repeat: no-repeat;
 }
 
+[data-parallax="hero-image"],
+.project-thumb {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
 :root {
   --page: #faf9f6;
   --surface: #f3f1ea;
