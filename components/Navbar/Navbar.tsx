@@ -1,167 +1,81 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
   Flex,
-  Heading,
   Hide,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { X, Menu, ChevronLeft } from "react-feather";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import ButtonToggleColorMode from "./ButtonToggleColorMode";
-import { Intersect } from "../../common/IntersectionObserver";
 import Cv from "../CV";
 import { useToggle } from "../../hooks";
 import { NavigationDesktop, NavigationMobile } from "./Navigation";
-import { translateBar, translateBarMobile } from "../../utils/dom.functions";
 
 export const Navbar: React.FC = () => {
   const router = useRouter();
-  const navbarBg = useColorModeValue(
-    "rgba(66,153,255,.3)",
-    "rgba(26,54,93,.2)"
-  );
-  const menuColor = useColorModeValue("#63b3ed", "white");
   const { state: open, toggle: toggleMenu } = useToggle(false);
-  const nameRef = useRef<HTMLParagraphElement>(null);
-
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    if (
-      nameRef.current &&
-      window.pageYOffset > window.innerHeight &&
-      window.pageYOffset < window.innerHeight + 50
-    ) {
-      nameRef.current.style.transform = `translateY(-${
-        window.pageYOffset - window.innerHeight
-      }px)`;
-      nameRef.current.style.opacity = (
-        window.pageYOffset / window.innerHeight -
-        1.1
-      ).toString();
-    }
-    if (window.pageYOffset <= window.innerHeight && nameRef.current) {
-      nameRef.current.style.transform = `translateY(0)`;
-      nameRef.current.style.opacity = (1).toString();
-    }
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const handleScroll = () => setScrolled(window.pageYOffset > 8);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-    Intersect('div[id^="nav-"]', (entry: any) => {
-      if (entry.isIntersecting) {
-        let idNav = entry.target.id.split("-")[1];
-        let nav_desktop = document.querySelector(`#${idNav}`);
-        translateBar(nav_desktop);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-        let nav_mobile = document.querySelector(`#nv-${idNav}`);
-        if (nav_mobile) translateBarMobile(nav_mobile);
-      }
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [router.pathname, open]);
   useEffect(() => {
     document.body.style.overflowY = open ? "hidden" : "auto";
-    let username: any = document.querySelector("#username");
-    if (username && open) {
-      username.style.opacity = 0;
-    } else {
-      username.style.opacity = 1;
-    }
   }, [open]);
+
+  const showSurface = scrolled || open;
 
   return (
     <>
       <Flex
         zIndex={10}
-        bg={
-          (scrollPosition !== 0 && !open) || router.pathname !== "/"
-            ? navbarBg
-            : ""
-        }
         position="fixed"
         w="100%"
-        backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"}
-        py={2}
+        top="0"
+        left="0"
+        py={3}
+        bg={showSurface ? "page" : "transparent"}
+        borderBottomWidth="1px"
+        borderColor={showSurface ? "rule" : "transparent"}
+        transitionProperty="background-color, border-color"
+        transitionDuration="200ms"
       >
-        <Box
-          position="absolute"
-          zIndex={-1}
-          width="full"
-          backdropFilter={scrollPosition !== 0 ? `blur(18px)` : "0"}
-          bottom="0"
-          left="0"
-          right="0"
-        ></Box>
         <Container my="auto" maxW={["100%", "md", "2xl", "6xl"]}>
           <Flex justifyContent="space-between" alignItems="center">
-            <Flex
-              alignItems="center"
-              role="group"
-              gap="4"
-              id="username"
-              transitionDuration=".4s"
-            >
-              <Box
-                display="flex"
-                justifyContent="center"
-                position="relative"
-                alignItems="center"
-                color="white"
-                overflow="hidden"
-                px="4"
-                py="1.5"
-                borderColor={"white"}
-                borderStyle="dashed"
-                borderWidth="4px"
-                cursor="default"
-                borderRadius="4px"
-              >
-                <Heading
-                  fontSize={["1.5em", "1.5em", "2em", "2em"]}
-                  fontWeight="bold"
-                  textShadow={`1px 1px 8px ${menuColor}`}
-                  color="white"
-                  fontFamily="Seven Segment"
+            <Link href="/" style={{ textDecoration: "none" }}>
+              <Flex alignItems="baseline" gap="3" cursor="pointer">
+                <Text
+                  fontFamily="heading"
+                  fontSize="1.6em"
+                  lineHeight="1"
+                  color="ink"
                 >
-                  T
-                </Heading>
-              </Box>
-              <Text
-                color="#FFF"
-                ref={nameRef}
-                p="0"
-                alignSelf="flex-end"
-                letterSpacing={4}
-                className="seven"
-                fontSize={["1.5em", "1.5em", "1.75em", "2em"]}
-                _groupHover={{ transform: "translateY(0%)", opacity: 1 }}
-                fontWeight={"bold"}
-                cursor="default"
-                transitionDuration={".4s"}
-              >
-                s.i.o.r.y
-              </Text>
-            </Flex>
-            <Flex
-              alignItems="center"
-              rowGap={3}
-              justifyContent="center"
-              position="relative"
-              direction={"row"}
-            >
+                  Tsiory
+                </Text>
+                <Text
+                  display={["none", "none", "block", "block"]}
+                  fontFamily="mono"
+                  fontSize="10px"
+                  letterSpacing="0.18em"
+                  textTransform="uppercase"
+                  color="muted"
+                >
+                  Ramanantoanina
+                </Text>
+              </Flex>
+            </Link>
+            <Flex alignItems="center" gap={["2", "3", "4", "6"]}>
               {router.pathname !== "/" && (
-                <Box mr="3" cursor="pointer">
-                  <Link href="/">
-                    <ChevronLeft color="white" />
+                <Box cursor="pointer" color="muted">
+                  <Link href="/" style={{ textDecoration: "none" }}>
+                    <ChevronLeft size={18} />
                   </Link>
                 </Box>
               )}
@@ -172,24 +86,18 @@ export const Navbar: React.FC = () => {
               <Cv />
               <Hide above="md">
                 <Box
+                  as="button"
+                  aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+                  aria-expanded={open}
                   onClick={toggleMenu}
-                  p="3"
+                  p="2"
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
-                  borderRadius={2}
                   cursor="pointer"
+                  color="ink"
                 >
-                  <Box
-                    transitionDuration={".3s"}
-                    transform={!open ? "rotate(0deg)" : "rotate(-180deg)"}
-                  >
-                    {!open ? (
-                      <Menu size={24} color={menuColor} />
-                    ) : (
-                      <X size="16" color={menuColor} />
-                    )}
-                  </Box>
+                  {!open ? <Menu size={22} /> : <X size={22} />}
                 </Box>
               </Hide>
             </Flex>

@@ -10,9 +10,10 @@ import React from "react";
 import Fade from "react-reveal";
 
 type Feature = {
-  title: String;
-  desc: String;
+  title: string;
+  desc: string;
   img?: string;
+  children?: React.ReactNode;
 };
 
 const Feature: React.FC<Feature> = ({

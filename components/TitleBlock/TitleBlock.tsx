@@ -1,33 +1,50 @@
-import { Box, Divider, Heading, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { getNameId } from "../../utils";
 
 type TitleBlockProps = {
   name: string;
+  index?: string;
+  anchor?: string;
   textShadow?: boolean;
 };
 
-const TitleBlock: FC<TitleBlockProps> = ({ name, textShadow = true }) => {
-  const textShadowColor = useColorModeValue("#3182ce", "white");
-
+const TitleBlock: FC<TitleBlockProps> = ({ name, index, anchor }) => {
   return (
-    <Box id={getNameId(name)}>
+    <Flex
+      id={anchor ? `nav-${anchor}` : getNameId(name)}
+      alignItems="baseline"
+      gap="4"
+      borderBottomWidth="1px"
+      borderColor="rule"
+      pb="4"
+      mb="10"
+      scrollMarginTop="100px"
+    >
+      {index && (
+        <Text
+          fontFamily="mono"
+          fontSize="11px"
+          lineHeight="1"
+          color="accent"
+          letterSpacing="0.08em"
+        >
+          {index}
+        </Text>
+      )}
       <Heading
-        color="whiteAlpha.900"
-        textShadow={textShadow ? `3px 1px 15px ${textShadowColor}` : ""}
-        as="h1"
-        textAlign="center"
+        as="h2"
+        fontFamily="heading"
+        fontWeight="500"
+        fontSize={["2xl", "3xl", "4xl", "4xl"]}
+        lineHeight="1"
+        color="ink"
+        m="0"
+        letterSpacing="-0.01em"
       >
         {name}
       </Heading>
-      <Divider
-        borderBottomWidth={3}
-        borderColor={"blue.400"}
-        mt="4"
-        mx="auto"
-        w={[16, 16, 16, 16]}
-      />
-    </Box>
+    </Flex>
   );
 };
 

@@ -8,7 +8,6 @@ import { useColorModeValue } from "@chakra-ui/react";
 import { Loading } from "../../Loading/Loading";
 import { Mesh } from "three";
 import { BackLight } from "./BackLight";
-import Flip from "react-reveal"
 // TYPE
 type CertificateProps = {
     name:string,
@@ -30,7 +29,7 @@ const ThreeCertificate = () => {
     },[])
     return (
     <Suspense fallback={<Loading />}>
-        <Flip style={{height:"100%"}} bottom>
+        <div style={{ height: "100%" }}>
             <Scene>
                 <perspectiveCamera fov={45} position={[0,0,5]} rotation={[0,0,0]} aspect={ratio} near={0.1} far={1000}/>
                 <BackgroundSceneLoader />
@@ -41,7 +40,7 @@ const ThreeCertificate = () => {
                     <meshStandardMaterial color="#808080" roughness={0.1} metalness={0} />
                 </Plane> */}
             </Scene>
-        </Flip>
+        </div>
     </Suspense>
     )
 }
@@ -135,7 +134,7 @@ const BackgroundSceneLoader = React.memo(() => {
         // refLight.current.position.copy(camera.position)
     }
     return <>
-        <spotLight ref={refLight} intensity={0.5} color={"0xFF7F00"} penumbra={true} angle={0.4} castShadow={true} decay={3} position={[0,4,6]}/>
+        <spotLight ref={refLight} intensity={0.5} color={"0xFF7F00"} penumbra={0.5} angle={0.4} decay={3} position={[0,4,6]}/>
 
         <ambientLight intensity={0.1} />
         {/* <rectAreaLight args={[0x00ff00, 5, 4, 10 ]} /> */}

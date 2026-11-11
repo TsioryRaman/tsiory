@@ -1,7 +1,6 @@
 export const sitemap = '';
 import glob from 'glob';
 import { globals } from './globals';
-import { getStaticPaths as getBlogPaths } from './pages/blog/[blog]';
 
 export const generateSitemap = async () => {
   const pagesDir = './pages/**/*.*';
@@ -12,7 +11,7 @@ export const generateSitemap = async () => {
     .filter((path) => !path.includes('/_'))
     .map((path) => path.slice(1));
 
-  const blogPaths = await getBlogPaths().paths;
+  const blogPaths: string[] = [];
 
   const sitemap = `
 <?xml version="1.0" encoding="UTF-8"?>

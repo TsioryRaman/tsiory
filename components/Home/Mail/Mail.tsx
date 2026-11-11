@@ -1,5 +1,4 @@
 import {
-  Alert,
   Box,
   Button,
   Flex,
@@ -7,31 +6,15 @@ import {
   FormLabel,
   Heading,
   Input,
-  InputGroup,
-  InputLeftElement,
+  Text,
   Textarea,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
-import dynamic from "next/dynamic";
 import React, { useRef, useState } from "react";
-import {
-  AtSign,
-  CheckCircle,
-  Loader,
-  MessageCircle,
-  Send,
-  User,
-  X,
-} from "react-feather";
-import Fade from "react-reveal";
+import { Send } from "react-feather";
 
-const Player = dynamic(() => import("../../ui/Player"), {
-  ssr: false,
-});
-
-const SUCCESS_MESSAGE = "Votre message a bien ete envoye";
-const ERROR_MESSAGE = "Votre message n'a pas pu etre envoyee";
+const SUCCESS_MESSAGE = "Votre message a bien été envoyé.";
+const ERROR_MESSAGE = "Votre message n'a pas pu être envoyé.";
 
 const Mail: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -40,11 +23,8 @@ const Mail: React.FC = () => {
   const [success, setSuccess] = useState(false);
   const [notification, setNotification] = useState(false);
   const [message, setMessage] = useState(SUCCESS_MESSAGE);
-  const bg = useColorModeValue("blue.500", "blue.700");
-  const bgInput = useColorModeValue("blue.400", "whiteAlpha.50");
-  const hoverInput = useColorModeValue("blue.300", "whiteAlpha.100");
 
-  const sendEmail = (e: any) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     if (form.current) {
@@ -56,9 +36,7 @@ const Mail: React.FC = () => {
           "55XkI70mvsERDrHJ3"
         )
         .then(
-          (result) => {
-            console.log(result.text);
-
+          () => {
             setNotification(true);
             setMessage(SUCCESS_MESSAGE);
             setSuccess(true);
@@ -68,9 +46,7 @@ const Mail: React.FC = () => {
               setNotification(false);
             }, 2500);
           },
-          (error) => {
-            console.log(error.text);
-
+          () => {
             setNotification(true);
             setMessage(ERROR_MESSAGE);
             setSuccess(false);
@@ -84,120 +60,152 @@ const Mail: React.FC = () => {
   };
 
   return (
-    <Flex
-      position="relative"
-      color="white"
-      bg={bg}
-      p="4"
-      px={["4", "8", "28", "48"]}
-      justifyContent="center"
-      alignItems="center"
-      direction={["column", "column", "row", "row"]}
+    <Box
+      as="section"
+      bg="surface"
+      borderWidth="1px"
+      borderColor="rule"
+      p={["6", "8", "10", "12"]}
     >
       <Flex
-        px="8"
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        w={["100%", "100%", "50%", "50%"]}
+        direction={["column", "column", "row", "row"]}
+        gap={["8", "10", "14", "16"]}
+        alignItems="flex-start"
       >
-        <Fade>
-          <Player
-            autoplay={true}
-            loop={true}
-            controls={true}
-            speed={0.7}
-            src="
-          https://assets1.lottiefiles.com/packages/lf20_mwawjro9.json"
-            style={{ height: "200px", width: "200px" }}
-          ></Player>
-          <Heading>Me contacter</Heading>
-        </Fade>
-        <Box bottom="4" right="2" position="absolute">
-          <Fade when={notification} bottom>
-            <Alert
-              mt="8"
-              status={success ? "success" : "error"}
-              variant="left-accent"
-            >
-              {success ? <CheckCircle /> : <X />}
-              <span style={{ marginLeft: "8px" }}>{message}</span>
-            </Alert>
-          </Fade>
+        <Box w={["100%", "100%", "40%", "40%"]}>
+          <Text
+            fontFamily="mono"
+            fontSize="10px"
+            letterSpacing="0.16em"
+            textTransform="uppercase"
+            color="accent"
+            mb="4"
+          >
+            05 — Contact
+          </Text>
+          <Heading
+            as="h2"
+            fontFamily="heading"
+            fontWeight="500"
+            fontSize={["2xl", "3xl", "3xl", "3xl"]}
+            lineHeight="1.15"
+            color="ink"
+            m="0"
+          >
+            Un projet, une question ?
+          </Heading>
+          <Text mt="4" fontSize="sm" lineHeight="1.7" color="muted">
+            Écrivez-moi directement, je réponds généralement sous 24 heures.
+          </Text>
+        </Box>
+
+        <Box w={["100%", "100%", "60%", "60%"]} as="div">
+          <form ref={form} onSubmit={sendEmail}>
+            <FormControl>
+              <FormLabel
+                fontFamily="mono"
+                fontSize="10px"
+                letterSpacing="0.12em"
+                textTransform="uppercase"
+                color="muted"
+              >
+                Nom
+              </FormLabel>
+              <Input
+                isRequired
+                name="name"
+                type="text"
+                bg="page"
+                borderColor="rule"
+                borderRadius="2px"
+                focusBorderColor="accent"
+                _hover={{ borderColor: "muted" }}
+              />
+            </FormControl>
+
+            <FormControl mt="5">
+              <FormLabel
+                fontFamily="mono"
+                fontSize="10px"
+                letterSpacing="0.12em"
+                textTransform="uppercase"
+                color="muted"
+              >
+                Email
+              </FormLabel>
+              <Input
+                isRequired
+                name="user_email"
+                type="email"
+                bg="page"
+                borderColor="rule"
+                borderRadius="2px"
+                focusBorderColor="accent"
+                _hover={{ borderColor: "muted" }}
+              />
+            </FormControl>
+
+            <FormControl mt="5">
+              <FormLabel
+                fontFamily="mono"
+                fontSize="10px"
+                letterSpacing="0.12em"
+                textTransform="uppercase"
+                color="muted"
+              >
+                Message
+              </FormLabel>
+              <Textarea
+                isRequired
+                name="message"
+                resize="none"
+                rows={5}
+                bg="page"
+                borderColor="rule"
+                borderRadius="2px"
+                focusBorderColor="accent"
+                _hover={{ borderColor: "muted" }}
+              />
+            </FormControl>
+
+            <Flex mt="6" alignItems="center" gap="5" flexWrap="wrap">
+              <Button
+                type="submit"
+                isLoading={loading}
+                bg="ink"
+                color="page"
+                borderRadius="2px"
+                fontFamily="mono"
+                fontSize="10px"
+                letterSpacing="0.14em"
+                textTransform="uppercase"
+                px="7"
+                py="5"
+                _hover={{ bg: "accent" }}
+                _active={{ bg: "accent" }}
+                rightIcon={<Send size={12} />}
+              >
+                Envoyer
+              </Button>
+
+              {notification && (
+                <Text
+                  fontFamily="mono"
+                  fontSize="10px"
+                  letterSpacing="0.08em"
+                  color={success ? "ink" : "accent"}
+                  borderLeftWidth="2px"
+                  borderColor={success ? "ink" : "accent"}
+                  pl="3"
+                >
+                  {message}
+                </Text>
+              )}
+            </Flex>
+          </form>
         </Box>
       </Flex>
-      <Box w={["100%", "100%", "50%", "50%"]}>
-        <form ref={form} onSubmit={(e) => sendEmail(e)}>
-          <Fade>
-            <FormControl mt="4">
-              <FormLabel>Nom:</FormLabel>
-              <InputGroup>
-                <InputLeftElement
-                  pointerEvents="none"
-                  children={<User size="20px" />}
-                />
-                <Input
-                  isRequired
-                  focusBorderColor="blue.400"
-                  _focusVisible={{ background: "transparent" }}
-                  _hover={{ backgroundColor: `${hoverInput}` }}
-                  background={bgInput}
-                  variant="filled"
-                  name="name"
-                  type="text"
-                />
-              </InputGroup>
-            </FormControl>
-
-            <FormControl mt="4">
-              <FormLabel>Email:</FormLabel>
-              <InputGroup>
-                <InputLeftElement children={<AtSign size="20px" />} />
-                <Input
-                  isRequired
-                  focusBorderColor="blue.400"
-                  _focusVisible={{ background: "transparent" }}
-                  _hover={{ backgroundColor: `${hoverInput}` }}
-                  background={bgInput}
-                  variant="filled"
-                  name="user_email"
-                  type="email"
-                />
-              </InputGroup>
-            </FormControl>
-
-            <FormControl mt="4">
-              <FormLabel>Message:</FormLabel>
-              <InputGroup>
-                <InputLeftElement children={<MessageCircle size="20px" />} />
-                <Textarea
-                  isRequired
-                  focusBorderColor="blue.400"
-                  _focusVisible={{ background: "transparent" }}
-                  _hover={{ backgroundColor: `${hoverInput}` }}
-                  background={bgInput}
-                  variant="filled"
-                  paddingLeft="40px"
-                  resize="none"
-                  name="message"
-                />
-              </InputGroup>
-            </FormControl>
-            <Button
-              mt="4"
-              variant="outline"
-              type="submit"
-              _hover={{ backgroundColor: `${hoverInput}` }}
-            >
-              Envoyer{" "}
-              <span style={{ marginLeft: "10px" }}>
-                {loading ? <Loader /> : <Send />}
-              </span>
-            </Button>
-          </Fade>
-        </form>
-      </Box>
-    </Flex>
+    </Box>
   );
 };
 

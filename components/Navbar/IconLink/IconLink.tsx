@@ -1,86 +1,60 @@
-import { Box, Flex, Tooltip } from "@chakra-ui/react";
-import Link from "next/link";
+import { Flex, Text } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { SideBarContext } from "../Navbar";
 
 type IconLinkProps = {
-  label?: String;
+  label: string;
   to: string;
-  href?: string;
-  _colorBar?: boolean;
-  _fontSize?: string;
+  index?: string;
   isDesktop?: boolean;
 };
 
 export const IconLink: React.FC<IconLinkProps> = ({
-  children,
   to,
   label,
-  _fontSize,
+  index,
   isDesktop,
 }) => {
   const { setOpen } = useContext(SideBarContext);
 
-  const hoverMobile = () => {
-    return !isDesktop
-      ? {
-          _before: {
-            content: `''`,
-            position: "absolute",
-            height: "30px",
-            width: "4px",
-            left: "-10px",
-            background: "white",
-          },
-        }
-      : {};
-  };
-
   return (
-    <Link href={`#nav-${to}`}>
+    <a
+      href={`#nav-${to}`}
+      id={`nv-${to}`}
+      onClick={() => setOpen(false)}
+      style={{ textDecoration: "none" }}
+    >
       <Flex
-        id={`nv-${to}`}
-        mr="auto"
-        cursor="pointer"
-        transitionDuration="0.5s"
-        onClick={() => setOpen(false)}
         direction="row"
-        justify="center"
-        alignItems="center"
+        align="baseline"
+        gap="2"
+        color="muted"
+        transitionProperty="color"
+        transitionDuration="150ms"
+        _hover={{ color: "ink" }}
       >
-        <Box
-          color={"inherit"}
-          borderBottom={!isDesktop ? "2px solid transparent" : ""}
-          display={"flex"}
-          _hover={{ ...hoverMobile }}
-          transitionDuration=".4s"
-          justifyContent={"center"}
-          alignItems="center"
-          flexDirection="row"
-          gap={4}
-          fontSize={_fontSize || 18}
-          as="div"
+        {index && (
+          <Text
+            fontFamily="mono"
+            fontSize="10px"
+            lineHeight="1"
+            color="accent"
+          >
+            {index}
+          </Text>
+        )}
+        <Text
+          fontFamily={isDesktop ? "mono" : "heading"}
+          fontSize={isDesktop ? "11px" : "2.4em"}
+          lineHeight={isDesktop ? "1.4" : "1.2"}
+          textTransform={isDesktop ? "uppercase" : "none"}
+          letterSpacing={isDesktop ? "0.12em" : "normal"}
         >
-          {children}
-          {!isDesktop && label}
-        </Box>
+          {label}
+        </Text>
       </Flex>
-    </Link>
+    </a>
   );
 };
 
-export const TooltipIconLink: React.FC<IconLinkProps> = (props) => {
-  return (
-    <Tooltip zIndex="99999999999" hasArrow label={props.label}>
-      <Flex
-        color="white"
-        id={props.to}
-        borderBottom="2px solid transparent"
-        transitionDuration=".4s"
-        justify="center"
-      >
-        <IconLink isDesktop={true} {...props} />
-      </Flex>
-    </Tooltip>
-  );
-};
+export const TooltipIconLink = IconLink;

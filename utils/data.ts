@@ -10,12 +10,21 @@ export const certificates = [
 
 export const experience: ExperienceType[] = [
   {
+    year: "Depuis 2024",
+    content: [
+      {
+        header: "Développeur fullstack — Hairun Technology",
+        description:
+          "Depuis septembre 2024. Maintenance .NET Framework / ASP.NET MVC, migration vers .NET 8, e-commerce GrandNode (.NET Core / Vue.js) et building blocks d'interopérabilité GovStack (Next.js / NestJS).",
+      },
+    ],
+  },
+  {
     year: "2023",
     content: [
       {
         header: "Master II à l'ISPM",
-        description: `Etude supérieur en 5ème année à l'ISPM`,
-        iconFinal: `&#129333;`,
+        description: "Études supérieures en 5ᵉ année à l'ISPM.",
       },
     ],
   },
@@ -23,18 +32,18 @@ export const experience: ExperienceType[] = [
     year: "2021",
     content: [
       {
-        header: "MasterI à l'ISPM",
-        description: `Etude supérieur en 4ème année à l'ISPM`,
-        iconFinal: `&#129333;`,
+        header: "Master I à l'ISPM",
+        description: "Études supérieures en 4ᵉ année à l'ISPM.",
       },
       {
-        header: "Soutenance 3ème année en Informatique et Telecommuniaction",
-        description: `Présentation de ma soutenance "Transfert de messagerie et de fichier en temps réel"`,
-      },
-      {
-        header: "Stage au sein de la société Esokia Madagascar",
+        header: "Soutenance de 3ᵉ année en Informatique et Télécommunications",
         description:
-          "Stage professionelle au sein de la société Esokia en tant que stagiaire Back-end (Symfony/Magento2)",
+          "Présentation de ma soutenance « Transfert de messagerie et de fichiers en temps réel ».",
+      },
+      {
+        header: "Stage chez Esokia Madagascar",
+        description:
+          "Stage professionnel chez Esokia Madagascar en tant que stagiaire back-end (Symfony / Magento 2).",
       },
     ],
   },
@@ -42,10 +51,9 @@ export const experience: ExperienceType[] = [
     year: "2017",
     content: [
       {
-        header: "Entrer à l'université",
+        header: "Entrée à l'université",
         description:
-          "Debut de formation en Informatique et Telecommunication.Sans oublier l'apprentissage autodidacte.",
-        iconFinal: `&#128521;`,
+          "Début de formation en Informatique et Télécommunications, sans oublier l'apprentissage autodidacte.",
       },
     ],
   },
@@ -53,14 +61,13 @@ export const experience: ExperienceType[] = [
     year: "2016",
     content: [
       {
-        header: "Entrer à l'université(CNTEMAD)",
+        header: "Entrée à l'université (CNTEMAD)",
         description:
-          "Debut de formation en Telecommunication en licence 1 pour avoir de meilleurs base en Mathematique.",
-        iconFinal: `&#128521;`,
+          "Début de formation en Télécommunications en licence 1 pour acquérir de meilleures bases en mathématiques.",
       },
       {
-        header: "Obtention du baccalaureat",
-        description: "Bachelier en serie scientifique",
+        header: "Obtention du baccalauréat",
+        description: "Bachelier en série scientifique.",
       },
     ],
   },
